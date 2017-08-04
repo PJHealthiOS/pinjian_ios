@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderSureView">
+            <connections>
+                <outlet property="btnSure" destination="EHo-pF-oCN" id="96q-xI-REU"/>
+                <outlet property="labContent" destination="alK-fG-Vr7" id="50t-Hu-Aof"/>
+                <outlet property="labName" destination="oVm-es-zE3" id="u0p-LR-cOM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="OrderSureView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXy-A5-RkS">
+                    <rect key="frame" x="20" y="183.5" width="335" height="300"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Z0-EC-LDj">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success_order_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="xhI-c0-huv">
+                                    <rect key="frame" x="137.5" y="20" width="60" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="gs6-1e-WUV"/>
+                                        <constraint firstAttribute="width" constant="60" id="tDG-1b-QeO"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.27058823529999998" green="0.78039215689999997" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="xhI-c0-huv" firstAttribute="centerX" secondItem="0Z0-EC-LDj" secondAttribute="centerX" id="7fR-CV-wja"/>
+                                <constraint firstAttribute="height" constant="100" id="UMy-m3-L6d"/>
+                                <constraint firstItem="xhI-c0-huv" firstAttribute="centerY" secondItem="0Z0-EC-LDj" secondAttribute="centerY" id="gLa-Fh-JXM"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVm-es-zE3">
+                            <rect key="frame" x="126.5" y="120" width="82" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="fOQ-dm-F5Y"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alK-fG-Vr7">
+                            <rect key="frame" x="20" y="154" width="295" height="72"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.36078431372549019" green="0.36078431372549019" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHo-pF-oCN">
+                            <rect key="frame" x="20" y="236" width="295" height="44"/>
+                            <color key="backgroundColor" red="0.27058823529999998" green="0.78039215689999997" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="3wb-ag-2fF"/>
+                            </constraints>
+                            <state key="normal" title="确定"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="sureAction:" destination="-1" eventType="touchUpInside" id="L2H-pe-AZm"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="0Z0-EC-LDj" firstAttribute="leading" secondItem="YXy-A5-RkS" secondAttribute="leading" id="0cD-1f-hr7"/>
+                        <constraint firstItem="alK-fG-Vr7" firstAttribute="leading" secondItem="YXy-A5-RkS" secondAttribute="leading" constant="20" id="FPv-DS-q2p"/>
+                        <constraint firstAttribute="trailing" secondItem="EHo-pF-oCN" secondAttribute="trailing" constant="20" id="GLw-8A-Ufz"/>
+                        <constraint firstAttribute="trailing" secondItem="0Z0-EC-LDj" secondAttribute="trailing" id="HDN-7S-nQ3"/>
+                        <constraint firstItem="0Z0-EC-LDj" firstAttribute="top" secondItem="YXy-A5-RkS" secondAttribute="top" id="Hfz-re-SPM"/>
+                        <constraint firstItem="EHo-pF-oCN" firstAttribute="top" secondItem="alK-fG-Vr7" secondAttribute="bottom" constant="10" id="JPK-lb-LYH"/>
+                        <constraint firstAttribute="height" constant="300" id="JUg-nk-PIG"/>
+                        <constraint firstItem="EHo-pF-oCN" firstAttribute="leading" secondItem="YXy-A5-RkS" secondAttribute="leading" constant="20" id="Pgl-zX-AQ2"/>
+                        <constraint firstItem="oVm-es-zE3" firstAttribute="centerX" secondItem="YXy-A5-RkS" secondAttribute="centerX" id="Wj7-hO-sND"/>
+                        <constraint firstAttribute="bottom" secondItem="EHo-pF-oCN" secondAttribute="bottom" constant="20" id="Xae-b1-7Jn"/>
+                        <constraint firstAttribute="trailing" secondItem="alK-fG-Vr7" secondAttribute="trailing" constant="20" id="fDz-u6-N9u"/>
+                        <constraint firstItem="alK-fG-Vr7" firstAttribute="top" secondItem="oVm-es-zE3" secondAttribute="bottom" constant="10" id="tXx-vZ-f5R"/>
+                        <constraint firstItem="oVm-es-zE3" firstAttribute="top" secondItem="0Z0-EC-LDj" secondAttribute="bottom" constant="20" id="toL-fo-jVV"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="YXy-A5-RkS" secondAttribute="trailing" constant="20" id="GNV-eb-g6F"/>
+                <constraint firstItem="YXy-A5-RkS" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="dv4-2V-j9z"/>
+                <constraint firstItem="YXy-A5-RkS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="vNn-4i-6CU"/>
+            </constraints>
+            <point key="canvasLocation" x="348.5" y="193.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="success_order_icon.png" width="160" height="160"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
+</document>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ExpertOrderDiscountAlterView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="as4-9w-osC">
+                    <rect key="frame" x="50.5" y="209" width="274" height="250"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预约时间在排班表1周~2周区间(含两周)内享全程陪诊8.5折优惠，2周~3周区间内享7.5折优惠" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtJ-Tz-K6u">
+                            <rect key="frame" x="20" y="70" width="234" height="50.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否还打算预约该时间？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcl-ii-Vo9">
+                            <rect key="frame" x="58" y="162" width="158" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isr-Z4-qGZ">
+                            <rect key="frame" x="0.0" y="199" width="274" height="1"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="0Cy-WQ-Ivh"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnS-04-iSx">
+                            <rect key="frame" x="0.0" y="200" width="136.5" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="5Et-AV-5SW"/>
+                            </constraints>
+                            <state key="normal" title="再想想">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="HeB-Lg-NDx"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yA-wJ-Xgr">
+                            <rect key="frame" x="137.5" y="200" width="136.5" height="50"/>
+                            <state key="normal" title="去预约">
+                                <color key="titleColor" red="0.23921568630000001" green="0.74901960779999999" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="sureAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="6Mi-Ck-Ap5"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJV-7l-E4t">
+                            <rect key="frame" x="137" y="200" width="1" height="50"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="qd1-hW-6pV"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="qnS-04-iSx" secondAttribute="bottom" id="1zf-VR-iG1"/>
+                        <constraint firstItem="isr-Z4-qGZ" firstAttribute="leading" secondItem="as4-9w-osC" secondAttribute="leading" id="6bQ-ZF-DOe"/>
+                        <constraint firstItem="1yA-wJ-Xgr" firstAttribute="width" secondItem="qnS-04-iSx" secondAttribute="width" id="6hj-3L-DVT"/>
+                        <constraint firstAttribute="trailing" secondItem="1yA-wJ-Xgr" secondAttribute="trailing" id="Dr9-hf-g5N"/>
+                        <constraint firstAttribute="trailing" secondItem="CtJ-Tz-K6u" secondAttribute="trailing" constant="20" id="FJv-Ws-WmP"/>
+                        <constraint firstAttribute="trailing" secondItem="isr-Z4-qGZ" secondAttribute="trailing" id="HZ1-7h-GkR"/>
+                        <constraint firstAttribute="bottom" secondItem="fJV-7l-E4t" secondAttribute="bottom" id="NHq-cs-RmA"/>
+                        <constraint firstItem="1yA-wJ-Xgr" firstAttribute="leading" secondItem="qnS-04-iSx" secondAttribute="trailing" constant="1" id="SDk-Fn-hoI"/>
+                        <constraint firstItem="fJV-7l-E4t" firstAttribute="centerX" secondItem="as4-9w-osC" secondAttribute="centerX" id="Thn-bZ-X02"/>
+                        <constraint firstItem="qnS-04-iSx" firstAttribute="leading" secondItem="as4-9w-osC" secondAttribute="leading" id="Yqv-Du-VFr"/>
+                        <constraint firstItem="Kcl-ii-Vo9" firstAttribute="centerX" secondItem="as4-9w-osC" secondAttribute="centerX" id="c71-cT-oxa"/>
+                        <constraint firstAttribute="width" constant="274" id="oCl-MW-PAz"/>
+                        <constraint firstItem="fJV-7l-E4t" firstAttribute="top" secondItem="isr-Z4-qGZ" secondAttribute="bottom" id="oJT-NR-Io2"/>
+                        <constraint firstItem="CtJ-Tz-K6u" firstAttribute="leading" secondItem="as4-9w-osC" secondAttribute="leading" constant="20" id="t31-7n-Cf6"/>
+                        <constraint firstItem="1yA-wJ-Xgr" firstAttribute="height" secondItem="qnS-04-iSx" secondAttribute="height" id="tdO-XF-nGZ"/>
+                        <constraint firstItem="qnS-04-iSx" firstAttribute="top" secondItem="isr-Z4-qGZ" secondAttribute="bottom" id="uHo-v4-vq6"/>
+                        <constraint firstAttribute="height" constant="250" id="xgL-ZY-87z"/>
+                        <constraint firstItem="isr-Z4-qGZ" firstAttribute="top" secondItem="Kcl-ii-Vo9" secondAttribute="bottom" constant="20" id="yC3-vM-mJY"/>
+                        <constraint firstAttribute="bottom" secondItem="1yA-wJ-Xgr" secondAttribute="bottom" id="yp6-oC-P8r"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expert_discount_alter.png" translatesAutoresizingMaskIntoConstraints="NO" id="6Cs-sm-VrB">
+                    <rect key="frame" x="84.5" y="130" width="206" height="129"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="129" id="ADH-AF-fN4"/>
+                        <constraint firstAttribute="width" constant="206" id="IIc-4I-SXK"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="as4-9w-osC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Dvx-uK-I4m"/>
+                <constraint firstItem="CtJ-Tz-K6u" firstAttribute="top" secondItem="6Cs-sm-VrB" secondAttribute="bottom" constant="20" id="UUN-Xf-f7j"/>
+                <constraint firstItem="as4-9w-osC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="VO8-jf-cBa"/>
+                <constraint firstItem="6Cs-sm-VrB" firstAttribute="centerX" secondItem="as4-9w-osC" secondAttribute="centerX" id="VUX-lv-NAY"/>
+                <constraint firstItem="as4-9w-osC" firstAttribute="top" secondItem="6Cs-sm-VrB" secondAttribute="bottom" constant="-50" id="Wt2-37-vVY"/>
+            </constraints>
+            <connections>
+                <outlet property="desc_label" destination="CtJ-Tz-K6u" id="r8z-SN-oed"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="expert_discount_alter.png" width="412" height="258"/>
+    </resources>
+</document>
