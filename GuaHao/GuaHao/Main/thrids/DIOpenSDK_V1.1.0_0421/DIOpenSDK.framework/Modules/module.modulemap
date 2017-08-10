@@ -1,6 +1,0 @@
-framework module DIOpenSDK {
-  umbrella header "DIOpenSDK.h"
-
-  export *
-  module * { export * }
-}
