@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZoomImageView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p5u-C0-lkO">
+                    <rect key="frame" x="70" y="216" width="235" height="235"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="235" id="BJv-Mx-tJk"/>
+                        <constraint firstAttribute="height" constant="235" id="Lor-5N-jHR"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="p5u-C0-lkO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BKW-zJ-Y9f"/>
+                <constraint firstItem="p5u-C0-lkO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tFI-KR-zq0"/>
+            </constraints>
+            <connections>
+                <outlet property="imageHeight" destination="Lor-5N-jHR" id="zV4-cg-mgt"/>
+                <outlet property="imageView" destination="p5u-C0-lkO" id="2Ja-rm-bbt"/>
+                <outlet property="imageWidth" destination="BJv-Mx-tJk" id="5qF-Zx-vDl"/>
+                <outletCollection property="gestureRecognizers" destination="CVE-l2-r3m" appends="YES" id="G34-3J-LcM"/>
+            </connections>
+        </view>
+        <tapGestureRecognizer id="CVE-l2-r3m">
+            <connections>
+                <action selector="backAction:" destination="iN0-l3-epB" id="gl5-UD-Ec6"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseHospitalVC">
+            <connections>
+                <outlet property="LocationButton" destination="wMJ-gh-BVC" id="7x2-VC-m5G"/>
+                <outlet property="searchBar" destination="gSO-hQ-79i" id="o4b-yv-SBg"/>
+                <outlet property="searchDisplayController" destination="QwY-rh-fn7" id="hY5-C0-wdI"/>
+                <outlet property="showHospitalTview" destination="UNg-a8-QmI" id="e8l-qf-Llj"/>
+                <outlet property="sortButton" destination="PLU-tD-LpV" id="T1w-HR-RzF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMJ-gh-BVC">
+                    <rect key="frame" x="0.0" y="64" width="187.5" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="OpF-xJ-I5l"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="全城▼">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="全城▲">
+                        <color key="titleColor" red="0.23137254900000001" green="0.74901960779999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="locationSelectAction:" destination="-1" eventType="touchUpInside" id="8cd-QK-ny7"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLU-tD-LpV">
+                    <rect key="frame" x="187" y="64" width="188" height="44"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="排序▼">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="预约量▲">
+                        <color key="titleColor" red="0.23137254900000001" green="0.74901960779999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="sortSelectAction:" destination="-1" eventType="touchUpInside" id="EA1-eb-wv7"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygl-Wi-Fyi">
+                    <rect key="frame" x="186.5" y="71" width="1" height="30"/>
+                    <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="2Qd-nW-Moy"/>
+                        <constraint firstAttribute="width" constant="1" id="5SI-2q-TWx"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Blf-ze-BYU" userLabel="lineView">
+                    <rect key="frame" x="0.0" y="106" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="VYy-IJ-msS"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABE-8u-5dj">
+                    <rect key="frame" x="0.0" y="108" width="375" height="60"/>
+                    <subviews>
+                        <searchBar contentMode="redraw" text="" placeholder="请输入医院信息" backgroundImage="common_first_order_payImg.png" translatesAutoresizingMaskIntoConstraints="NO" id="gSO-hQ-79i">
+                            <rect key="frame" x="8" y="9" width="359" height="44"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="mxt-pA-J8B"/>
+                            </connections>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="gSO-hQ-79i" firstAttribute="top" secondItem="ABE-8u-5dj" secondAttribute="top" constant="9" id="Pg0-y5-ZIM"/>
+                        <constraint firstItem="gSO-hQ-79i" firstAttribute="leading" secondItem="ABE-8u-5dj" secondAttribute="leading" constant="8" id="bWV-cf-Mcg"/>
+                        <constraint firstAttribute="trailing" secondItem="gSO-hQ-79i" secondAttribute="trailing" constant="8" id="eG5-F8-235"/>
+                        <constraint firstAttribute="height" constant="60" id="fW7-6L-kbe"/>
+                        <constraint firstAttribute="bottom" secondItem="gSO-hQ-79i" secondAttribute="bottom" constant="7" id="xAJ-5g-Pbs"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UNg-a8-QmI" customClass="TPKeyboardAvoidingTableView">
+                    <rect key="frame" x="0.0" y="168" width="375" height="499"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="i5M-Pr-FkT" id="Gr9-ZN-kjT"/>
+                        <outlet property="delegate" destination="i5M-Pr-FkT" id="MSW-Zp-qiI"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="UNg-a8-QmI" secondAttribute="trailing" id="1Gb-PJ-ATI"/>
+                <constraint firstItem="Ygl-Wi-Fyi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3lr-li-a7d"/>
+                <constraint firstItem="PLU-tD-LpV" firstAttribute="height" secondItem="wMJ-gh-BVC" secondAttribute="height" id="4yX-XA-Xr4"/>
+                <constraint firstItem="ABE-8u-5dj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5kr-Bo-3gO"/>
+                <constraint firstItem="UNg-a8-QmI" firstAttribute="top" secondItem="ABE-8u-5dj" secondAttribute="bottom" id="8qf-ba-ijy"/>
+                <constraint firstItem="Blf-ze-BYU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="F9d-Hn-C1B"/>
+                <constraint firstItem="wMJ-gh-BVC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Hla-tL-cej"/>
+                <constraint firstAttribute="bottom" secondItem="UNg-a8-QmI" secondAttribute="bottom" id="Ia0-5q-00A"/>
+                <constraint firstItem="ABE-8u-5dj" firstAttribute="top" secondItem="Blf-ze-BYU" secondAttribute="bottom" constant="1" id="IjO-3d-Sdx"/>
+                <constraint firstItem="PLU-tD-LpV" firstAttribute="baseline" secondItem="wMJ-gh-BVC" secondAttribute="baseline" id="InT-IO-2HW"/>
+                <constraint firstItem="Blf-ze-BYU" firstAttribute="top" secondItem="wMJ-gh-BVC" secondAttribute="bottom" constant="-2" id="JEy-nZ-wQt"/>
+                <constraint firstItem="PLU-tD-LpV" firstAttribute="leading" secondItem="wMJ-gh-BVC" secondAttribute="trailing" id="Ofe-c7-KZF"/>
+                <constraint firstItem="UNg-a8-QmI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PMd-bN-78f"/>
+                <constraint firstAttribute="trailing" secondItem="PLU-tD-LpV" secondAttribute="trailing" id="VTT-a5-Jnk"/>
+                <constraint firstAttribute="trailing" secondItem="ABE-8u-5dj" secondAttribute="trailing" id="bW0-2d-pj8"/>
+                <constraint firstItem="wMJ-gh-BVC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jgj-Q6-knd"/>
+                <constraint firstAttribute="trailing" secondItem="Blf-ze-BYU" secondAttribute="trailing" id="lSP-i2-dlJ"/>
+                <constraint firstItem="Ygl-Wi-Fyi" firstAttribute="centerY" secondItem="wMJ-gh-BVC" secondAttribute="centerY" id="leC-9h-QX2"/>
+                <constraint firstItem="wMJ-gh-BVC" firstAttribute="width" secondItem="PLU-tD-LpV" secondAttribute="width" id="zFv-sv-l2N"/>
+            </constraints>
+            <point key="canvasLocation" x="142" y="182"/>
+        </view>
+        <searchDisplayController id="QwY-rh-fn7">
+            <connections>
+                <outlet property="delegate" destination="-1" id="whB-ts-fkw"/>
+                <outlet property="searchContentsController" destination="-1" id="QxJ-7r-6hY"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="rxV-Ew-pLX"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="b3A-B5-huR"/>
+            </connections>
+        </searchDisplayController>
+    </objects>
+    <resources>
+        <image name="common_first_order_payImg.png" width="375" height="71"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
+</document>
