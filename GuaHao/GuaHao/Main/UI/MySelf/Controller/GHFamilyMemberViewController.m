@@ -12,10 +12,13 @@
 #import "GHPersonInfoViewController.h"
 #import "AddPersonViewController.h"
 #import "PatientCellVO.h"
+#import "UITableView+MJ.h"
 
 @interface GHFamilyMemberViewController ()<UITableViewDataSource,UITableViewDelegate,AddPatientDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *sourceArr;
+@property (copy, nonatomic) NSNumber *addableNum;
+@property (assign, nonatomic)int pageNumber ;
 
 @end
 
@@ -24,9 +27,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"家庭成员";
+    self.addableNum = [NSNumber numberWithInt:5];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePatientInfo:) name:@"UpdatePatientInfo" object:nil];
     //获取数据
     [self getDateSource];
+    
+    
+    [self.tableView initMJ:self type:MJTypePJGifTaoBao newAction:@selector(loadNewData) moreAction:@selector(loadMoreData)];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -34,27 +42,63 @@
     self.navigationController.navigationBar.hidden = NO;
     [self getDateSource];
 }
+-(void)loadNewData{
+    self.pageNumber = 1;
+    [self getDateSource];
+    
+}
+-(void)loadMoreData{
+    self.pageNumber ++;
+    [self getDateSource];
+}
 -(void)getDateSource{
     
+    __weak typeof(self) weakSelf = self;
 
-    [self.view makeToastActivity:CSToastPositionCenter];
-    [[ServerManger getInstance] getPatients:10 page:0 andCallback:^(id data) {
-        [self.view hideToastActivity];
-        
+    [[ServerManger getInstance] getPatients:10 page:self.pageNumber andCallback:^(id data) {
+        if (self.pageNumber == 1) {
+            [_tableView.mj_header endRefreshing];
+        }else{
+            [_tableView.mj_footer endRefreshing];
+            
+        }
         if (data!=[NSNull class]&&data!=nil) {
             NSNumber * code = data[@"code"];
             NSString * msg = data[@"msg"];
             if (code.intValue == 0) {
                 
                 if (data[@"object"]!=nil&&data[@"object"]!=[NSNull class]) {
-                    NSArray * arr = data[@"object"];
-                    self.sourceArr = [NSMutableArray array];
-                    for (int i = 0; i<arr.count; i++) {
-                        PatientCellVO * patient = [PatientCellVO mj_objectWithKeyValues:arr[i]];
-                        [ self.sourceArr addObject:patient];
+                    NSArray * arr = data[@"object"][@"patientList"];
+                    
+                    
+                    if (weakSelf.pageNumber == 1) {
+                        self.addableNum = data[@"object"][@"addableNum"];
+                        self.sourceArr = [NSMutableArray array];
+                        for (int i = 0; i<arr.count; i++) {
+                            PatientCellVO * patient = [PatientCellVO mj_objectWithKeyValues:arr[i]];
+                            [ self.sourceArr addObject:patient];
+                        }
+                        [weakSelf.tableView reloadData];
+                    }else{
+                        
+                        for (int i = 0; i<arr.count; i++) {
+                            
+                            PatientCellVO * patient = [PatientCellVO mj_objectWithKeyValues:arr[i]];
+                            [ self.sourceArr addObject:patient];
+                        }
+                        
+                        [weakSelf.tableView reloadData];
+                        
                     }
+
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 }
-                [self.tableView reloadData];
                 
             }else{
                 [self inputToast:msg];
@@ -78,11 +122,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         GHFamilyAddCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"GHFamilyAddCell"];
-        if (self.sourceArr.count >= 5) {
+        if (self.sourceArr.count >= self.addableNum.intValue) {
             cell.label.text = [NSString stringWithFormat:@"* 不可添加家庭成员"];
 
         }
-        cell.label.text = [NSString stringWithFormat:@"* 可添加%u位家庭成员",5 - self.sourceArr.count];
+        cell.label.text = [NSString stringWithFormat:@"* 可添加%d位家庭成员",self.addableNum.intValue];
         return cell;
     }else{
         
@@ -138,8 +182,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row  == 0) {
-        if(self.sourceArr&&self.sourceArr.count>=5){
-            [self inputToast:@"最多添加五个就诊人！"];
+        if(self.addableNum.intValue <= 0){
+            [self inputToast:@"就诊人已满！"];
             return;
         }
         AddPersonViewController *addVC = [[AddPersonViewController alloc]init];

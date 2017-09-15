@@ -51,6 +51,14 @@
     NSInteger periodIndex;
     NSInteger curPeriodIndex;
     BOOL isPeriodMore;
+    
+    //记录最小值
+    NSInteger yearMinIndex;
+    NSInteger monthMinIndex;
+    NSInteger dayMinIndex;
+    NSInteger periodMinIndex;
+
+
 }
 
 @property (nonatomic, copy) FinishBlock finishBlock;
@@ -128,6 +136,10 @@
     }
     if (!self.isAccompany) {
         timePeriodArray = [NSMutableArray arrayWithObjects:@"07:30-08:30",@"08:30-09:30",@"09:30-10:30",@"10:30-11:30",@"12:30-13:30",@"13:30-14:30",@"14:30-15:30",@"15:30-16:30", nil];
+//        if (self.isUseSocialCard) {
+//            timePeriodArray = [NSMutableArray arrayWithObjects:@"上午",@"下午", nil];
+//
+//        }
     }else{
         
         timePeriodArray = [NSMutableArray arrayWithObjects:@"07:00",@"07:30",@"08:00",@"08:30",@"09:00",@"09:30",@"10:00",@"10:30",@"11:00",@"11:30",@"12:00",@"12:30",@"13:00",@"13:30",@"14:00",@"14:30",@"15:00",@"15:30",@"16:00",@"16:30",@"17:00",@"17:30",@"18:00", nil];
@@ -143,10 +155,22 @@
         self.maxLimitDate = [self dateFromString:@"204912312359" withFormat:@"yyyyMMddHHmm"];
         maxDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.maxLimitDate];
     }
+//    //最小限制
+//    if (self.minLimitDate) {
+//        if(self.datePickerStyle == UUDateStyle_TimeQuantum){
+//            self.minLimitDate = [[NSDate date]dateByAddingTimeInterval:0];
+//        }
+//        minDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.minLimitDate];
+//    }else{
+//        self.minLimitDate = [self dateFromString:@"197001010000" withFormat:@"yyyyMMddHHmm"];
+//        minDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.minLimitDate];
+//    }
+    
     //最小限制
     if (self.minLimitDate) {
         if(self.datePickerStyle == UUDateStyle_TimeQuantum){
             self.minLimitDate = [[NSDate date]dateByAddingTimeInterval:0];
+            NSLog(@"初始化最小值%@",self.minLimitDate);
         }
         minDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.minLimitDate];
     }else{
@@ -154,32 +178,86 @@
         minDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.minLimitDate];
     }
     
+    
+    
+    
+    
     //获取当前日期，储存当前时间位置
     NSArray *indexArray = [self getNowDate:self.ScrollToDate];
-   
-        if(self.datePickerStyle == UUDateStyle_TimeQuantum&&minDateModel.hour.intValue >= 15){
-            NSNumber* year_ = indexArray[0];
-            NSNumber* month_ = indexArray[1];
-            NSNumber* day_ = indexArray[2];
-            NSNumber *hour_ = self.startByHalfDay%2 == 1 ? [NSNumber numberWithInt: 11] : hourArray[0];
-            NSDate *date = [self dateFromString:[NSString stringWithFormat:@"%@%@%@%@%@",yearArray[year_.intValue],monthArray[month_.intValue],dayArray[day_.intValue],hour_,minuteArray[0]] withFormat:@"yyyyMMddHHmm"];
-            self.minLimitDate = date;
-            minDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.minLimitDate];
-        }
-        
-        if(self.datePickerStyle == UUDateStyle_TimeQuantum&&minDateModel.hour.intValue < 15){
-            NSNumber* year_ = indexArray[0];
-            NSNumber* month_ = indexArray[1];
-            NSNumber* day_ = indexArray[2];
-            NSNumber* current_hour_index = indexArray[3];
-            NSNumber* hour_ = self.startByHalfDay > 0 ? (self.startByHalfDay%2 == 1 ? [NSNumber numberWithInt: 11] : hourArray[0]):[hourArray objectAtIndex:current_hour_index.intValue];
+    
+    
+    
+    
+    
 
-          
-            NSDate *date = [self dateFromString:[NSString stringWithFormat:@"%@%@%@%@%@",yearArray[year_.intValue],monthArray[month_.intValue],dayArray[day_.intValue],hour_,minuteArray[0]] withFormat:@"yyyyMMddHHmm"];
-            self.minLimitDate = date;
+        if(self.datePickerStyle == UUDateStyle_TimeQuantum){
+            
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            NSDate *now = [NSDate date];
+            NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:now];
+            NSDate *todayDate = [calendar dateFromComponents:components];
+            NSDate *tomorrowDate = [calendar dateByAddingUnit:NSCalendarUnitDay value:1 toDate:todayDate options:0];
+            
+            
+            NSNumber* year_ = indexArray[0];
+            NSNumber* month_ = indexArray[1];
+            NSNumber* day_ = indexArray[2];
+            
+            
+            if (self.startByHalfDay == 0) {///不加时间
+                if (minDateModel.hour.intValue >= 15) {///大于15点
+                    self.minLimitDate = tomorrowDate;
+                    
+                    if (self.isUseSocialCard) {
+                        self.minLimitDate = [self.minLimitDate dateByAddingTimeInterval:24 * 60 * 60];
+                        
+                    }
+                    
+                }else{////小于15点
+                    if (self.isUseSocialCard) {
+                        self.minLimitDate = [[NSDate date]dateByAddingTimeInterval:24 * 60 * 60];
+                        
+                    }
+                }
+                
+                
+            }else{///加的有时间
+                
+                NSTimeInterval  oneDay = 24*60*60* (self.startByHalfDay/2.0 + (self.isUseSocialCard?1:0));
+                
+                NSDate *aimDate = [tomorrowDate dateByAddingTimeInterval:oneDay];
+                
+                self.minLimitDate = aimDate;
+                
+            }
+            
+            
+            
+            yearMinIndex = year_.integerValue;
+            monthMinIndex = month_.integerValue;
+            dayMinIndex = day_.integerValue;
+            NSLog(@"计算后%@",self.minLimitDate);
+            
+            
+            
             minDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.minLimitDate];
         }
     
+    
+    
+//        if(self.datePickerStyle == UUDateStyle_TimeQuantum&&minDateModel.hour.intValue < 15){
+//            NSNumber* year_ = indexArray[0];
+//            NSNumber* month_ = indexArray[1];
+//            NSNumber* day_ = indexArray[2];
+//            NSNumber* current_hour_index = indexArray[3];
+//            NSNumber* hour_ = self.startByHalfDay > 0 ? (self.startByHalfDay%2 == 1 ? [NSNumber numberWithInt: 11] : hourArray[0]):[hourArray objectAtIndex:current_hour_index.intValue];
+//
+//          
+//            NSDate *date = [self dateFromString:[NSString stringWithFormat:@"%@%@%@%@%@",yearArray[year_.intValue],monthArray[month_.intValue],dayArray[day_.intValue],hour_,minuteArray[0]] withFormat:@"yyyyMMddHHmm"];
+//            self.minLimitDate = date;
+//            minDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.minLimitDate];
+//        }
+//    
     
 
     
@@ -190,7 +268,8 @@
     
     BOOL isAgain = NO;
     if (myPickerView) {
-        [myPickerView removeFromSuperview];
+        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//        [myPickerView removeFromSuperview];
         myPickerView = nil;
         isAgain = YES;
     }
@@ -280,14 +359,14 @@
         
         NSTimeInterval  oneDay = 24*60*60* (self.startByHalfDay/2 + (self.isUseSocialCard?1:0));
         dateShow = [[NSDate date]initWithTimeIntervalSinceNow:oneDay];
-        
+        NSLog(@"aaaaaaaaaaaaaaaaaa%@",dateShow);
         
     }
     
     
     
     UUDatePicker_DateModel *model = [[UUDatePicker_DateModel alloc]initWithDate:dateShow];
-    
+    NSLog(@"bbbbbbbbbbbbbbbbbbb%@,%@",model.day,model.hour);
     [self DaysfromYear:[model.year integerValue] andMonth:[model.month integerValue]];
     
     yearIndex = [model.year intValue]-UUPICKER_MINDATE;
@@ -454,12 +533,13 @@
             [self DaysfromYear:[model.year integerValue] andMonth:[model.month integerValue]];
             yearIndex = [model.year intValue]-UUPICKER_MINDATE;
             monthIndex = [model.month intValue]-1;
-            
+            dayIndex = [model.day intValue]-1;
 
             year   = [NSNumber numberWithInteger:yearIndex];
             month  = [NSNumber numberWithInteger:monthIndex];
             day    = [NSNumber numberWithInteger:dayIndex];
-            
+            NSLog(@"----选的时间----%@年%@月%@日%@",year,month,day,period);
+
             isPeriodMore = YES;
             
         }else{
@@ -765,6 +845,8 @@
             if (component == 2) {
                 if (row>dayIndex) {
                     isPeriodMore = YES;
+                }else{
+                    isPeriodMore = NO;
                 }
                 dayIndex = row;
             }
@@ -786,8 +868,18 @@
                     [pickerView selectRow:dayIndex inComponent:2 animated:NO];
                 }
                 //                [pickerView reloadComponent:2];
-                NSLog(@"XXXXXXX:%ld  ,%ld , %ld",(long)yearIndex ,(long)monthIndex,(long)dayIndex);
+                
+               
+                
+                
+                NSLog(@"XXXXXXX:%ld  ,%ld , %ld，%ld",(long)yearIndex ,(long)monthIndex,(long)dayIndex,(long)periodIndex);
+                NSLog(@"------------%@",self.minLimitDate)
             }
+//            if ([pickerView selectedRowInComponent:0] == yearMinIndex && [pickerView selectedRowInComponent:1] == monthMinIndex && dayIndex == dayMinIndex) {
+//               [self drawRect:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 200)];
+//                [pickerView selectRow:hourMinIndex inComponent:3 animated:NO];
+//                isPeriodMore = NO;
+//            }
             
         }
             break;
@@ -1077,7 +1169,12 @@
     NSDate *date = [inputFormatter dateFromString:string];
     return date;
 }
-
+- (NSDate *)normalDateFromString:(NSString *)string withFormat:(NSString *)format {
+    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    [inputFormatter setDateFormat:format];
+    NSDate *date = [inputFormatter dateFromString:string];
+    return date;
+}
 - (NSDate *)date2FromString:(NSString *)string withFormat:(NSString *)format {
     NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
     [inputFormatter setDateFormat:format];

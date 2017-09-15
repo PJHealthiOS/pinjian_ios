@@ -512,7 +512,7 @@ static ServerManger * instance;
 -(void) getPatients:(int) size page:(int) page andCallback: (void (^)(id  data))callback
 {
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@patient/list?pageSize=%d&pageNo=%d",[ServerManger getInstance].serverURL,size,page]];
-    [self getHttp:URL.absoluteString parameters:nil version:@"3" andCallback:callback];
+    [self getHttp:URL.absoluteString parameters:nil version:@"4" andCallback:callback];
 }
 //增加就诊人
 -(void) createPatient:(NSDictionary *) dic andCallback: (void (^)(id  data))callback

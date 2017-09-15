@@ -17,13 +17,12 @@
 {
     if (_startButton == nil) {
         UIButton *startBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [startBtn setTitle:@"开始体验" forState:UIControlStateNormal];
         [startBtn setBackgroundImage:[UIImage imageNamed:@"new_feature_finish_button"] forState:UIControlStateNormal];
         [startBtn setBackgroundImage:[UIImage imageNamed:@"new_feature_finish_button_highlighted"] forState:UIControlStateHighlighted];
         [startBtn sizeToFit];
         [startBtn addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:startBtn];
         _startButton = startBtn;
+        [self addSubview:_startButton];
 
     }
     return _startButton;
@@ -70,7 +69,8 @@
     self.imageView.frame = self.bounds;
     
     // 开始按钮
-     self.startButton.center = CGPointMake(self.width * 0.5, self.height * 0.8);
+    self.startButton.frame = CGRectMake(0, 0, 99, 30);
+     self.startButton.center = CGPointMake(self.width * 0.5, self.height * 0.9);
     
     // 跳过按钮
     self.passButton.center = CGPointMake(self.width * 0.87, self.height * 0.08);

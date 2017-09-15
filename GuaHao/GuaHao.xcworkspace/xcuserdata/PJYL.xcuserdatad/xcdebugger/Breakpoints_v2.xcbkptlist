@@ -19,29 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GuaHao/Main/AppDelegate.m"
-            timestampString = "523873876.583341"
+            filePath = "GuaHao/Main/thrids/UUDatePicker_Block/UUDatePicker.m"
+            timestampString = "526808803.059277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
-            landmarkName = "-application:openURL:sourceApplication:annotation:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GuaHao/Main/AppDelegate.m"
-            timestampString = "523873877.9783"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
-            landmarkName = "-application:handleOpenURL:"
+            startingLineNumber = "1091"
+            endingLineNumber = "1091"
+            landmarkName = "-playTheDelegate"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

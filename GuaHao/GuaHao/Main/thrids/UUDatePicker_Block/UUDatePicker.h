@@ -44,10 +44,11 @@ typedef void (^FinishBlock)(NSString * year,
 @interface UUDatePicker : UIView<UIPickerViewDelegate,UIPickerViewDataSource>
 @property(nonatomic,assign)BOOL isAccompany;
 @property(nonatomic,assign)BOOL isSerious;
+
 @property  BOOL isMedicineOrReport;//是否是成人
 @property  BOOL isAdult;//是否是成人
 @property (nonatomic) BOOL isChildren;
-@property (nonatomic) BOOL isUseSocialCard;
+@property (nonatomic) BOOL isUseSocialCard;///医保卡预约
 @property (nonatomic) BOOL isFixBirthday;;
 @property (nonatomic,assign) int startByHalfDay;;
 

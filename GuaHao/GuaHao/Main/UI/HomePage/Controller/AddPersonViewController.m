@@ -49,27 +49,27 @@
 }
 -(void)getPatients
 {
-    [DataManager getInstance].patients = [NSMutableArray new];
-    [self.view makeToastActivity:CSToastPositionCenter];
-    [[ServerManger getInstance] getPatients:10 page:0 andCallback:^(id data) {
-        [self.view hideToastActivity];
-        if (data!=[NSNull class]&&data!=nil) {
-            NSNumber * code = data[@"code"];
-            NSString * msg = data[@"msg"];
-            if (code.intValue == 0) {
-                if (data[@"object"]!=nil&&data[@"object"]!=[NSNull class]) {
-                    NSArray * arr = data[@"object"];
-                    for (int i = 0; i<arr.count; i++) {
-                        PatientVO *patient = [PatientVO mj_objectWithKeyValues:arr[i]];
-                        [[DataManager getInstance].patients addObject:patient];
-                    }
-                    patients = [DataManager getInstance].patients;
-                }
-            }else{
-                [self inputToast:msg];
-            }
-        }
-    }];
+//    [DataManager getInstance].patients = [NSMutableArray new];
+//    [self.view makeToastActivity:CSToastPositionCenter];
+//    [[ServerManger getInstance] getPatients:10 page:0 andCallback:^(id data) {
+//        [self.view hideToastActivity];
+//        if (data!=[NSNull class]&&data!=nil) {
+//            NSNumber * code = data[@"code"];
+//            NSString * msg = data[@"msg"];
+//            if (code.intValue == 0) {
+//                if (data[@"object"]!=nil&&data[@"object"]!=[NSNull class]) {
+//                    NSArray * arr = data[@"object"];
+//                    for (int i = 0; i<arr.count; i++) {
+//                        PatientVO *patient = [PatientVO mj_objectWithKeyValues:arr[i]];
+//                        [[DataManager getInstance].patients addObject:patient];
+//                    }
+//                    patients = [DataManager getInstance].patients;
+//                }
+//            }else{
+//                [self inputToast:msg];
+//            }
+//        }
+//    }];
 }
 
 - (void)viewDidLoad {
@@ -80,12 +80,9 @@
     self.adultBtn.selected = YES;
 
     [self registerTableView];
-    [self getPatients];
-//    if(_isChild){
-//        self.adultBtn.enabled = NO;
-//        self.lineView.hidden = YES;
-//        [self childrenAction:nil];
-//    }
+//    [self getPatients];
+
+    
     // Do any additional setup after loading the view from its nib.
 }
 ///设置信息注册cell
@@ -337,9 +334,7 @@
     [self.tableView endEditing:YES];
     [self.view endEditing:YES];
     NSLog(@"self.souceArr ------%@",self.souceArr);
-//    if(patients.count>4){
-//        return [self inputToast:@"家庭成员不得超过五人"];
-//    }
+
     if ([self getLabelValueWithRow:0].length == 0) {
 //        [_nameTexF becomeFirstResponder];
         [self inputToast:@"请填写姓名！"];

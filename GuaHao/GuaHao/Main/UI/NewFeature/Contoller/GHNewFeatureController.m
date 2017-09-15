@@ -101,9 +101,9 @@ static NSString *ID = @"cell";
     // 拼接图片名称 3.5 320 480
     CGFloat screenH = [UIScreen mainScreen].bounds.size.height;
     NSString *imageName = [NSString stringWithFormat:@"new_feature_%d",indexPath.row + 1];
-    if (screenH > 480) { // 5 , 6 , 6 plus
-        imageName = [NSString stringWithFormat:@"new_feature_%d-568h",indexPath.row + 1];
-    }
+//    if (screenH > 480) { // 5 , 6 , 6 plus
+//        imageName = [NSString stringWithFormat:@"new_feature_%d-568h",indexPath.row + 1];
+//    }
     cell.image = [UIImage imageNamed:imageName];
     
     

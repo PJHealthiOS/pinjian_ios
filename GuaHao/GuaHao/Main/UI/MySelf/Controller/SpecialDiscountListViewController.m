@@ -54,18 +54,19 @@
 {
     __weak typeof(self) weakSelf = self;
     [[ServerManger getInstance] getSpecialCouponslistPageNo:self.pageNumber andCallback:^(id data) {
+        if (self.pageNumber == 1) {
+            [_tableView.mj_header endRefreshing];
+        }else{
+            [_tableView.mj_footer endRefreshing];
+            
+        }
         if (data!=[NSNull class]&&data!=nil) {
             NSNumber * code = data[@"code"];
             
             if (code.intValue == 0) {
                 if (data[@"object"]!=nil&&data[@"object"]!=[NSNull class]) {
                     NSArray * arr = data[@"object"];
-                    if (self.pageNumber == 1) {
-                        [_tableView.mj_header endRefreshing];
-                    }else{
-                        [_tableView.mj_footer endRefreshing];
-
-                    }
+                    
                     if (arr.count > 0) {
                         if (weakSelf.pageNumber == 1) {
 
