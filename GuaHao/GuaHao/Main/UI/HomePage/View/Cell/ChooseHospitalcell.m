@@ -2,8 +2,8 @@
 //  ChooseHospitalcell.m
 //  GuaHao
 //
-//  Created by 123456 on 16/1/26.
-//  Copyright © 2016年 pinjian. All rights reserved.
+//  Created by PJYL on 2017/9/22.
+//  Copyright © 2017年 pinjian. All rights reserved.
 //
 
 #import "ChooseHospitalcell.h"
@@ -22,7 +22,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -51,3 +51,4 @@
 }
 
 @end
+

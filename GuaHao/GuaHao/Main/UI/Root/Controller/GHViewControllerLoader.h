@@ -79,7 +79,10 @@
 #import "MemberCenterViewController.h"///会员中心
 #import "SpecialPayViewController.h"///专家号支付页面
 #import "SpecialDiscountListViewController.h"///专家号优惠券
-
+#import "ExpertSelectViewController.h"///搜索专家号
+#import "ChooseHospitalVC.h"///选择医院
+#import "MessageTakeOrderController.h"///消息新订单接单页面
+#import "TestViewController.h"///
 
 
 @interface GHViewControllerLoader : NSObject
@@ -157,6 +160,11 @@
 +(MemberCenterViewController *)MemberCenterViewController;
 +(SpecialPayViewController *)SpecialPayViewController;
 +(SpecialDiscountListViewController *)SpecialDiscountListViewController;
++(ExpertSelectViewController *)ExpertSelectViewController;
++(ChooseHospitalVC *)ChooseHospitalVC;
++(MessageTakeOrderController *)MessageTakeOrderController;
++(TestViewController *)TestViewController;
+
 
 
 

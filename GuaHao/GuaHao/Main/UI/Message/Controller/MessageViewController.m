@@ -230,7 +230,7 @@
             
         }else if(vo.type.intValue == 0){
             [self setRead:vo.id];
-            MessageTakeOrderController * view = [[MessageTakeOrderController alloc]init];
+            MessageTakeOrderController * view = [GHViewControllerLoader MessageTakeOrderController];
             view.delegate = self;
             view.serialNo = vo.id;
             view.mtitle = vo.title;

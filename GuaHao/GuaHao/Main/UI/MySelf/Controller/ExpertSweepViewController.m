@@ -13,6 +13,7 @@
     __weak IBOutlet UISearchBar *searchBar;
     int page ;
 }
+@property (weak, nonatomic) IBOutlet UIView *topView;
 
 @end
 
@@ -26,6 +27,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = NO;
     self.title = @"待扫码订单";
+    self.topView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 64);
     showHospitalTview.delegate=self;
     showHospitalTview.dataSource=self;
     hospitals = [NSMutableArray new];

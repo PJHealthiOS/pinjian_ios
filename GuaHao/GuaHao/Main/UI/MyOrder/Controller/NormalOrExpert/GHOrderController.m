@@ -208,7 +208,7 @@
             CreateOrderNormalViewController *view = [GHViewControllerLoader CreateOrderNormalViewController];
             [weakSelf.navigationController pushViewController:view animated:YES];
         }else{
-            ExpertSelectViewController *view = [[ExpertSelectViewController alloc]init];
+            ExpertSelectViewController *view = [GHViewControllerLoader ExpertSelectViewController];
             [weakSelf.navigationController pushViewController:view animated:YES];
         }
     }];

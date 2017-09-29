@@ -135,7 +135,7 @@
 ///选择医院
 -(void)chooseHospital{
     [MobClick event:@"click9"];
-    ChooseHospitalVC* hospitalVC = [[ChooseHospitalVC alloc]init];
+    ChooseHospitalVC* hospitalVC = [GHViewControllerLoader ChooseHospitalVC];
     hospitalVC.isAccompany = YES;
     __weak typeof(self) weakSelf = self;
     hospitalVC.onBlockHospital = ^(HospitalVO * vo,DepartmentVO * dvo){

@@ -62,7 +62,7 @@
     self.viewModel.depID = nil;
     [self.departmentButton setTitle:@"科室" forState:UIControlStateNormal];
     
-    ChooseHospitalVC* hospitalVC = [[ChooseHospitalVC alloc]init];
+    ChooseHospitalVC* hospitalVC = [GHViewControllerLoader ChooseHospitalVC];
     __weak typeof(self) weakSelf = self;
     hospitalVC.onBlockHospital = ^(HospitalVO * vo,DepartmentVO * dvo){
         self.viewModel.hosID = vo.id;

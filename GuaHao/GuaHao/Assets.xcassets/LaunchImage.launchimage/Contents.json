@@ -3,8 +3,27 @@
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+      "subtype" : "2436h",
+      "filename" : " iPhoneX启动页.png",
+      "minimum-system-version" : "11.0",
+      "orientation" : "portrait",
+      "scale" : "3x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "subtype" : "736h",
+      "filename" : "Artboard1242*2208.png",
+=======
       "subtype" : "736h",
       "filename" : "Artboard 2 Copy.png",
+>>>>>>> Stashed changes
+=======
+      "subtype" : "736h",
+      "filename" : "Artboard 2 Copy.png",
+>>>>>>> Stashed changes
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "3x"
@@ -13,7 +32,15 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "667h",
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+      "filename" : "Artboard750*1334 2.png",
+=======
       "filename" : "Artboard 2.png",
+>>>>>>> Stashed changes
+=======
+      "filename" : "Artboard 2.png",
+>>>>>>> Stashed changes
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "2x"
@@ -21,7 +48,15 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+      "filename" : "Artboard640*960.png",
+=======
       "filename" : "Artboard.png",
+>>>>>>> Stashed changes
+=======
+      "filename" : "Artboard.png",
+>>>>>>> Stashed changes
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
@@ -30,7 +65,15 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "retina4",
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+      "filename" : "Artboard640*1136.png",
+=======
       "filename" : "Artboard Copy.png",
+>>>>>>> Stashed changes
+=======
+      "filename" : "Artboard Copy.png",
+>>>>>>> Stashed changes
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
       "scale" : "2x"

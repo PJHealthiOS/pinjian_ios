@@ -25,7 +25,7 @@
 @implementation AppDelegate{
     NSTimer  * time;
     BOOL     isOpen;
-    NSString * versionURL;
+    AppVersionVO  *versionVO;
     NSString  * musicName;
 }
 
@@ -166,7 +166,7 @@
     NSLog(@"id --- ===%@",[DataManager getInstance].user.id);
     //要注视 XXXXXXX
 
-//    [ServerManger getInstance].serverURL =  @"http://192.168.1.172:8080/";///孟立测试
+//    [ServerManger getInstance].serverURL =  @"http://192.168.1.172:8080/";///孟立测试rbd665  pgd606
 //    [ServerManger getInstance].serverURL =  @"http://192.168.1.168:8080/";//段超本地
 //    [ServerManger getInstance].serverURL =  @"http://139.196.220.224:8080/";///测试
     [[ServerManger getInstance] getAppVersion:^(id data) {
@@ -174,20 +174,28 @@
             NSNumber * code = data[@"code"];
             if (code.intValue == 0) {
                 if (data[@"object"]!=nil&&data[@"object"]!=[NSNull class]) {
-                    AppVersionVO  *version = [AppVersionVO mj_objectWithKeyValues:data[@"object"]];
-                    versionURL = version.version.downloadUrl;
-                    [ServerManger getInstance].serverURL = version.version.serverUrl;
+                    versionVO = [AppVersionVO mj_objectWithKeyValues:data[@"object"]];
+                    [ServerManger getInstance].serverURL = versionVO.version.serverUrl;
                     //要注视 XXXXXXX
                     //要注视 XXXXXXX
 
 //                        [ServerManger getInstance].serverURL =  @"http://192.168.1.172:8080/";///孟立测试
 //                       [ServerManger getInstance].serverURL =  @"http://192.168.1.168:8080/";//段超本地
 //                    [ServerManger getInstance].serverURL =  @"http://139.196.220.224:8080/";///测试
-                    if (![APP_VERSION isEqualToString:version.version.versionId] &&version.version.isForceUpdate) {
-                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"发现新版本，为了给您更好的体验，请立即更新！" message:nil delegate:self cancelButtonTitle:@"升级" otherButtonTitles:nil, nil];
-                        [alertView show];
-                    }
-                    if(version.advImgUrl&&version.advImgUrl.length>0&&value&&[value isEqualToString:@"1"]){
+                    
+//                    if (![APP_VERSION isEqualToString:version.version.versionId] &&version.version.isForceUpdate) {
+//                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"升级提示" message:@"获取最新号源信息，立刻更新！" delegate:self cancelButtonTitle:@"立即更新" otherButtonTitles:@"再等等...", nil];
+//                        [alertView show];
+//                    }
+                    
+                    [self updateApp:versionVO.version.versionId];
+                    
+                   
+                    
+                    
+                    
+                    
+                    if(versionVO.advImgUrl&&versionVO.advImgUrl.length>0&&value&&[value isEqualToString:@"1"]){
                         
                         //1.显示启动广告
                         [XHLaunchAd showWithAdFrame:CGRectMake(0, 0,self.window.bounds.size.width, self.window.bounds.size.height) setAdImage:^(XHLaunchAd *launchAd) {
@@ -196,11 +204,11 @@
                             //launchAd.noDataDuration = 4;
                             
                             //广告图片地址
-                            NSString *imgUrl = version.advImgUrl;
+                            NSString *imgUrl = versionVO.advImgUrl;
                             //广告停留时间
                             NSInteger duration = 6;
                             //广告点击跳转链接
-                            NSString *openUrl = version.advLinkUrl;
+                            NSString *openUrl = versionVO.advLinkUrl;
                             
                             //2.设置广告数据
                             [launchAd setImageUrl:imgUrl duration:duration skipType:SkipTypeTimeText options:XHWebImageDefault completed:^(UIImage *image, NSURL *url) {
@@ -232,16 +240,32 @@
     
     return YES;
 }
-
+-(void)updateApp:(NSString *)versionId{
+    if (versionVO.version.isForceUpdate) {
+        if (![APP_VERSION isEqualToString:versionId] ) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"升级提示" message:@"获取最新号源信息，立刻更新！" delegate:self cancelButtonTitle:@"立即更新" otherButtonTitles:nil, nil];
+            [alertView show];
+        }
+    }else{
+        if (![APP_VERSION isEqualToString:versionId] ) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"升级提示" message:@"获取最新号源信息，立刻更新！" delegate:self cancelButtonTitle:@"立即更新" otherButtonTitles:@"再等等...", nil];
+            [alertView show];
+        }
+    }
+    
+    
+}
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == alertView.cancelButtonIndex){
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:versionURL]];
+    if (buttonIndex == 0){///左边按钮
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:versionVO.version.downloadUrl]];
+        [self updateApp:versionVO.version.versionId];
+
+    }else if (buttonIndex == 1){
+        
     }
     
-    UIAlertView *alertView2 = [[UIAlertView alloc] initWithTitle:@"发现新版本，为了给您更好的体验，请立即更新！" message:nil delegate:self cancelButtonTitle:@"升级" otherButtonTitles:nil, nil];
-    [alertView2 show];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {

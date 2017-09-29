@@ -39,7 +39,7 @@
     [super viewDidLoad];
     self.title = @"资讯";
     self.view.backgroundColor = [UIColor whiteColor];
-    self.tabView = [[NavigationTabView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 42)];
+    self.tabView = [[NavigationTabView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navigationController.navigationBar.frame), SCREEN_WIDTH, 42)];
     [self.view addSubview:self.tabView];
     [self ad];
     _tabView.delegate = self;
@@ -47,8 +47,7 @@
     [_tabView reloadData];
     [_tabView setSelectedIndex:0];
     page = 1;
-//    self.tableView = [[UITableView alloc] init];
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 106, SCREEN_WIDTH, SCREEN_HEIGHT - 108 - 49)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.tabView.frame), SCREEN_WIDTH, SCREEN_HEIGHT - 108 - 49)];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

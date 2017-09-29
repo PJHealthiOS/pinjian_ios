@@ -730,7 +730,7 @@
 -(void)chooseHospital{
     [MobClick event:@"click9"];
 
-       ChooseHospitalVC* hospitalVC = [[ChooseHospitalVC alloc]init];
+       ChooseHospitalVC* hospitalVC = [GHViewControllerLoader ChooseHospitalVC];
         __weak typeof(self) weakSelf = self;
         hospitalVC.isCommon = YES;
     

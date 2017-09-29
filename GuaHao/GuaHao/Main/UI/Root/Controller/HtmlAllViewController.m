@@ -113,7 +113,7 @@
         return NO;
     }
     if ([requestString containsString:@"expertOrder"]) {//专家号
-        ExpertSelectViewController *view = [[ExpertSelectViewController alloc]init];
+        ExpertSelectViewController *view = [GHViewControllerLoader ExpertSelectViewController];
         [self.navigationController pushViewController:view animated:YES];        return NO;
     }
     if ([requestString containsString:@"seriousOrder"]) {///重疾

@@ -257,10 +257,22 @@
 
 }
 
++(ExpertSelectViewController *)ExpertSelectViewController{
+    return  (ExpertSelectViewController *)[[self HomePageStoryBoard]instantiateViewControllerWithIdentifier:@"ExpertSelectViewController"];
 
+}
++(ChooseHospitalVC *)ChooseHospitalVC{
+    return  (ChooseHospitalVC *)[[self HomePageStoryBoard]instantiateViewControllerWithIdentifier:@"ChooseHospitalVC"];
+    
+}
++(MessageTakeOrderController *)MessageTakeOrderController{
+    return  (MessageTakeOrderController *)[[self HomePageStoryBoard]instantiateViewControllerWithIdentifier:@"MessageTakeOrderController"];
+}
 
++(TestViewController *)TestViewController{
+    return  (TestViewController *)[[self HomePageStoryBoard]instantiateViewControllerWithIdentifier:@"TestViewController"];
 
-
+}
 
 
 

@@ -464,7 +464,7 @@
     }
 
     if (_orderVO.status.intValue == 9 || _orderVO.status.intValue == 10) {
-        ExpertSelectViewController *view = [[ExpertSelectViewController alloc]init];
+        ExpertSelectViewController *view = [GHViewControllerLoader ExpertSelectViewController];
         [self.navigationController pushViewController:view animated:YES];
         
     }

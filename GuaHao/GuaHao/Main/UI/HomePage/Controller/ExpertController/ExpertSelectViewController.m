@@ -2,8 +2,8 @@
 //  ExpertSelectViewController.m
 //  GuaHao
 //
-//  Created by qiye on 16/6/12.
-//  Copyright © 2016年 pinjian. All rights reserved.
+//  Created by PJYL on 2017/9/25.
+//  Copyright © 2017年 pinjian. All rights reserved.
 //
 
 #import "ExpertSelectViewController.h"
@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIView *changeView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
+@property (weak, nonatomic) IBOutlet UIView *searchView;
+@property (weak, nonatomic) IBOutlet UIView *selectView;
 
 @end
 
@@ -45,9 +47,17 @@
     int hosPage;
     BOOL isCancel;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"专家号";
     _btnUp.hidden = YES;
     datas = [NSMutableArray new];
     searchData = [NSMutableArray new];
@@ -125,7 +135,7 @@
                         SearchVO *hos = [SearchVO mj_objectWithKeyValues:arr[i]];
                         [searchData addObject:hos];
                     }
-//                    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+                    //                    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
                     [searchDisplayController.searchResultsTableView reloadData];
                 }
                 
@@ -139,7 +149,7 @@
 #pragma mark 搜索框的代理方法，搜索输入框获得焦点（聚焦）
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
     _searchBar.showsCancelButton = YES;
-//    [searchDisplayController.searchResultsTableView.mj_header beginRefreshing];
+    //    [searchDisplayController.searchResultsTableView.mj_header beginRefreshing];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -150,6 +160,8 @@
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
 {
     if (!isCancel&&searchBar.text.length==0) {
+        [self.view bringSubviewToFront:self.selectView];
+        
         _searchBar.hidden = YES;
         _btnSearch.hidden = NO;
     }
@@ -159,26 +171,24 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)_searchBar
 {
-//    [self.view endEditing:YES];
+    //    [self.view endEditing:YES];
     [searchDisplayController.searchResultsTableView.mj_header beginRefreshing];
 }
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [self.view bringSubviewToFront:self.selectView];
+    
     isCancel = YES;
     searchBar.text = @"";
     _searchBar.hidden = YES;
     _btnSearch.hidden = NO;
     [searchBar setShowsCancelButton:NO animated:YES];
-//    [searchBar resignFirstResponder];
-//    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    //    [searchBar resignFirstResponder];
+    //    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
 
 #pragma mark  search end
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
 
 -(void) loadNewData
 {
@@ -200,7 +210,7 @@
     }
     
     [[ServerManger getInstance] getExpertDoctorList:hospitalID departmentID:depaertmentID filterDate:dateVO.scheduleDate apm:dateVO.apm type:dateVO.clinicType keywords:nil size:6 page:page andCallback:^(id data) {
-
+        
         isMore?[_tableView.mj_footer endRefreshing]:[_tableView.mj_header endRefreshing];
         if (data!=[NSNull class]&&data!=nil) {
             NSNumber * code = data[@"code"];
@@ -247,7 +257,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if(tableView == searchDisplayController.searchResultsTableView){
-
+        
         UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"xtxxcell" forIndexPath:indexPath];
         cell.backgroundColor = [UIColor colorWithRed:241.0f/255.0f green:240.0f /255.0f blue:238.0f/255.0f alpha:1.0f];
         cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame] ;
@@ -257,7 +267,7 @@
             cell.textLabel.text = vo.name ;
             cell.textLabel.font =  [UIFont fontWithName:@"Arial" size:14.0f];
         }
-
+        
         return cell;
     }
     
@@ -290,6 +300,7 @@
                 hosvo.name = vo.name;
                 _searchBar.hidden = YES;
                 _btnSearch.hidden = NO;
+                [self.view bringSubviewToFront:self.selectView];
                 [searchDisplayController setActive:NO];
                 [self selectHospitalViewDelegate:hosvo];
             }
@@ -310,6 +321,8 @@
 }
 
 - (IBAction)onSearch:(id)sender {
+    [self.view bringSubviewToFront:self.searchView];
+    
     _searchBar.hidden = NO;
     _btnSearch.hidden = YES;
     [searchDisplayController setActive:YES];
@@ -318,7 +331,7 @@
 
 - (IBAction)onTypeChange:(id)sender {
     UIButton * btn = (UIButton*) sender;
-//    if(tagSelect == btn.tag&&btn.selected ) return;
+    //    if(tagSelect == btn.tag&&btn.selected ) return;
     tagSelect = (int)btn.tag;
     _btnHospital.selected = NO;
     _btnDepartment.selected = NO;
@@ -333,16 +346,16 @@
         case 101:
         {
             
-            ChooseHospitalVC* hospitalVC = [[ChooseHospitalVC alloc]init];
+            ChooseHospitalVC* hospitalVC = [GHViewControllerLoader ChooseHospitalVC];
             __weak typeof(self) weakSelf = self;
             hospitalVC.isPj = YES;
             hospitalVC.onBlockHospital = ^(HospitalVO * vo,DepartmentVO * dvo){
-               
+                
                 [weakSelf selectHospitalViewDelegate:vo];
             };
             [self.navigationController pushViewController:hospitalVC animated:YES];
             
-
+            
         }
             break;
         case 102:
@@ -367,7 +380,7 @@
         {
             if(dateView == nil) {
                 dateView =  [[SelectDateView alloc] initWithFrame:CGRectMake(0, 0, _changeView.width, _changeView.height)];
-
+                
                 dateView.delegate = self;
             }
             dateView.hospitalID = hospitalID;
@@ -387,7 +400,7 @@
 
 -(void) selectHospitalViewDelegate:(HospitalVO*) vo
 {
-
+    
     if(vo == nil){
         [_btnHospital setTitle:@"所有医院" forState:UIControlStateNormal];
         [_btnHospital setTitle:@"所有医院" forState:UIControlStateSelected];
@@ -463,3 +476,4 @@
     [super didReceiveMemoryWarning];
 }
 @end
+

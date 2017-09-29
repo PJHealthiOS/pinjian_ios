@@ -84,7 +84,13 @@
     articles = [NSMutableArray array];
     specialDepArr = [NSMutableArray array];
    
-
+//    //声明tableView的位置 添加下面代码
+//    if (@available(iOS 11.0, *)) {
+//        _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
+//        _tableView.scrollIndicatorInsets = _tableView.contentInset;
+//    }
+    
     if([DataManager getInstance].cityName.length < 1){
      [_locationButton setTitle:@"上海市" forState:UIControlStateNormal];
         [[DataManager getInstance]setRegion:@"021" name:@"上海市" ];
@@ -543,12 +549,15 @@
     
     UIColor * color = GHDefaultColor;
     CGFloat offsetY = scrollView.contentOffset.y;
+//    NSLog(@"offsetY--------%f",offsetY)
     if (offsetY > 0) {
         CGFloat alpha = MIN(1,  ((offsetY) / 64));
         [self.topView setBackgroundColor:[color colorWithAlphaComponent:alpha]];
     } else {
         [self.topView setBackgroundColor:[color colorWithAlphaComponent:0]];
     }
+    
+    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1) {
@@ -609,7 +618,9 @@
     }
     NSLog(@"专家");
     [MobClick event:@"click5"];
-    ExpertSelectViewController *view = [[ExpertSelectViewController alloc]init];
+    ExpertSelectViewController *view = [GHViewControllerLoader ExpertSelectViewController];
+//    TestViewController *view = [GHViewControllerLoader TestViewController];
+
     [self.navigationController pushViewController:view animated:YES];
     
 }

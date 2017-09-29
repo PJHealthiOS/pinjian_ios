@@ -2,8 +2,8 @@
 //  ChooseHospitalcell.h
 //  GuaHao
 //
-//  Created by 123456 on 16/1/26.
-//  Copyright © 2016年 pinjian. All rights reserved.
+//  Created by PJYL on 2017/9/22.
+//  Copyright © 2017年 pinjian. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -24,3 +24,4 @@ typedef void(^LocationClickAction)(HospitalVO *hosVO);
 -(void)clickLocationAction:(LocationClickAction)action;
 
 @end
+

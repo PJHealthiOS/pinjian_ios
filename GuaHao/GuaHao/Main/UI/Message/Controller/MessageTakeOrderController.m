@@ -19,10 +19,10 @@
 @property (weak, nonatomic) IBOutlet UILabel * departmentLab;
 @property (weak, nonatomic) IBOutlet UILabel * patientLab;
 @property (weak, nonatomic) IBOutlet UILabel * dateLab;
-@property (weak, nonatomic) IBOutlet UILabel *titleLab;
+//@property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UIButton *btnReceive;
 @property (weak, nonatomic) IBOutlet UIImageView *imgNo;
-@property (weak, nonatomic) IBOutlet UIButton *btnMore;
+//@property (weak, nonatomic) IBOutlet UIButton *btnMore;
 @property (weak, nonatomic) IBOutlet UILabel *noLab;
 @end
 
@@ -32,18 +32,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"新订单提醒";
+
     [self.view makeToastActivity:CSToastPositionCenter];
     [self getData];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = NO;
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
-
 }
 
 -(void)getData
@@ -68,7 +69,7 @@
 
 -(void)initView
 {
-    _titleLab.text = _mtitle;
+    self.title = _mtitle;
     _hospitalLab.text = orderVO.hospitalName;
     _departmentLab.text = orderVO.departmentName;
     _noLab.text = [NSString stringWithFormat:@"-订单编号%@",orderVO.serialNo];
@@ -83,15 +84,13 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)onBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
-- (IBAction)onMore:(id)sender {
-    if (_delegate) {
-        [_delegate takeOrderComplete:orderVO];
-    }
-}
+
+//- (IBAction)onMore:(id)sender {
+//    if (_delegate) {
+//        [_delegate takeOrderComplete:orderVO];
+//    }
+//}
 
 - (IBAction)onTake:(id)sender {
     [self.view makeToastActivity:CSToastPositionCenter];

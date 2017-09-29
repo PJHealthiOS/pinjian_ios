@@ -2,8 +2,8 @@
 //  ChooseHospitalVC.h
 //  GuaHao
 //
-//  Created by 123456 on 16/1/22.
-//  Copyright © 2016年 pinjian. All rights reserved.
+//  Created by PJYL on 2017/9/25.
+//  Copyright © 2017年 pinjian. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -20,3 +20,4 @@ typedef void(^BlockHospitalChoose)(HospitalVO*,DepartmentVO*);
 @property (nonatomic, assign) BOOL isCommon;
 @property (nonatomic, assign) BOOL isPj;
 @end
+

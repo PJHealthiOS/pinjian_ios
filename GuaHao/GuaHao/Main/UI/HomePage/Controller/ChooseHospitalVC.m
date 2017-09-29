@@ -2,8 +2,8 @@
 //  ChooseHospitalVC.m
 //  GuaHao
 //
-//  Created by 123456 on 16/1/22.
-//  Copyright © 2016年 pinjian. All rights reserved.
+//  Created by PJYL on 2017/9/25.
+//  Copyright © 2017年 pinjian. All rights reserved.
 //
 
 #import "ChooseHospitalVC.h"
@@ -56,18 +56,19 @@
     self.sortSelectTableView.hidden = YES;
     if (sender.selected) {
         [self getConty];
-
+        
     }
-
+    
     
     
     
 }
 - (IBAction)sortSelectAction:(UIButton *)sender {
+    [self addSortTableView];
     self.sortSelectTableView.hidden = sender.selected;
-     sender.selected = !sender.selected;
+    sender.selected = !sender.selected;
     self.locationSelectTableView.hidden = YES;
-
+    
     
 }
 -(void)getConty{
@@ -91,7 +92,7 @@
                         [weakSelf addCountyTableView];
                         
                     }
-
+                    
                 }
                 
             }else{
@@ -102,7 +103,7 @@
     }];
     
     
-
+    
     
 }
 -(void)addCountyTableView{
@@ -113,11 +114,11 @@
     if (self.locationSelectTableView) {
         [self .locationSelectTableView reloadTableView:arr];
     }else{
-      self.locationSelectTableView = [[SortSelectTableView alloc]initWithFrame:CGRectMake(0, 108, SCREEN_WIDTH, SCREEN_HEIGHT - 108) sourceArray:arr];
+        self.locationSelectTableView = [[SortSelectTableView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(self.LocationButton.frame) , SCREEN_WIDTH, SCREEN_HEIGHT - CGRectGetMaxY(self.LocationButton.frame)) sourceArray:arr];
     }
     
     self.locationSelectTableView.hidden = NO;
-
+    
     __weak typeof(self) weakSelf= self;
     [self.locationSelectTableView cellClickAction:^(NSInteger index, BOOL select) {
         weakSelf.LocationButton.selected = NO;
@@ -128,7 +129,7 @@
             [weakSelf.LocationButton setTitle:[NSString stringWithFormat:@"%@▲",[[weakSelf.countyArray objectAtIndex:index]objectForKey:@"name"]] forState:UIControlStateSelected];
             if (regionId != [[weakSelf.countyArray objectAtIndex:index]objectForKey:@"id"]) {///如果条件变化了开始刷新
                 regionId = [[weakSelf.countyArray objectAtIndex:index]objectForKey:@"id"];
-
+                
                 [weakSelf loadNewData];
             }
         }
@@ -140,7 +141,7 @@
 -(void)addSortTableView{
     __weak typeof(self) weakSelf= self;
     
-    self.sortSelectTableView = [[SortSelectTableView alloc]initWithFrame:CGRectMake(0, 108, SCREEN_WIDTH, SCREEN_HEIGHT - 108) sourceArray:@[@"按预约量排序",@"按距离排序"]];
+    self.sortSelectTableView = [[SortSelectTableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sortButton.frame), SCREEN_WIDTH, SCREEN_HEIGHT - CGRectGetMaxY(self.sortButton.frame)) sourceArray:@[@"按预约量排序",@"按距离排序"]];
     [self.sortSelectTableView cellClickAction:^(NSInteger index, BOOL select) {
         if (select) {
             
@@ -162,39 +163,39 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+    
     
     self.navigationController.navigationBarHidden = NO;
-    showHospitalTview.delegate=self;
-    showHospitalTview.dataSource=self;
+    //    showHospitalTview.delegate=self;
+    //    showHospitalTview.dataSource=self;
     hospitals = [NSMutableArray new];
     showHospitalTview.separatorStyle = UITableViewCellSelectionStyleNone;
     //注册单元格
     [showHospitalTview registerNib:[UINib nibWithNibName:@"ChooseHospitalOnlineCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ChooseHospitalOnlineCell"];
-    [showHospitalTview registerNib:[UINib nibWithNibName:@"ChooseHospitalcell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ChooseHospitalcellID"];
+    [showHospitalTview registerNib:[UINib nibWithNibName:@"ChooseHospitalcell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ChooseHospitalcell"];
     MJRefreshBackGifFooter * footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     [footer setTitle:@"已加载全部医院，将陆续开通更多医院！" forState:MJRefreshStateNoMoreData];
     showHospitalTview.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     showHospitalTview.mj_footer = footer;
     [showHospitalTview.mj_header beginRefreshing];
-
+    
     ///定位
-    [self addSortTableView];
+    
     orderBy = 1;
-//    __weak typeof(self) weakSelf= self;
-
+    //    __weak typeof(self) weakSelf= self;
+    
     if ([DataManager getInstance].user.longitude.length < 3) {
         [[GHLocationManager shareLocation]getLocationInfo:^(BOOL success, NSString *_longitude, NSString *_latitude) {
             longitude = _longitude;
             latitude = _latitude;
-
+            
         }];
         
     }else{
         longitude = [DataManager getInstance].user.longitude;
         latitude = [DataManager getInstance].user.latitude;
-//        [showHospitalTview.mj_header beginRefreshing];
-
+        //        [showHospitalTview.mj_header beginRefreshing];
+        
     }
 }
 
@@ -207,8 +208,8 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)_searchBar
 {
     [self.view endEditing:YES];
-            [showHospitalTview.mj_header beginRefreshing];
-
+    [showHospitalTview.mj_header beginRefreshing];
+    
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -239,7 +240,7 @@
     if (self.isAccompany) {
         serviceType = @"list4Pz";
     }
-
+    
     if (self.isPj) {
         serviceType = @"list4Pj";
     }
@@ -274,7 +275,7 @@
         }
         
     }];
-
+    
     
 }
 
@@ -307,7 +308,7 @@
         orderCell.selectionStyle =UITableViewCellSelectionStyleNone;
         return orderCell;
     }else{
-        ChooseHospitalcell * orderCell = [tableView dequeueReusableCellWithIdentifier:@"ChooseHospitalcellID"];
+        ChooseHospitalcell * orderCell = [tableView dequeueReusableCellWithIdentifier:@"ChooseHospitalcell"];
         if (hospitals.count>0) {
             HospitalVO *vo = hospitals[indexPath.row];
             __weak typeof(self) weakSelf = self;
@@ -341,10 +342,10 @@
             if (!self.isCommon) {
                 [self.navigationController popViewControllerAnimated:YES];
             }else{
-            [self.navigationController pushViewController:view animated:YES];
+                [self.navigationController pushViewController:view animated:YES];
             }
         }
-            
+        
     }
 }
 
@@ -367,3 +368,4 @@
 }
 
 @end
+
