@@ -9,7 +9,7 @@
 #import "CreateOrderExpertViewController.h"
 #import "CreateOrderExpertCell.h"
 #import "Utils.h"
-
+#import "UIViewController+Guide.h"
 #import "SpecialHTMLViewController.h"
 #import "PatientVO.h"
 #import "DataManager.h"
@@ -60,7 +60,7 @@
 //@property (assign, nonatomic)int accSectionNumber;;
 @property (weak, nonatomic) IBOutlet UIView *sectionHeaderView;
 @property (weak, nonatomic) IBOutlet UIView *discountAlterView;
-
+@property (assign, nonatomic) BOOL isCanUpdate;
 @end
 
 @implementation CreateOrderExpertViewController
@@ -70,7 +70,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.accSectionNumber = 1;
+    self.isCanUpdate = YES;
     _price =self.dayVO.price.integerValue;
     _payTypeStr = @"在线支付";
 //    _typeIndex = 1;
@@ -91,7 +91,6 @@
     if (_patientVO) {
         [self updateOrderListWith:_patientVO];
     }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getInfo) name:@"UserInfoUpdate" object:nil];
     [self getInfo];
     // Do any additional setup after loading the view from its nib.
@@ -149,10 +148,9 @@
 
 
 - (IBAction)selectUpdateDateAction:(UIButton *)sender {
-    
+        self.isCanUpdate = !sender.selected;
         sender.selected = !sender.selected;
     
-        
 }
 
 
@@ -448,7 +446,7 @@
     }
     dic[@"doctorId"] = _expertVO.id;
     dic[@"scheduleId"] = _dayVO.id;
-    dic[@"isCanUpdateTime"] = sender.selected ? @"1":@"0";
+    dic[@"isCanUpdateTime"] = self.isCanUpdate ? @"1":@"0";
     [[ServerManger getInstance] createExpertNewOrder:dic  imgs:_imageS andCallback:^(id data) {
         [self.view hideToastActivity];
         if (data!=[NSNull class]&&data!=nil) {

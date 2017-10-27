@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"支付成功";
     if (self.isAccompany) {
         [[ServerManger getInstance] getAccompanyPaySuccessPageData:_orderID andCallback:^(id data) {
             if (data!=[NSNull class]&&data!=nil) {
@@ -78,10 +79,13 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 - (IBAction)onBack:(id)sender {
     if (self.isAccompany) {
         if (successVO.pzType.intValue == 0) {

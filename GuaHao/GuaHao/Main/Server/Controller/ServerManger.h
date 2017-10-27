@@ -388,8 +388,10 @@
 -(void) payOrder:(NSNumber*) orderID channel:(NSString*) channel couponID:(NSString *)couponID useBalance:(BOOL)useBalance andCallback: (void (^)(id  data))callback;
 ///特需号优惠券
 -(void) getSpecialCouponslistPageNo:(int)pageNo  andCallback: (void (^)(id  data))callback;
-
-
+///企业订单专员操作/acceptedOrder/{order_id}/operation
+-(void)companyOrderOperation:(NSNumber*) orderID operationID:(NSNumber*) operationID  andCallback: (void (^)(id  data))callback;
+/////企业接单详情页/2b/pjorder/acceptedOrder/{order_id}
+-(void) getCompanyOrderDetail:(NSString*) orderID  andCallback:(void (^)(id  data))callback;
 
 
 

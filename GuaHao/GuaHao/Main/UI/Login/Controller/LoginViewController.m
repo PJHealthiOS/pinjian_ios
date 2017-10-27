@@ -2,8 +2,8 @@
 //  LoginViewController.m
 //  GuaHao
 //
-//  Created by qiye on 16/1/19.
-//  Copyright © 2016年 pinjian. All rights reserved.
+//  Created by PJYL on 2017/10/16.
+//  Copyright © 2017年 pinjian. All rights reserved.
 //
 
 #import "LoginViewController.h"
@@ -41,7 +41,7 @@ static LoginViewController *_loginVC = nil;
     [super viewDidLoad];
     _poneTF.textColor = [UIColor lightGrayColor];
     _passwordTF.textColor = [UIColor lightGrayColor];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxLogin:) name:@"WxLoginBack" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxLogin:) name:@"WxLoginBack" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -102,7 +102,7 @@ static LoginViewController *_loginVC = nil;
                                 object:nil];
                 [self performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
             }else{
-
+                
             }
         }
     }];
@@ -113,9 +113,9 @@ static LoginViewController *_loginVC = nil;
 {
     if (notification.object) {
         NSString * code = notification.object;
-         [self.view makeToastActivity:CSToastPositionCenter];
+        [self.view makeToastActivity:CSToastPositionCenter];
         [[ServerManger getInstance] wxLogin:code andCallback:^(id data) {
-             [self.view hideToastActivity];
+            [self.view hideToastActivity];
             if (data!=[NSNull class]&&data!=nil) {
                 NSNumber * code = data[@"code"];
                 if (code.intValue == 0) {
@@ -143,15 +143,15 @@ static LoginViewController *_loginVC = nil;
                     [[DataManager getInstance] setLogin:wxUser];
                     [self wxBlock:YES];
                     return ;
-//                    CGRect frame = self.view.frame;
-//                    if(!phoneView){
-//                        phoneView = [[WXBindPhoneView alloc] initWithFrame:frame];
-//                        __weak typeof(self) weakSelf = self;
-//                        phoneView.myBlock = ^(BOOL isYes){
-//                            [weakSelf wxBlock:isYes];
-//                        };
-//                    }
-//                    [self.view addSubview:phoneView];
+                    //                    CGRect frame = self.view.frame;
+                    //                    if(!phoneView){
+                    //                        phoneView = [[WXBindPhoneView alloc] initWithFrame:frame];
+                    //                        __weak typeof(self) weakSelf = self;
+                    //                        phoneView.myBlock = ^(BOOL isYes){
+                    //                            [weakSelf wxBlock:isYes];
+                    //                        };
+                    //                    }
+                    //                    [self.view addSubview:phoneView];
                 }else{
                     
                 }
@@ -165,7 +165,8 @@ static LoginViewController *_loginVC = nil;
         [JPUSHService setAlias:wxUser.id.stringValue
               callbackSelector:nil
                         object:nil];
-       [self onBack:nil];
+        [self onBack:nil];
+        
     }else{
         [DataManager getInstance].user = nil;
     }
@@ -202,6 +203,9 @@ static LoginViewController *_loginVC = nil;
 }
 
 - (IBAction)onBack:(id)sender {
+    if (self.myAction) {
+        self.myAction(YES);
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
     if (_delegate) {
         [_delegate loginComplete];
@@ -274,7 +278,7 @@ static LoginViewController *_loginVC = nil;
             [self inputToast:msg];
         }
     }];
-
+    
 }
 
 -(void)timerFired:(id) sender{
@@ -304,3 +308,4 @@ static LoginViewController *_loginVC = nil;
     [alert show];
 }
 @end
+

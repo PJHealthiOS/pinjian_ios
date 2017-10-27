@@ -20,6 +20,7 @@
 @property(strong) NSArray * statusLogs;
 @property(strong) NSString * servicePhone;
 @property(strong) NSString * serialNo;
+@property(strong) NSString * orderType;
 @property(strong) NSString * outpatientType;//普通  专家  特需
 @property(strong) NSString * hospName;
 @property(strong) NSString * deptName;

@@ -83,6 +83,8 @@
 #import "ChooseHospitalVC.h"///选择医院
 #import "MessageTakeOrderController.h"///消息新订单接单页面
 #import "TestViewController.h"///
+#import "GHAcceptCompanyDetailViewController.h"///企业订单详情页
+#import "LoginViewController.h"///登录页面页
 
 
 @interface GHViewControllerLoader : NSObject
@@ -164,6 +166,8 @@
 +(ChooseHospitalVC *)ChooseHospitalVC;
 +(MessageTakeOrderController *)MessageTakeOrderController;
 +(TestViewController *)TestViewController;
++(GHAcceptCompanyDetailViewController *)GHAcceptCompanyDetailViewController;
++(LoginViewController *)LoginViewController;
 
 
 

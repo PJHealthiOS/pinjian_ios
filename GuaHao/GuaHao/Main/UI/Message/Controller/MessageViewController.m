@@ -54,7 +54,7 @@
     _MessageTabV.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     _MessageTabV.mj_footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     if ([DataManager getInstance].user == nil) {
-        LoginViewController * vc = [[LoginViewController alloc] init];
+        LoginViewController * vc = [GHViewControllerLoader LoginViewController];
         vc.delegate = self;
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
         [self.navigationController presentViewController:nav animated:YES completion:nil];

@@ -191,7 +191,6 @@
     //等下一次runloop的时候再更新， 因为手动拖动时候scrollViewDidScroll方法里的if语句执行完后会直接来到这个方法，此时的runloop没有刷新。
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         _pageControl.currentPage = _scrollView.contentOffset.x / _scrollView.frame.size.width - 1;
-//        NSLog(@"xxxxxxxxxxxx----------%ld----%f----%f",(long)_pageControl.currentPage,_scrollView.contentOffset.x,_scrollView.frame.size.width);
     });
     [self _startTimer];
 }

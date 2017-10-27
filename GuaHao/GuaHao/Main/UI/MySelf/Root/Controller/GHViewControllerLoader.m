@@ -273,7 +273,14 @@
     return  (TestViewController *)[[self HomePageStoryBoard]instantiateViewControllerWithIdentifier:@"TestViewController"];
 
 }
++(GHAcceptCompanyDetailViewController *)GHAcceptCompanyDetailViewController{
+    return  (GHAcceptCompanyDetailViewController *)[[self OrderCenterStoryBoard]instantiateViewControllerWithIdentifier:@"GHAcceptCompanyDetailViewController"];
 
+}
++(LoginViewController *)LoginViewController{
+    return  (LoginViewController *)[[self MySelfStoryBoard]instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    
+}
 
 
 

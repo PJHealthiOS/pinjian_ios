@@ -168,7 +168,7 @@
 
 //    [ServerManger getInstance].serverURL =  @"http://192.168.1.172:8080/";///孟立测试rbd665  pgd606
 //    [ServerManger getInstance].serverURL =  @"http://192.168.1.168:8080/";//段超本地
-//    [ServerManger getInstance].serverURL =  @"http://139.196.220.224:8080/";///测试
+//    [ServerManger getInstance].serverURL =  @"http://139.196.220.224:8090/";///测试
     [[ServerManger getInstance] getAppVersion:^(id data) {
         if (data!=[NSNull class]&&data!=nil) {
             NSNumber * code = data[@"code"];
@@ -181,14 +181,14 @@
 
 //                        [ServerManger getInstance].serverURL =  @"http://192.168.1.172:8080/";///孟立测试
 //                       [ServerManger getInstance].serverURL =  @"http://192.168.1.168:8080/";//段超本地
-//                    [ServerManger getInstance].serverURL =  @"http://139.196.220.224:8080/";///测试
+//                    [ServerManger getInstance].serverURL =  @"http://139.196.220.224:8090/";///测试
                     
 //                    if (![APP_VERSION isEqualToString:version.version.versionId] &&version.version.isForceUpdate) {
 //                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"升级提示" message:@"获取最新号源信息，立刻更新！" delegate:self cancelButtonTitle:@"立即更新" otherButtonTitles:@"再等等...", nil];
 //                        [alertView show];
 //                    }
                     
-                    [self updateApp:versionVO.version.versionId];
+//                    [self updateApp:versionVO.version.versionId];
                     
                    
                     

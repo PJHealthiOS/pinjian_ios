@@ -169,7 +169,7 @@
 -(void)pushToCreateOrderPage:(DayVO *)vo{
     
     if ([DataManager getInstance].loginState != 1) {
-        LoginViewController * vc = [[LoginViewController alloc] init];
+        LoginViewController * vc = [GHViewControllerLoader LoginViewController];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
         return;

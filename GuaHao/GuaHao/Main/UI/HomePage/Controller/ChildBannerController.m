@@ -35,7 +35,7 @@
     if ([DataManager getInstance].loginState == 1) {
         
     }else{
-        LoginViewController * view = [[LoginViewController alloc]init];
+        LoginViewController * view = [GHViewControllerLoader LoginViewController];
         view.delegate = self;
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:view];
         [self.navigationController presentViewController:nav animated:YES completion:nil];

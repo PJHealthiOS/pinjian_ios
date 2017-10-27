@@ -34,7 +34,7 @@
     self.departmentLabel.text = order.departmentName;
     self.priceLabel.text = @"到院支付";
     self.dateLabel.text = order.visitDate;
-    self.nameLabel.text = [NSString stringWithFormat:@"%@ (%@)",order.patientName,order.patientSex];
+    self.nameLabel.text = [NSString stringWithFormat:@"%@",order.patientName];
     self.idCardLabel.text = order.patientIdcard;
     [self.phoneNoButton setTitle:order.patientMobile forState:UIControlStateNormal]; ;
     ///此处有问题

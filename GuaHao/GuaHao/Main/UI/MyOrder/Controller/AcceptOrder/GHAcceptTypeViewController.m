@@ -29,7 +29,7 @@
 //    [self.hospitalButton setTitle:[DataManager getInstance].user.hospName ? [NSString stringWithFormat:@"%@ >",[DataManager getInstance].user.hospName]:@"所有医院>" forState:UIControlStateNormal];
 
     [self.tableView registerNib:[UINib nibWithNibName:@"PersonCommonCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"PersonCommonCell"];
-    self.sourceArr = [NSMutableArray arrayWithObjects:@{@"title":@"待接订单",@"icon":@"person_icon_order.png",@"number":@"2"},@{@"title":@"普通订单",@"icon":@"person_icon_order.png"}, @{@"title":@"专家/特需订单",@"icon":@"person_icon_order.png"},@{@"title":@"万家陪诊订单",@"icon":@"person_icon_order.png"},@{@"title":@"已完成订单",@"icon":@"person_icon_order.png"},nil];
+    self.sourceArr = [NSMutableArray arrayWithObjects:@{@"title":@"待接订单",@"icon":@"person_icon_order.png",@"number":@"2"},@{@"title":@"普通订单",@"icon":@"person_icon_order.png"}, @{@"title":@"专家/特需订单",@"icon":@"person_icon_order.png"},@{@"title":@"万家陪诊订单",@"icon":@"person_icon_order.png"},@{@"title":@"企业订单",@"icon":@"person_icon_order.png"},@{@"title":@"已完成订单",@"icon":@"person_icon_order.png"},nil];
     
 
     // Do any additional setup after loading the view.
@@ -72,7 +72,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *arr = @[@"waitOrder",@"normalOrder",@"expertOrder",@"wanjiaOrder",@"endOrder"];
+    NSArray *arr = @[@"waitOrder",@"normalOrder",@"expertOrder",@"wanjiaOrder",@"companyOrder",@"endOrder"];
     NSString *select = [arr objectAtIndex:indexPath.row];
     [self performSelectorOnMainThread:NSSelectorFromString(select) withObject:nil waitUntilDone:NO];
     
@@ -112,6 +112,15 @@
     order.hospital = _hospital;
     order.titleStr = @"万家陪诊订单";
 
+    [self.navigationController pushViewController:order animated:YES];
+}
+///企业订单
+-(void)companyOrder{
+    GHAcceptOrderViewController *order = [GHViewControllerLoader GHAcceptOrderViewController];
+    order.contentType = ContentType_order_Company;
+    order.hospital = _hospital;
+    order.titleStr = @"企业订单";
+    
     [self.navigationController pushViewController:order animated:YES];
 }
 ///完成的订单

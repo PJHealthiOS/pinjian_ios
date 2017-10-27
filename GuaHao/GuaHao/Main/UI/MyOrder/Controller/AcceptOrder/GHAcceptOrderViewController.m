@@ -141,7 +141,7 @@
     GHAcceptOrderCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"GHAcceptOrderCell"];
     [[NSNotificationCenter defaultCenter] removeObserver:cell name:@"AcceptOrderpayCountdown" object:nil];
     if(_sourceArr.count > 0){
-        if ( self.contentType == ContentType_order_Wanjia) {
+        if ( self.contentType == ContentType_order_Wanjia || self.contentType == ContentType_order_Company) {
             [cell setWJCell:_sourceArr[indexPath.row] indexPath:indexPath];
 
         }else{
@@ -150,7 +150,7 @@
         }
         __weak typeof(self) weakSelf = self;
         cell.onBlockAccept = ^(int type ,NSNumber * orderID){
-            if (weakSelf.contentType == ContentType_order_Wanjia) {
+            if (weakSelf.contentType == ContentType_order_Wanjia || weakSelf.contentType == ContentType_order_Company) {
                 [weakSelf operation:2 orderID:orderID];
             }else{
                 [weakSelf onDealAcceptOrder:type orderID:orderID];
@@ -185,6 +185,11 @@
         //传值
         acceptDetailVC.order = _sourceArr[indexPath.row];
         [self.navigationController pushViewController:acceptDetailVC animated:YES];
+    }else if (self.contentType == ContentType_order_Company) {
+        GHAcceptCompanyDetailViewController *acceptDetailVC = [GHViewControllerLoader GHAcceptCompanyDetailViewController];
+        //传值
+        acceptDetailVC.order = _sourceArr[indexPath.row];
+        [self.navigationController pushViewController:acceptDetailVC animated:YES];
     }else{
         GHAcceptDetailViewController *acceptDetailVC = [GHViewControllerLoader GHAcceptDetailViewController];
         //传值
@@ -195,18 +200,35 @@
 }
 -(void)operation:(int)opID orderID:(NSNumber*) orderID{
     [self.view makeToastActivity:CSToastPositionCenter];
-    [[ServerManger getInstance] wjOrderOperation:orderID operationID:[NSNumber numberWithInt:opID] andCallback:^(id data) {
-        [self.view hideToastActivity];
-        if (data!=[NSNull class]&&data!=nil) {
-            NSNumber * code = data[@"code"];
-//            if (code.intValue == 0) {
-//                
-//            }
-            NSString * msg = data[@"msg"];
-            [self inputToast:msg];
-            
-        }
-    }];
+    if (self.contentType == ContentType_order_Company) {///企业订单
+        [[ServerManger getInstance] companyOrderOperation:orderID operationID:[NSNumber numberWithInt:opID] andCallback:^(id data) {
+            [self.view hideToastActivity];
+            if (data!=[NSNull class]&&data!=nil) {
+                NSNumber * code = data[@"code"];
+                            if (code.intValue == 0) {
+                [self getWaiters:NO];
+                            }
+                NSString * msg = data[@"msg"];
+                [self inputToast:msg];
+                
+            }
+        }];
+    }else{
+        [[ServerManger getInstance] wjOrderOperation:orderID operationID:[NSNumber numberWithInt:opID] andCallback:^(id data) {
+            [self.view hideToastActivity];
+            if (data!=[NSNull class]&&data!=nil) {
+                NSNumber * code = data[@"code"];
+                            if (code.intValue == 0) {
+                [self getWaiters:NO];
+                            }
+                NSString * msg = data[@"msg"];
+                [self inputToast:msg];
+                
+            }
+        }];
+    }
+
+    
 }
 -(void)onDealAcceptOrder:(int)type orderID:(NSNumber*) orderID
 {
@@ -274,7 +296,7 @@
 
 -(void)countdownEvent{
     [[NSNotificationCenter defaultCenter]postNotificationName:@"AcceptOrderpayCountdown" object:nil];
-        NSLog(@"countdownEvent定时器再走---d");
+//        NSLog(@"countdownEvent定时器再走---d");
 }
 
 -(void)countdownEventStop{

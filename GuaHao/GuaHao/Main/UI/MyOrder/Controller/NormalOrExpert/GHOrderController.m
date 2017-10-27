@@ -40,12 +40,7 @@
         [[NSRunLoop currentRunLoop] addTimer:_countdownTimer forMode:NSRunLoopCommonModes];
         [_countdownTimer fire];
     }
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        _countdownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdownEvent) userInfo:nil repeats:YES];
-//        [[NSRunLoop currentRunLoop] addTimer:_countdownTimer forMode:NSRunLoopCommonModes];
-//        [_countdownTimer fire];
-//    }) ;
+
     return _countdownTimer;
 }
 -(void)viewWillAppear:(BOOL)animated{

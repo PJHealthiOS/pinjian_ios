@@ -11,6 +11,7 @@
 #import "CreateOrderExpertViewController.h"
 #import "HtmlAllViewController.h"
 #import "ExpertOrderDiscountAlterView.h"
+#import "UIViewController+Guide.h"
 @interface ExpertInfomationViewController (){
     ExpertVO *expertVO;
     
@@ -59,6 +60,9 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = NO;
     self.title = @"医生信息";
+    
+    [self addGuidePageWithImageName:@"expert_detial_guide" frame:CGRectMake(20, 300, SCREEN_WIDTH - 80,GetHeightExtra(80, 388, 334) )];
+    
     [self getData];
     
     // Do any additional setup after loading the view.
@@ -210,8 +214,8 @@
 -(void)pushToCreateOrderPage:(DayVO *)vo{
     
     if ([DataManager getInstance].loginState != 1) {
-        LoginViewController * vc = [[LoginViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+        LoginViewController * view = [GHViewControllerLoader LoginViewController];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:view];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
         return;
     }

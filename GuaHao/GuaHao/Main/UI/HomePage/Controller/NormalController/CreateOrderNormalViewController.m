@@ -634,6 +634,9 @@
                 case 1:
                 {
                     if ([_level isEqualToString:@"0"]) {//自费挂号
+                        if (_department.serviceFee.intValue > 1) {///只能在线支付
+                            return;
+                        }
                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请选择支付方式" message:nil preferredStyle:UIAlertControllerStyleAlert];
                         __weak typeof(self) weakSelf = self;
                         [alertController addAction:[UIAlertAction actionWithTitle:@"在线支付" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -685,7 +688,7 @@
 }
 -(NSAttributedString *)getAttributedStr{
     if (_department.serviceFee.floatValue > 0) {
-        NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",infoVO.orderPzFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor redColor]}];
+        NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",_department.serviceFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor redColor]}];
         return nameString;
         
         
@@ -795,6 +798,10 @@
 
     [self updateTableViewWithSection:0 row:1 key:@"value" newValue:vo.name];
     [self updateTableViewWithSection:4 row:0 key:@"value" newValue:@""];
+    [self updateTableViewWithSection:3 row:0 key:@"value" newValue: [NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue + infoVO.totalFee.intValue]];
+    if (vo.serviceFee.intValue > 1 && [_level isEqualToString:@"0"]) {///只能在线支付
+        [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"在线支付"];
+    }
     [self choseDate];
 }
 //选择时间

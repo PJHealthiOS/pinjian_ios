@@ -141,7 +141,7 @@ static ServerManger * instance;
             callback(@{@"code":@"-1011",@"msg":@"请重新登录！"});
                     [[DataManager getInstance] saveToken:nil];
                     UIViewController * result = [Utils topViewController:nil];
-                    LoginViewController * view = [[LoginViewController alloc] init];
+            LoginViewController * view = [GHViewControllerLoader LoginViewController];
                     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:view];
                     [result.navigationController  presentViewController:nav animated:YES completion:nil];
         }else{
@@ -214,7 +214,7 @@ static ServerManger * instance;
             callback(@{@"code":@"-1011",@"msg":@"请重新登录！"});
             [[DataManager getInstance] saveToken:nil];
             UIViewController * result = [Utils topViewController:nil];
-            LoginViewController * view = [[LoginViewController alloc] init];
+            LoginViewController * view = [GHViewControllerLoader LoginViewController];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:view];
             [result.navigationController  presentViewController:nav animated:YES completion:nil];
         }else{
@@ -270,7 +270,7 @@ static ServerManger * instance;
             callback(@{@"code":@"-1011",@"msg":@"请重新登录！"});
             [[DataManager getInstance] saveToken:nil];
             UIViewController * result = [Utils topViewController:nil];
-            LoginViewController * view = [[LoginViewController alloc] init];
+            LoginViewController * view = [GHViewControllerLoader LoginViewController];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:view];
             [result.navigationController  presentViewController:nav animated:YES completion:nil];
         }else{
@@ -341,7 +341,7 @@ static ServerManger * instance;
             callback(@{@"code":@"-1011",@"msg":@"请重新登录！"});
             [[DataManager getInstance] saveToken:nil];
             UIViewController * result = [Utils topViewController:nil];
-            LoginViewController * view = [[LoginViewController alloc] init];
+            LoginViewController * view = [GHViewControllerLoader LoginViewController];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:view];
             [result.navigationController  presentViewController:nav animated:YES completion:nil];
         }else{
@@ -738,12 +738,17 @@ static ServerManger * instance;
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@pjOrder/%@/submit",[ServerManger getInstance].serverURL,orderID]];
     [self postHttp:URL.absoluteString parameters:nil version:@"3" andCallback:callback];
 }
-// 万家我的接单
+// 万家我的接单   企业/2b/pjorder/acceptedOrder/list 专员端接单列表
+
 -(void) myAcceptedOrders:(int) size page:(int) page type:(NSInteger) type longitude:(NSString*)longitude latitude:(NSString*)latitude hospitalId:(NSString*)hospitalId andCallback: (void (^)(id  data))callback
 {
     NSString * urlStr;
+    NSString *version = @"3";
     if (type == 5) {//万家
         urlStr = [NSString stringWithFormat:@"%@order/acceptedOrders?pageSize=%d&pageNo=%d",[ServerManger getInstance].serverURL,size,page];
+    }else if (type == 6) {//企业
+        version = @"1";
+        urlStr = [NSString stringWithFormat:@"%@2b/pjorder/acceptedOrder/list?pageSize=%d&pageNo=%d",[ServerManger getInstance].serverURL,size,page];
     }else{
        urlStr = [NSString stringWithFormat:@"%@order/myAcceptedOrders?pageSize=%d&pageNo=%d&type=%ld",[ServerManger getInstance].serverURL,size,page,(long)type];
     }
@@ -751,10 +756,10 @@ static ServerManger * instance;
     if (longitude.length >0) {
         urlStr = [NSString stringWithFormat:@"%@&longitude=%@&latitude=%@",urlStr,longitude,latitude];
     }
-    if (hospitalId && type != 5) {
+    if (hospitalId && (type != 5 && type!= 6)) {
         urlStr = [NSString stringWithFormat:@"%@&hospitalId=%@",urlStr,hospitalId];
     }
-    [self getHttp:urlStr parameters:nil version:@"3" andCallback:callback];
+    [self getHttp:urlStr parameters:nil version:version andCallback:callback];
 }
 // 取消订单----------------------------
 -(void) cancelOrder:(NSNumber*) orderID andNormalType:(BOOL)orderType andCallback: (void (^)(id  data))callback
@@ -928,10 +933,23 @@ static ServerManger * instance;
     
     [self getHttp:urlStr parameters:nil version:@"3" andCallback:callback];
 }
+/////企业接单详情页/2b/pjorder/acceptedOrder/{order_id}
+-(void) getCompanyOrderDetail:(NSString*) orderID  andCallback:(void (^)(id  data))callback;
+
+{
+    NSString * urlStr = [NSString stringWithFormat:@"%@2b/pjorder/acceptedOrder/%@",[ServerManger getInstance].serverURL,orderID];
+    
+    [self getHttp:urlStr parameters:nil version:@"1" andCallback:callback];
+}
 ///万家订单专员操作/api/pjOrder/{order_id}/operation
 -(void)wjOrderOperation:(NSNumber*) orderID operationID:(NSNumber*) operationID  andCallback: (void (^)(id  data))callback{
     NSString * orderURL = [NSString stringWithFormat:@"%@order/%@/operation?operation=%@",[ServerManger getInstance].serverURL,orderID,operationID];
     [self postHttp:orderURL parameters:nil version:@"3" andCallback:callback];
+}
+///企业订单专员操作/2b/pjorder/acceptedOrder/{order_id}/operation
+-(void)companyOrderOperation:(NSNumber*) orderID operationID:(NSNumber*) operationID  andCallback: (void (^)(id  data))callback{
+    NSString * orderURL = [NSString stringWithFormat:@"%@2b/pjorder/acceptedOrder/%@/operation?operation=%@",[ServerManger getInstance].serverURL,orderID,operationID];
+    [self postHttp:orderURL parameters:nil version:@"1" andCallback:callback];
 }
 -(void) getExpertOrderStatus:(NSString*) serialNo longitude:(NSString*) longitude latitude:(NSString*) latitude andCallback:(void (^)(id  data))callback
 {
@@ -1487,7 +1505,7 @@ static ServerManger * instance;
     if (error.code == -1011) {
 //        [[DataManager getInstance] saveToken:nil];
 //        UIViewController * result = [Utils topViewController:nil];
-//        LoginViewController * view = [[LoginViewController alloc] init];
+//        LoginViewController * view = [GHViewControllerLoader LoginViewController];
 //        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:view];
 //        [result.navigationController  presentViewController:nav animated:YES completion:nil];
         return @{@"code":@"-1011",@"msg":@"请稍候再试！"};

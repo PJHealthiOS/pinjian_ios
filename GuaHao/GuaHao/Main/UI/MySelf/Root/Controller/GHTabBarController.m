@@ -55,7 +55,7 @@
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     if ([item.title isEqualToString:@"消息"]) {
         if ([DataManager getInstance].user == nil) {
-            LoginViewController * vc = [[LoginViewController alloc] init];
+            LoginViewController * vc = [GHViewControllerLoader LoginViewController];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
             [[self getCurrentVC] presentViewController:nav animated:YES completion:nil];
         }

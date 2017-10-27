@@ -12,7 +12,8 @@ typedef NS_ENUM(NSInteger,ContentType){
     ContentType_order_Normal,
     ContentType_order_Expert,
     ContentType_order_Finish,
-    ContentType_order_Wanjia
+    ContentType_order_Wanjia,
+    ContentType_order_Company
     
 };
 @interface GHAcceptOrderViewController : UIViewController

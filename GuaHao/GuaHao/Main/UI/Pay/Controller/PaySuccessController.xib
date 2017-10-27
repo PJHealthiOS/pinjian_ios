@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,54 +27,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kns-5C-Xsv">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eej-4W-9ns">
-                            <rect key="frame" x="8" y="26" width="30" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="30" id="HzO-Wh-6r3"/>
-                                <constraint firstAttribute="height" constant="30" id="rwh-rH-NDA"/>
-                            </constraints>
-                            <state key="normal" image="point_back.png"/>
-                            <connections>
-                                <action selector="onBack:" destination="-1" eventType="touchUpInside" id="ZVh-G0-wXH"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付成功" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rId-R8-yyy">
-                            <rect key="frame" x="112" y="30" width="150" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="150" id="D8i-TX-bIR"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Q8V-C5-Yda"/>
-                                <constraint firstAttribute="height" constant="21" id="sNs-5c-32h"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="vzy-5A-YgE"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="3TR-mq-pWd"/>
-                        <constraint firstItem="eej-4W-9ns" firstAttribute="leading" secondItem="Kns-5C-Xsv" secondAttribute="leading" constant="8" id="9Ya-4D-yrH"/>
-                        <constraint firstAttribute="height" constant="64" id="Dqp-LR-l5j"/>
-                        <constraint firstItem="eej-4W-9ns" firstAttribute="centerY" secondItem="Kns-5C-Xsv" secondAttribute="centerY" id="HEO-Dr-cb0"/>
-                        <constraint firstItem="rId-R8-yyy" firstAttribute="centerX" secondItem="Kns-5C-Xsv" secondAttribute="centerX" id="e5z-HM-XSz"/>
-                        <constraint firstAttribute="bottom" secondItem="eej-4W-9ns" secondAttribute="bottom" constant="8" id="eud-MN-jtn"/>
-                        <constraint firstItem="eej-4W-9ns" firstAttribute="leading" secondItem="Kns-5C-Xsv" secondAttribute="leading" constant="8" id="yC0-Qg-ofJ"/>
-                        <constraint firstAttribute="bottom" secondItem="rId-R8-yyy" secondAttribute="bottom" constant="13" id="ycT-Cw-43p"/>
-                        <constraint firstItem="rId-R8-yyy" firstAttribute="centerY" secondItem="Kns-5C-Xsv" secondAttribute="centerY" id="zbO-1m-6tO"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="HEO-Dr-cb0"/>
-                            <exclude reference="zbO-1m-6tO"/>
-                        </mask>
-                    </variation>
-                </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOt-aW-V43">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyi-Hi-ykA">
                             <rect key="frame" x="12" y="371" width="351" height="46"/>
@@ -287,24 +241,15 @@
             </subviews>
             <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Kns-5C-Xsv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3CS-lJ-Ajc"/>
+                <constraint firstItem="dOt-aW-V43" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Bs1-cQ-Ggr"/>
                 <constraint firstAttribute="bottom" secondItem="dOt-aW-V43" secondAttribute="bottom" id="LmN-eV-YRk"/>
                 <constraint firstItem="dOt-aW-V43" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ptl-cC-m3g"/>
-                <constraint firstItem="Kns-5C-Xsv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nfm-YJ-xoQ"/>
-                <constraint firstItem="dOt-aW-V43" firstAttribute="top" secondItem="Kns-5C-Xsv" secondAttribute="bottom" id="sNv-5x-3PC"/>
                 <constraint firstAttribute="trailing" secondItem="dOt-aW-V43" secondAttribute="trailing" id="skQ-se-lEw"/>
-                <constraint firstAttribute="trailing" secondItem="Kns-5C-Xsv" secondAttribute="trailing" id="t3E-5L-P3K"/>
-                <constraint firstItem="dOt-aW-V43" firstAttribute="top" secondItem="Kns-5C-Xsv" secondAttribute="bottom" id="wPg-IR-g4R"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="sNv-5x-3PC"/>
-                </mask>
-            </variation>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>
     <resources>
         <image name="pay_money_icon.png" width="44" height="44"/>
-        <image name="point_back.png" width="30" height="30"/>
     </resources>
 </document>

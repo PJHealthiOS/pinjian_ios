@@ -97,7 +97,6 @@
     }else{
         [_locationButton setTitle:[DataManager getInstance].cityName forState:UIControlStateNormal];
     }
-    
     ///添加导航条
     [self addSearchBar];
     [self updateOrLoginFromChanged:NO];
@@ -169,6 +168,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -328,6 +328,8 @@
     searchBar.isHome = YES;
     [searchBar setCancelButtonTitle:@"搜索医生" setPlaceholder:@"搜索医院、科室、医生"];
     [self.topView addSubview:searchBar];
+//    [self.navigationController.navigationBar addSubview:searchBar];
+
     searchBar.delegate = self;
 }
 
@@ -571,6 +573,7 @@
 //普通号
 - (IBAction)normalOrderAction:(UITapGestureRecognizer *)sender {
     [self normalOrder];
+    
 }
 //专家
 - (IBAction)expertOrderAction:(UITapGestureRecognizer *)sender {
@@ -797,7 +800,7 @@
     if ([DataManager getInstance].loginState == 1) {
         
     }else{
-        LoginViewController * view = [[LoginViewController alloc]init];
+        LoginViewController * view = [GHViewControllerLoader LoginViewController];
         view.delegate = self;
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:view];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
@@ -808,7 +811,17 @@
     
 }
 
-
+- (UIImage *)createAImageWithColor:(UIColor *)color alpha:(CGFloat)alpha{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextSetAlpha(context, alpha);
+    CGContextFillRect(context, rect);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

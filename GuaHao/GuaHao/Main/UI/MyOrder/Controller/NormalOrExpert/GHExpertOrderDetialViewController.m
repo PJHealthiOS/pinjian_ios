@@ -12,7 +12,7 @@
 #import "SpecialPayViewController.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import "ExpertSelectViewController.h"
-
+#import "UIViewController+Guide.h"
 @interface GHExpertOrderDetialViewController ()<UIAlertViewDelegate>{
     BOOL   isRefresh;
     NSTimer *countdownTimer;
@@ -101,13 +101,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"订单详情";
-    
+    [self addGuidePageWithImageName:@"expert_info_guide" frame:CGRectMake(20, SCREEN_HEIGHT - (GetHeightExtra(80, 622, 718)), SCREEN_WIDTH - 80,GetHeightExtra(80, 622, 718) )];
+
     [self getData];
 
     // Do any additional setup after loading the view.
 }
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
 
 -(void)getData
 {
@@ -555,24 +559,26 @@
     if (_orderVO.acceptorOperation.intValue == 4) {///号满
         accept = @"1";
     }
+    __weak typeof(self) weakSelf = self;
     if (self.orderType == 0) {//普通号
         [self.view makeToastActivity:CSToastPositionCenter];
         [[ServerManger getInstance]acceptChangeNormalOrder:_orderVO.id accept:accept andCallback:^(id data) {
-            [self.view hideToastActivity];
+            [weakSelf.view hideToastActivity];
             if (data!=[NSNull class]&&data!=nil) {
                 //                NSNumber * code = data[@"code"];
                 NSString * msg = data[@"msg"];
-                [self inputToast:msg];
+                [weakSelf inputToast:msg];
             }
         }];
     }else{
-        [self.view makeToastActivity:CSToastPositionCenter];
+        [weakSelf.view makeToastActivity:CSToastPositionCenter];
         [[ServerManger getInstance]acceptChangeExpertOrder:_orderVO.id accept:@"1" andCallback:^(id data) {
-            [self.view hideToastActivity];
+            [weakSelf.view hideToastActivity];
             if (data!=[NSNull class]&&data!=nil) {
                 //                NSNumber * code = data[@"code"];
                 NSString * msg = data[@"msg"];
-                [self inputToast:msg];
+                [weakSelf inputToast:msg];
+                [weakSelf getData];
             }
         }];
     }

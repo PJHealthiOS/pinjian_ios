@@ -20,7 +20,7 @@
 #import "GHShareViewController.h"
 #import "CollectionViewController.h"
 #import "UIView+Shadow.h"
-
+#import "UITableView+MJ.h"
 #import "GHAcceptOrderViewController.h"
 @interface GHMySelfViewController ()<UITableViewDataSource,UITableViewDelegate,AccountNumberViewDelegate,LoginViewDelegate>{
     PersonalCenterVO * personVO;
@@ -59,6 +59,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+  
     self.navigationController.navigationBarHidden = YES;
 
     [self.member_image_button addSpringAnimation];
@@ -96,11 +97,15 @@
 
     [MobClick endLogPageView:@"MePage"];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationController.navigationBar.hidden = YES;
+//    if (@available(iOS 11.0, *)) {
+//        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    }
+
     self.sourceArr = [NSMutableArray arrayWithObjects:@{@"title":@"家庭成员",@"icon":@"person_icon_family.png",@"number":@"2"},@{@"title":@"我的订单",@"icon":@"person_icon_order.png"}, @{@"title":@"应用分享",@"icon":@"person_icon_share.png"},@{@"title":@"挂号豆商城",@"icon":@"person_icon_mall.png"},@{@"title":@"我的关注",@"icon":@"person_icon_attention.png"},@{@"title":@"健康管理个人中心",@"icon":@"person_icon_healthmanager.png"},@{@"title":@"我的接单",@"icon":@"person_icon_takeorder.png"},@{@"title":@"待扫码订单",@"icon":@"person_icon_orders.png"},nil];
     [self.tableView registerNib:[UINib nibWithNibName:@"PersonCommonCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"PersonCommonCell"];
     
@@ -145,7 +150,7 @@
     }
     
 }
--(void) loadNewData{
+-(void)loadNewData{
     [[ServerManger getInstance] getPersonalCenterInfo:^(id data) {
         if (data!=[NSNull class]&&data!=nil) {
             NSNumber * code = data[@"code"];
@@ -254,15 +259,15 @@
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //获取偏移量
-    CGPoint offset = scrollView.contentOffset;
-    //判断是否改变
-    if (offset.y < 0) {
-        CGRect rect = self.headerImageView.frame;
-        //我们只需要改变图片的y值和高度即可
-        rect.origin.y = offset.y;
-        rect.size.height = 200 - offset.y;
-        self.headerImageView.frame = rect;
-    }
+//    CGPoint offset = scrollView.contentOffset;
+//    //判断是否改变
+//    if (offset.y < 0) {
+//        CGRect rect = self.headerImageView.frame;
+//        //我们只需要改变图片的y值和高度即可
+//        rect.origin.y = offset.y;
+//        rect.size.height = 200 - offset.y;
+//        self.headerImageView.frame = rect;
+//    }
 }
 ///挂号豆
 - (IBAction)clickBeanAction:(id)sender {
@@ -414,7 +419,7 @@
 -(void)isLogin
 {
     if ([DataManager getInstance].user == nil) {
-        LoginViewController * vc = [[LoginViewController alloc] init];
+        LoginViewController * vc = [GHViewControllerLoader LoginViewController];
         vc.delegate = self;
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
@@ -423,6 +428,7 @@
 -(void) loginComplete{
     [self.tableView reloadData];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

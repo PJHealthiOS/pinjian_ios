@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"扫一扫";
     _timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(rollingAction) userInfo:nil repeats:NO];
     [_timer fire];
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
@@ -77,7 +77,7 @@
     if (_session && ![_session isRunning]) {
         [_session startRunning];
     }
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)setupCamera
