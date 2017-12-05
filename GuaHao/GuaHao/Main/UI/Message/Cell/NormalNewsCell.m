@@ -9,18 +9,24 @@
 #import "NormalNewsCell.h"
 #import "Utils.h"
 
-@implementation NormalNewsCell{
-    
-    __weak IBOutlet UILabel *titleLab;
-    __weak IBOutlet UILabel *descLab;
-    __weak IBOutlet UILabel *dateLab;
-    __weak IBOutlet UILabel *lookLab;
-    __weak IBOutlet UIImageView *img;
+@interface NormalNewsCell(){
     
 }
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
+@property (weak, nonatomic) IBOutlet UILabel *operationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *rowImage;
+
+@end
+
+@implementation NormalNewsCell
+    
+
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -31,15 +37,19 @@
  
 -(void) setCell:(MessageVO*) vo
 {
-    descLab.text = vo.content;
-    dateLab.text = vo.createDate;
-    lookLab.text = @"查看详情";
-    img.image = [UIImage imageNamed:@"common_gray_push_btn.png"];
+    self.descLabel.text = vo.content;
+    self.dateLabel.text = vo.createDate;
+    
     if (vo.type.intValue == 6 ||vo.type.intValue == 9 ||(vo.type.intValue>13&&vo.type.intValue<21)) {
-        lookLab.text = @"暂无详情";
-        img.image = [UIImage imageNamed:@""];
+        self.operationLabel.text = @"暂无详情";
+        self.rowImage.hidden = YES;
+    }else{
+        self.rowImage.hidden = NO;
+        self.operationLabel.text = @"查看详情";
+
     }
-    titleLab.attributedText = [Utils attributeString:@[vo.title] attributes:@[@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:16], NSForegroundColorAttributeName:vo.readed?[UIColor grayColor]:[UIColor blackColor]}]];
+    self.typeLabel.text = vo.title;
+//    titleLab.attributedText = [Utils attributeString:@[vo.title] attributes:@[@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:16], NSForegroundColorAttributeName:vo.readed?[UIColor grayColor]:[UIColor blackColor]}]];
 }
 
 @end

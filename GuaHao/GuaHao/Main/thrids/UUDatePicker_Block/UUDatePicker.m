@@ -134,14 +134,19 @@
         NSString *num = [NSString stringWithFormat:@"%d",i];
         [yearArray addObject:num];
     }
-    if (!self.isAccompany) {
-        timePeriodArray = [NSMutableArray arrayWithObjects:@"07:30-08:30",@"08:30-09:30",@"09:30-10:30",@"10:30-11:30",@"12:30-13:30",@"13:30-14:30",@"14:30-15:30",@"15:30-16:30", nil];
-//        if (self.isUseSocialCard) {
-//            timePeriodArray = [NSMutableArray arrayWithObjects:@"上午",@"下午", nil];
-//
-//        }
-    }else{
+    if (!self.isAccompany) {////普通号
+        if (self.isUseSocialCard) {///预约
+            timePeriodArray = [NSMutableArray arrayWithObjects:@"上午",@"下午", nil];
+
+        }else{
+            timePeriodArray = [NSMutableArray arrayWithObjects:@"07:30-08:30",@"08:30-09:30",@"09:30-10:30",@"10:30-11:30",@"12:30-13:30",@"13:30-14:30",@"14:30-15:30",@"15:30-16:30", nil];
+
+        }
         
+        
+        
+    }else{
+        ////陪诊
         timePeriodArray = [NSMutableArray arrayWithObjects:@"07:00",@"07:30",@"08:00",@"08:30",@"09:00",@"09:30",@"10:00",@"10:30",@"11:00",@"11:30",@"12:00",@"12:30",@"13:00",@"13:30",@"14:00",@"14:30",@"15:00",@"15:30",@"16:00",@"16:30",@"17:00",@"17:30",@"18:00", nil];
     }
     if(_isSerious){
@@ -155,16 +160,7 @@
         self.maxLimitDate = [self dateFromString:@"204912312359" withFormat:@"yyyyMMddHHmm"];
         maxDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.maxLimitDate];
     }
-//    //最小限制
-//    if (self.minLimitDate) {
-//        if(self.datePickerStyle == UUDateStyle_TimeQuantum){
-//            self.minLimitDate = [[NSDate date]dateByAddingTimeInterval:0];
-//        }
-//        minDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.minLimitDate];
-//    }else{
-//        self.minLimitDate = [self dateFromString:@"197001010000" withFormat:@"yyyyMMddHHmm"];
-//        minDateModel = [[UUDatePicker_DateModel alloc]initWithDate:self.minLimitDate];
-//    }
+
     
     //最小限制
     if (self.minLimitDate) {
@@ -206,16 +202,19 @@
             
             if (self.startByHalfDay == 0) {///不加时间
                 if (minDateModel.hour.intValue >= 15) {///大于15点
-                    self.minLimitDate = tomorrowDate;
                     
                     if (self.isUseSocialCard) {
-                        self.minLimitDate = [self.minLimitDate dateByAddingTimeInterval:24 * 60 * 60];
-                        
+                        self.minLimitDate = [tomorrowDate dateByAddingTimeInterval:24*60*60];
+//                        self.minLimitDate = [[NSDate date]dateByAddingTimeInterval:24 * 60 * 60 *2];
+
+                    }else{
+                        self.minLimitDate = tomorrowDate;
+
                     }
                     
                 }else{////小于15点
                     if (self.isUseSocialCard) {
-                        self.minLimitDate = [[NSDate date]dateByAddingTimeInterval:24 * 60 * 60];
+                        self.minLimitDate = [[NSDate date]dateByAddingTimeInterval:24 * 60 * 60 *2];
                         
                     }
                 }
@@ -223,7 +222,7 @@
                 
             }else{///加的有时间
                 
-                NSTimeInterval  oneDay = 24*60*60* (self.startByHalfDay/2.0 + (self.isUseSocialCard?1:0));
+                NSTimeInterval  oneDay = 24*60*60* (self.startByHalfDay/2.0 + (self.isUseSocialCard?0:0));
                 
                 NSDate *aimDate = [tomorrowDate dateByAddingTimeInterval:oneDay];
                 
@@ -355,11 +354,17 @@
         dateShow = date;
     }else{
         
+        if (self.startByHalfDay > 0) {///有时间间隔
+            NSTimeInterval  oneDay = 24*60*60* (self.startByHalfDay/2 + (self.isUseSocialCard?0:0));
+            dateShow = [[NSDate date]initWithTimeIntervalSinceNow:oneDay];
+            NSLog(@"aaaaaaaaaaaaaaaaaa%@",dateShow);
+        }else{
+            NSTimeInterval  oneDay = 24*60*60* (0 + (self.isUseSocialCard?1:0));
+            dateShow = [[NSDate date]initWithTimeIntervalSinceNow:oneDay];
+            NSLog(@"aaaaaaaaaaaaaaaaaa%@",dateShow);
+        }
         
         
-        NSTimeInterval  oneDay = 24*60*60* (self.startByHalfDay/2 + (self.isUseSocialCard?1:0));
-        dateShow = [[NSDate date]initWithTimeIntervalSinceNow:oneDay];
-        NSLog(@"aaaaaaaaaaaaaaaaaa%@",dateShow);
         
     }
     
@@ -541,7 +546,9 @@
             NSLog(@"----选的时间----%@年%@月%@日%@",year,month,day,period);
 
             isPeriodMore = YES;
-            
+            if (self.isUseSocialCard) {
+                periodIndex = 0;
+            }
         }else{
 
             if(model.hour.intValue<7){
@@ -562,7 +569,14 @@
                 periodIndex = 7;
             }
             
-            
+            if (self.isUseSocialCard) {
+                if(model.hour.intValue<10){
+                    periodIndex = 0;
+                }else{
+                    periodIndex = 0;
+                }
+                
+            }
             period    = [NSNumber numberWithInteger:periodIndex];
             curPeriodIndex = periodIndex;
             
@@ -1121,9 +1135,18 @@
         if(day.intValue == 1){
             return YES;
         }
-        if(day.intValue == 2&&periodIndex<4){
-            return YES;
+        if (day.intValue == 2) {///上午
+            if (self.isUseSocialCard) {////医保卡
+                if (periodIndex == 0) {
+                    return YES;
+                }
+            }else{
+                if(periodIndex<4){
+                    return YES;
+                }
+            }
         }
+        
         if(day.intValue == 3&&periodIndex>3){
             return YES;
         }

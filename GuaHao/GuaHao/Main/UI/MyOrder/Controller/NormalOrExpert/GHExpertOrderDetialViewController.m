@@ -187,7 +187,7 @@
     self.info_price_label.text = [NSString stringWithFormat:@"%@元",orderFee];
     
     self.info_discount_label.text = [NSString stringWithFormat:@"(%@)陪诊费%.1f折",_orderVO.discountName ? _orderVO.discountName :@"无会员",_orderVO.discountRate.floatValue* 10];
-    self.info_discount_number_lanel.text = [NSString stringWithFormat:@"-%@元",_orderVO.discountMoney];
+    self.info_discount_number_lanel.text = [NSString stringWithFormat:@"-%.2f元",_orderVO.discountMoney.floatValue];
 
     self.info_quan_label.text = [NSString stringWithFormat:@"%@",couponseName];
     self.info_quan_number_label.text = [NSString stringWithFormat:@"-%@元",couponsePay];
@@ -677,70 +677,6 @@
 {
     countdownTimer  = nil;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

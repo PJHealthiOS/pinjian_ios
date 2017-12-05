@@ -58,7 +58,7 @@
                     weakSelf.bannerArr = [NSMutableArray array];
                     weakSelf.imageArr = [NSMutableArray array];
                     weakSelf.illnessArr  = [NSMutableArray arrayWithArray:data[@"object"][@"illnesses"]];
-                    
+                    weakSelf.title = data[@"object"][@"name"];
                     for (NSDictionary *dic in banners) {
                         BannerVO *vo = [BannerVO mj_objectWithKeyValues:dic];
                         [weakSelf.imageArr addObject:vo.picUrl];

@@ -42,6 +42,9 @@
 
 @property(strong) NSNumber * totalFee;
 @property(strong) NSNumber * pzFee;
+@property(strong) NSNumber * regFee;
+@property(strong) NSNumber * cardFee;
+@property(strong) NSNumber * banlancePay;
 @property(strong) NSNumber * registrationFee;
 @property(strong) NSNumber * serviceFee;
 @property(strong) NSNumber * couponsePay;
@@ -78,7 +81,7 @@
 @property(strong) NSNumber * discountRate;//折扣
 @property(strong) NSNumber * discountMoney;//折扣的钱
 @property(copy) NSString * discountName;
-
+@property(strong) NSNumber * visitType;///订单类型 0普通号1预约号
 
 
 

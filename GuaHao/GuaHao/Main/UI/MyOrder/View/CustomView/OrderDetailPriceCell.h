@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderDetailPriceCell : UITableViewCell
--(void)loadCellWith:(NSString *)typeStr valueStr:(NSString *)valueStr hidden:(BOOL)hidden;
+-(void)loadCellWith:(NSString *)typeStr valueStr:(NSString *)valueStr hidden:(BOOL)hidden gary:(BOOL)gary;
 @end

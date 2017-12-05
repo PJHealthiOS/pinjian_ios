@@ -1,18 +1,15 @@
 //
-//  SpecialDiscountListViewController.h
+//  NormalDiscountListViewController.h
 //  GuaHao
 //
-//  Created by PJYL on 2017/7/25.
+//  Created by PJYL on 2017/11/6.
 //  Copyright © 2017年 pinjian. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "UsedCouponsVO.h"
 typedef void(^CouponSelectAction)(UsedCouponsVO *selectCoupon);
-@interface SpecialDiscountListViewController : UIViewController
+@interface NormalDiscountListViewController : UIViewController
 @property (nonatomic, copy)CouponSelectAction myAction;
 -(void)selectCouponAction:(CouponSelectAction)action;
-
-@property (nonatomic, copy) NSString *orderID;
-
 @end

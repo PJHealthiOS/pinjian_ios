@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,18 +15,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWw-VY-cup">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="挂号费用" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWw-VY-cup">
+                        <rect key="frame" x="15" y="11.5" width="80" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Kyl-KT-qUA"/>
+                            <constraint firstAttribute="width" constant="80" id="VDS-q0-U6F"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F28-GQ-NQe">
+                        <rect key="frame" x="263" y="11.5" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Ph3-ds-Rdd"/>
                         </constraints>
@@ -31,17 +37,27 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(请至医院挂号窗口缴费)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgv-ke-j0N">
+                        <rect key="frame" x="121" y="11" width="132" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="k9o-yK-MdN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="F28-GQ-NQe" firstAttribute="leading" secondItem="JWw-VY-cup" secondAttribute="trailing" constant="10" id="E0c-Hu-d2O"/>
                     <constraint firstItem="JWw-VY-cup" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="HwR-DY-ZFz"/>
                     <constraint firstItem="F28-GQ-NQe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Juv-TM-hGt"/>
-                    <constraint firstItem="F28-GQ-NQe" firstAttribute="width" secondItem="JWw-VY-cup" secondAttribute="width" id="NFs-bO-hFq"/>
                     <constraint firstItem="JWw-VY-cup" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dl8-nc-jYI"/>
                     <constraint firstAttribute="trailing" secondItem="F28-GQ-NQe" secondAttribute="trailing" constant="15" id="gWv-if-wAH"/>
+                    <constraint firstItem="F28-GQ-NQe" firstAttribute="leading" secondItem="bgv-ke-j0N" secondAttribute="trailing" constant="10" id="iih-br-GJf"/>
+                    <constraint firstItem="bgv-ke-j0N" firstAttribute="centerY" secondItem="F28-GQ-NQe" secondAttribute="centerY" id="zBJ-BA-fzx"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="middleLabel" destination="bgv-ke-j0N" id="INQ-W5-Mg1"/>
                 <outlet property="typeLabel" destination="JWw-VY-cup" id="SWB-tz-a0K"/>
                 <outlet property="valueLabel" destination="F28-GQ-NQe" id="ahd-FN-IgI"/>
             </connections>

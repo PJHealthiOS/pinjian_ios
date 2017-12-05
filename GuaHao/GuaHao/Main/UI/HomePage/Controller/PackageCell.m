@@ -14,6 +14,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *packageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *desclabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
+
+
 @property (strong, nonatomic)PackageVO *_vo;
 @end
 
@@ -26,8 +31,12 @@
 -(void)layoutSubviewWithVO:(PackageVO *)vo{
     self._vo = vo;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:vo.img] placeholderImage:nil];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(explainClick:)];
+    [self.iconView addGestureRecognizer:tap];
     self.typeLabel.text = vo.title;
     self.packageLabel.text = vo.name;
+    self.desclabel.text = vo.subtitle;
+    self.priceLabel.text = vo.price;
 }
 -(void)packageSelectAction:(SelectActionBlock)block{
     self.myBlock = block;
@@ -35,7 +44,8 @@
 - (IBAction)selectAction:(UIButton *)sender {
     self.myBlock(self._vo);
 }
-- (IBAction)explainAction:(id)sender {
+
+- (IBAction)explainClick:(id)sender {
     SeriousPackageAlterView *alter = [[SeriousPackageAlterView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [alter layoutSubviewWithVO:self._vo];
     [alter selectImmediately:^(BOOL result) {
@@ -46,6 +56,7 @@
     [[self getCurrentVC].view addSubview:alter];
     
 }
+
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {
         

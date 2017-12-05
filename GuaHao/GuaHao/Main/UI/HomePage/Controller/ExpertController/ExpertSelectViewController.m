@@ -129,13 +129,12 @@
                 if (data[@"object"]!=nil&&data[@"object"]!=[NSNull class]) {
                     NSArray * arr = data[@"object"];
                     if ((arr == nil||arr.count==0)&&!isMore) {
-                        [self inputToast:@"没有搜索到相关医院！"];
+                        [self inputToast:@"没有搜索到相关医生或医院！"];
                     }
                     for (int i = 0; i<arr.count; i++) {
                         SearchVO *hos = [SearchVO mj_objectWithKeyValues:arr[i]];
                         [searchData addObject:hos];
                     }
-                    //                    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
                     [searchDisplayController.searchResultsTableView reloadData];
                 }
                 
@@ -324,6 +323,7 @@
     [self.view bringSubviewToFront:self.searchView];
     
     _searchBar.hidden = NO;
+    _searchBar.placeholder = @"搜索医院、医生";
     _btnSearch.hidden = YES;
     [searchDisplayController setActive:YES];
     [_searchBar becomeFirstResponder];
@@ -402,8 +402,8 @@
 {
     
     if(vo == nil){
-        [_btnHospital setTitle:@"所有医院" forState:UIControlStateNormal];
-        [_btnHospital setTitle:@"所有医院" forState:UIControlStateSelected];
+        [_btnHospital setTitle:@"所有医院▼" forState:UIControlStateNormal];
+        [_btnHospital setTitle:@"所有医院▲" forState:UIControlStateSelected];
     }else{
         [_btnHospital setTitle:vo.name forState:UIControlStateNormal];
         [_btnHospital setTitle:vo.name forState:UIControlStateSelected];
@@ -411,15 +411,15 @@
     [_btnHospital setImage:nil forState:UIControlStateNormal];
     [_btnHospital setImage:nil forState:UIControlStateSelected];
     
-    [_btnDepartment setTitle:@"科室" forState:UIControlStateNormal];
-    [_btnDepartment setTitle:@"科室" forState:UIControlStateSelected];
-    [_btnDepartment setImage:[UIImage imageNamed:@"order_expert_down_image0.png"] forState:UIControlStateNormal];
-    [_btnDepartment setImage:[UIImage imageNamed:@"order_expert_up_images.png"] forState:UIControlStateSelected];
+    [_btnDepartment setTitle:@"科室▼" forState:UIControlStateNormal];
+    [_btnDepartment setTitle:@"科室▲" forState:UIControlStateSelected];
+//    [_btnDepartment setImage:[UIImage imageNamed:@"order_expert_down_image0.png"] forState:UIControlStateNormal];
+//    [_btnDepartment setImage:[UIImage imageNamed:@"order_expert_up_images.png"] forState:UIControlStateSelected];
     
-    [_btnDate setTitle:@"日期" forState:UIControlStateNormal];
-    [_btnDate setTitle:@"日期" forState:UIControlStateSelected];
-    [_btnDate setImage:[UIImage imageNamed:@"order_expert_down_image0.png"] forState:UIControlStateNormal];
-    [_btnDate setImage:[UIImage imageNamed:@"order_expert_up_images.png"] forState:UIControlStateSelected];
+    [_btnDate setTitle:@"日期▼" forState:UIControlStateNormal];
+    [_btnDate setTitle:@"日期▲" forState:UIControlStateSelected];
+//    [_btnDate setImage:[UIImage imageNamed:@"order_expert_down_image0.png"] forState:UIControlStateNormal];
+//    [_btnDate setImage:[UIImage imageNamed:@"order_expert_up_images.png"] forState:UIControlStateSelected];
     
     _btnHospital.selected = NO;
     _btnDepartment.selected = NO;
@@ -438,10 +438,10 @@
     [_btnDepartment setImage:nil forState:UIControlStateNormal];
     [_btnDepartment setImage:nil forState:UIControlStateSelected];
     
-    [_btnDate setTitle:@"日期" forState:UIControlStateNormal];
-    [_btnDate setTitle:@"日期" forState:UIControlStateSelected];
-    [_btnDate setImage:[UIImage imageNamed:@"order_expert_down_image0.png"] forState:UIControlStateNormal];
-    [_btnDate setImage:[UIImage imageNamed:@"order_expert_up_images.png"] forState:UIControlStateSelected];
+    [_btnDate setTitle:@"日期▼" forState:UIControlStateNormal];
+    [_btnDate setTitle:@"日期▲" forState:UIControlStateSelected];
+//    [_btnDate setImage:[UIImage imageNamed:@"order_expert_down_image0.png"] forState:UIControlStateNormal];
+//    [_btnDate setImage:[UIImage imageNamed:@"order_expert_up_images.png"] forState:UIControlStateSelected];
     
     _btnHospital.selected = NO;
     _btnDepartment.selected = NO;

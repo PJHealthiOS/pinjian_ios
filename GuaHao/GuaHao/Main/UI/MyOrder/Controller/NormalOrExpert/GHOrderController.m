@@ -259,9 +259,9 @@
     
     OrderListVO *order = [orders objectAtIndex:indexPath.row];
     if (order.orderType.intValue == 0) {
-        PayViewController * view = [GHViewControllerLoader PayViewController];
-        view.isExpert = NO;
+        NormalOrderPayViewController * view = [GHViewControllerLoader NormalOrderPayViewController];
         view.orderID = order.id;
+        view.isScoialCard = order.visitType.boolValue;
         [self.navigationController pushViewController:view animated:YES];
 
     }else{

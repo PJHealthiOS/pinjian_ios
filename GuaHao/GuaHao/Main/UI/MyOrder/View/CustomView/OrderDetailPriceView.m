@@ -42,9 +42,9 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *dic = [self.sourceArr objectAtIndex:indexPath.row];
-
+    
     OrderDetailPriceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"OrderDetailPriceCell"];
-    [cell loadCellWith:[dic objectForKey:@"type"] valueStr:[dic objectForKey:@"value"] hidden:[[dic objectForKey:@"hidden"] isEqualToString:@"0"]];
+    [cell loadCellWith:[dic objectForKey:@"type"] valueStr:[dic objectForKey:@"value"] hidden:[[dic objectForKey:@"hidden"] isEqualToString:@"0"] gary:[[dic objectForKey:@"gary"] isEqualToString:@"1"]];
     return cell;
 }
 

@@ -1,16 +1,16 @@
 //
-//  SpecialDiscountListViewController.m
+//  NormalDiscountListViewController.m
 //  GuaHao
 //
-//  Created by PJYL on 2017/7/25.
+//  Created by PJYL on 2017/11/6.
 //  Copyright © 2017年 pinjian. All rights reserved.
 //
 
-#import "SpecialDiscountListViewController.h"
+#import "NormalDiscountListViewController.h"
 #import "HDiscountListCell.h"
 #import "UITableView+MJ.h"
 #import "HtmlAllViewController.h"
-@interface SpecialDiscountListViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface NormalDiscountListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation SpecialDiscountListViewController
+@implementation NormalDiscountListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +39,7 @@
 -(void)loadNewData{
     self.pageNumber = 1;
     [self getCoupon];
-
+    
 }
 -(void)loadMoreData{
     self.pageNumber ++;
@@ -53,7 +53,7 @@
 -(void) getCoupon
 {
     __weak typeof(self) weakSelf = self;
-    [[ServerManger getInstance] getSpecialCouponslistPageNo:self.pageNumber orderID:self.orderID andCallback:^(id data) {
+    [[ServerManger getInstance] getNormalCouponslistPageNo:self.pageNumber andCallback:^(id data) {
         if (self.pageNumber == 1) {
             [_tableView.mj_header endRefreshing];
         }else{
@@ -69,7 +69,7 @@
                     
                     if (arr.count > 0) {
                         if (weakSelf.pageNumber == 1) {
-
+                            
                             weakSelf.sourceArr = [NSMutableArray array];
                             for (int i = 0; i<arr.count; i++) {
                                 
@@ -79,7 +79,7 @@
                             
                             [weakSelf.tableView reloadData];
                         }else{
-
+                            
                             for (int i = 0; i<arr.count; i++) {
                                 
                                 UsedCouponsVO * vo = [UsedCouponsVO mj_objectWithKeyValues:arr[i]];
@@ -139,14 +139,4 @@
     view.mUrl = @"http://www.pjhealth.com.cn/htmldoc/couponsUrl.html";
     [self.navigationController pushViewController:view animated:YES];
 }
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 @end

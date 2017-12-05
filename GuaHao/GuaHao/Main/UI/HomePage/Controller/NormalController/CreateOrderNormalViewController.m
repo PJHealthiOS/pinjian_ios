@@ -34,7 +34,6 @@
 #import "OrderReviseView.h"
 #import "TipSureView.h"
 #import "AddPersonViewController.h"
-#import "PayViewController.h"
 #import "GHOrderTypeChooseController.h"
 #import "AppointmentViewController.h"
 #import "PonitViewController.h"
@@ -161,7 +160,7 @@
 }
 -(void)updateSource{
     self.dataSource = [NSMutableArray array];
-    NSArray *hospitalArr = @[@{@"type":@"order_hospital.png",@"value":@"请选择就诊医院"},@{@"type":@"order_department.png",@"value":@"请选择就诊科室"},@{@"type":@"order_date.png",@"value":@"请选择时间"},@{@"type": @"order_warning.png",@"value":[_level isEqualToString:@"0"] ? @"该时间为品简专员为您挂号的时间段，挂号成功后，请于挂号当日该时间段内联系专员到院取号就诊。" :@"该时间为您预约就诊的时间，预约成功后，在该时间段内到院自行挂号就诊即可"}];
+    NSArray *hospitalArr = @[@{@"type":@"order_hospital.png",@"value":@"请选择就诊医院"},@{@"type":@"order_department.png",@"value":@"请选择就诊科室"},@{@"type":@"order_date.png",@"value":@"请选择时间"},@{@"type": @"order_warning.png",@"value":[_level isEqualToString:@"0"] ? @"该时间为品简专员为您挂号的时间段，挂号成功后，请于挂号当日该时间段内联系专员到院取号就诊。" :@"该时间为您预约就诊的时间，预约成功后，请在规定时间段到医院挂号就诊"}];
     NSArray *PersonArr = @[@{@"type":@"order_person.png",@"value":@"请选择就诊人"},@{@"type":@"order_phoneNumber.png",@"value":@"手机号"}];
     NSArray *feeArr = @[@{@"type":@"挂号费用",@"value":@"0 元"},@{@"type":@"陪诊服务",@"value":@""}];
     NSArray *payArr = @[@{@"type":@"总计",@"value":@"0 元"},@{@"type":@"支付方式",@"value":[_level isEqualToString:@"0"] ? @"在线支付":@"到院支付"}];
@@ -325,7 +324,7 @@
     dic[@"hospitalId"] = [NSString stringWithFormat:@"%@",_hospital.id];
     dic[@"departmentId"] = [NSString stringWithFormat:@"%@",_department.id];
     dic[@"registrationFee"] = [[self getLabelValueWithSection:2 row:0]substringToIndex:2];
-    dic[@"serviceFee"] = infoVO.serviceFee.stringValue;
+    dic[@"serviceFee"] = [NSString stringWithFormat:@"%d", _department.serviceFee.intValue];
     dic[@"visitType"] = _level;
     dic[@"visitDate"] = [self getLabelValueWithSection:0 row:2];
     dic[@"patientComments"] = [self getLabelValueWithSection:4 row:0];
@@ -353,9 +352,10 @@
 
 -(void)onBack{
     
-    if([_level isEqualToString:@"0"] && [[self getLabelValueWithSection:3 row:1]isEqualToString:@"在线支付"]){
-        PayViewController * view = [GHViewControllerLoader PayViewController];
+    if([[self getLabelValueWithSection:3 row:1]isEqualToString:@"在线支付"]){
+        NormalOrderPayViewController * view = [GHViewControllerLoader NormalOrderPayViewController];
         view.orderID = orderID;
+        view.isScoialCard = self.rightButton.selected;
         [self.navigationController pushViewController:view animated:YES];
     }else{
         GHNormalOrderDetialViewController * view = [GHViewControllerLoader GHNormalOrderDetialViewController];
@@ -488,6 +488,7 @@
     }else if (cellType == 1) {
         CreateOrderPriceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"CreateOrderPriceCell"];
         [CreateOrderPriceCell renderCell:cell typeStr:typeName valueStr:valueName];
+        cell.middleLabel.hidden = !(indexPath.section == 2 && self.rightButton.selected);
         return cell;
         
     }else if (cellType == 2) {
@@ -688,7 +689,7 @@
 }
 -(NSAttributedString *)getAttributedStr{
     if (_department.serviceFee.floatValue > 0) {
-        NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",_department.serviceFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor redColor]}];
+        NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",_department.serviceFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:UIColorFromRGB(0x45c768)}];
         return nameString;
         
         
@@ -798,9 +799,12 @@
 
     [self updateTableViewWithSection:0 row:1 key:@"value" newValue:vo.name];
     [self updateTableViewWithSection:4 row:0 key:@"value" newValue:@""];
-    [self updateTableViewWithSection:3 row:0 key:@"value" newValue: [NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue + infoVO.totalFee.intValue]];
-    if (vo.serviceFee.intValue > 1 && [_level isEqualToString:@"0"]) {///只能在线支付
+    
+    [self updateTableViewWithSection:3 row:0 key:@"value" newValue:self.rightButton.isSelected ? [NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue > 1 ? vo.serviceFee.intValue: infoVO.totalFee.intValue] : [NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue + infoVO.totalFee.intValue]];
+    if (vo.serviceFee.intValue > 1 ) {///只能在线支付
         [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"在线支付"];
+    }else{
+        [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"到院支付"];
     }
     [self choseDate];
 }
@@ -1061,7 +1065,7 @@
                          if(infoVO.isFirstOrder&&(!_patientVO.idcard||_patientVO.idcard.length==0)){
                          }
                      }
-                     if (weakSelf.LeftButton.selected) {///如果选中左边
+                     if (weakSelf.LeftButton.selected) {///如果
                          [weakSelf updateTableViewWithSection:3 row:1 key:@"value" newValue:infoVO.defPayType.intValue == 1 ? @"在线支付":@"到院支付" ];
                      }
                      NSString *orderPrice = [NSString stringWithFormat:@"%@ 元",infoVO.normalPrice];

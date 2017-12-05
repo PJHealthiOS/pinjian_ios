@@ -697,10 +697,11 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if (type == 4){///特色科室
         NSLog(@"特色科室");
-        SpecialListViewController *vc = [GHViewControllerLoader SpecialListViewController];
-        [self.navigationController pushViewController:vc animated:YES];
+         self.tabBarController.selectedIndex = 2;
+//        SpecialListViewController *vc = [GHViewControllerLoader SpecialListViewController];
+//        [self.navigationController pushViewController:vc animated:YES];
     }else{//健康资讯更多
-        self.tabBarController.selectedIndex = 2;
+        self.tabBarController.selectedIndex = 3;
     }
 }
 
@@ -768,8 +769,18 @@
                     [weakSelf accompany];
                 }else if ([funStr hasSuffix:@"healthOrder"]) {///健康管理
                     [weakSelf.navigationController pushViewController:[GHViewControllerLoader HealthManagerViewController] animated:YES];
-                }else if ([funStr hasSuffix:@"specialOrder"]) {///特色科室
-                    [weakSelf.navigationController pushViewController:[GHViewControllerLoader SpecialListViewController] animated:YES];
+                }else if ([funStr containsString:@"specialOrder"]) {///特色科室
+                    if ([funStr containsString:@"specialOrder&id="]) {///指定科室
+                        ///先获取id，在跳转
+                        NSString *idStr = [[funStr componentsSeparatedByString:@"specialOrder&id="]lastObject];
+                        SpecialDepViewController *depVC = [GHViewControllerLoader SpecialDepViewController];
+                        depVC._id = [NSNumber numberWithInt:idStr.intValue];
+                        [weakSelf.navigationController pushViewController:depVC animated:YES];
+                    }else{
+                        [weakSelf.navigationController pushViewController:[GHViewControllerLoader SpecialListViewController] animated:YES];
+
+                    }
+                    
                 }
             }];
             [self.navigationController pushViewController:controller animated:YES];

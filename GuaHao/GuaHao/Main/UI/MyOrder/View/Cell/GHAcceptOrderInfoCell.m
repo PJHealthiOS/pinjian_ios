@@ -34,7 +34,7 @@
     // Initialization code
 }
 + (instancetype)renderCell:(GHAcceptOrderInfoCell *)cell order:(AcceptOrderVO *)order{
-        cell.personTypeLabel.text = order.patientIdcard.length < 15 ? @"护照编号":@"身份证号";
+    cell.personTypeLabel.text = order.patientIdcard.length < 15 ? @"护照编号":@"身份证号";
     cell.orderTypeLabel.text = order.outpatientType;
     cell.orderNomberLabel.text = order.serialNo;
     cell.hospitalLabel.text = order.hospName;

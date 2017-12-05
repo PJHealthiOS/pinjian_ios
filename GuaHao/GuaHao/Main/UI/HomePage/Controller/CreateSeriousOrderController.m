@@ -21,10 +21,12 @@
 #import "ExpertView.h"
 #import "ImageLookViewController.h"
 #import "HtmlAllViewController.h"
+#import "OrderSureView.h"
 @interface CreateSeriousOrderController ()<AddPatientDelegate,UITextFieldDelegate,UITextViewDelegate,UIActionSheetDelegate,TZImagePickerControllerDelegate>{
     UUDatePicker *datePicker2;
     CustomUIActionSheet * sheet;
     BOOL isPhoto;
+    OrderSureView *       sureView;
 
 
 }
@@ -38,6 +40,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *expertScrollView;
 @property (weak, nonatomic) IBOutlet UITextView *otherExpertTextView;
 @property (weak, nonatomic) IBOutlet UILabel *remarkPlaceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *remarkPlaceLabel2;
+
 @property (weak, nonatomic) IBOutlet UILabel *otherExpertPlaceLabel;
 @property (copy, nonatomic) NSString *startDateStr;
 @property (copy, nonatomic) NSString *endDateStr;
@@ -104,7 +108,7 @@
      __weak typeof(self) weakSelf = self;
     [packgeVC packgeSelectAction:^(PackageVO *selectVO) {
 //        NSLog(@"选的什么套餐------%@",selectVO.name);
-        weakSelf.packgeLabel.text = selectVO.name;
+        weakSelf.packgeLabel.text = [NSString stringWithFormat:@"%@-%@",selectVO.name,selectVO.title] ;
         weakSelf.selectPackageVO = selectVO;
     }];
     [self.navigationController pushViewController:packgeVC animated:YES];
@@ -213,8 +217,10 @@
     if (textView.tag == 70011) {///并请备注
         if (textView.text.length >0) {
             self.remarkPlaceLabel.hidden = YES;
+            self.remarkPlaceLabel2.hidden = YES;
         }else{
             self.remarkPlaceLabel.hidden = NO;
+            self.remarkPlaceLabel2.hidden = NO;
         }
 
     }else{//添加其他专家
@@ -429,7 +435,21 @@
 ///提交订单
 - (IBAction)submitAction:(id)sender {
     [self.view endEditing:YES];
-    [self crateOeder];
+    
+    
+    if(!sureView){
+        CGRect frame = self.view.frame;
+        sureView = [[OrderSureView alloc] initWithFrame:frame];
+    }
+    [sureView setName:self.selectPackageVO.name content:[NSString stringWithFormat:@"%@,您好!您的申请信息已经提交成功，品简客服人员稍后将电话为您确认详情信息，请保持电话畅通！ ",self.selectPatientVO.name] fromNormal:NO];
+    [sureView clickSureAction:^(BOOL result) {
+       [self crateOeder];
+    }];
+    [self.view addSubview:sureView];
+    
+    
+    
+    
 }
 ///获取用户列表
 -(void)crateOeder{
@@ -453,7 +473,7 @@
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     dic[@"patientId"] = self.selectPatientVO.id;
     dic[@"mobile"] = self.phoneTextField.text;
-    dic[@"packageName"] = self.selectPackageVO.name;
+    dic[@"packageName"] = [NSString stringWithFormat:@"%@-%@",self.selectPackageVO.name,self.selectPackageVO.title] ;
     if (self.selectDoctorArr.count > 0) {
         NSMutableArray *idArr = [NSMutableArray array];
         for (DoctorVO *doctor in self.selectDoctorArr) {

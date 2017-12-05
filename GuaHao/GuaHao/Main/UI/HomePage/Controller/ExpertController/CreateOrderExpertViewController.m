@@ -472,7 +472,7 @@
         CGRect frame = self.view.frame;
         sureView = [[OrderSureView alloc] initWithFrame:frame];
     }
-    NSString *str = [NSString stringWithFormat:@"%@，您好！您预约的订单已经提交成功请尽快支付完成预约。",_patientVO.name];
+    NSString *str = [NSString stringWithFormat:@"%@，您好！您预约的订单已经提交成功，请在30分钟内完成在线支付，逾期系统将自动转为到院支付。",_patientVO.name];
     [sureView setName:@"" content:str fromNormal:NO];
     [sureView clickSureAction:^(BOOL result) {
         [sureView removeFromSuperview];

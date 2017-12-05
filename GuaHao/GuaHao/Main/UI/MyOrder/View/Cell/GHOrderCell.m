@@ -129,9 +129,13 @@
         }else{//预约
             self.yuyueImageView.hidden = NO;
             if (order.status.intValue == 1) {//1待客服确认
-                self.warningLabel.hidden = NO;
+                
+                [self registerNotificcation];
+                
+                
+                self.warningLabel.hidden = YES;
                 self.CreateOrderAgain.hidden = YES;
-                self.payButton.hidden = YES;
+                self.payButton.hidden = NO;
                 self.deleteButton.hidden = YES;
             }
             if (order.status.intValue == 2) {//2确认待支付

@@ -14,6 +14,7 @@
 @property(strong) NSNumber * id;
 @property(strong) NSString * serialNo;
 @property(strong) NSString * orderDetail;
+@property(strong) NSNumber * card_fee;
 @property(strong) NSNumber * reg_fee;
 @property(strong) NSNumber * service_fee;
 @property(strong) NSNumber * payRemainingTime;

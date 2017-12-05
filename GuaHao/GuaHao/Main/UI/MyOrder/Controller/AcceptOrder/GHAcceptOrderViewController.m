@@ -190,11 +190,38 @@
         //传值
         acceptDetailVC.order = _sourceArr[indexPath.row];
         [self.navigationController pushViewController:acceptDetailVC animated:YES];
+    }else if (self.contentType == ContentType_order_Normal) {
+        AcceptVO *order =_sourceArr[indexPath.row];
+        if (order.visitType.intValue == 0) {///挂号
+            NewNormalAcceptViewController * normalAccVC = [GHViewControllerLoader NewNormalAcceptViewController];
+            normalAccVC.serialNo = order.serialNo;
+            [self.navigationController pushViewController:normalAccVC animated:YES];
+
+        }else if (order.visitType.intValue == 1) {////预约
+            NewNormalCardAcceptViewController * normalCardAccVC = [GHViewControllerLoader NewNormalCardAcceptViewController];
+            normalCardAccVC.serialNo = order.serialNo;
+            [self.navigationController pushViewController:normalCardAccVC animated:YES];
+        }
     }else{
-        GHAcceptDetailViewController *acceptDetailVC = [GHViewControllerLoader GHAcceptDetailViewController];
-        //传值
-        acceptDetailVC.order = _sourceArr[indexPath.row];
-        [self.navigationController pushViewController:acceptDetailVC animated:YES];
+        AcceptVO *order =_sourceArr[indexPath.row];
+        if (order.type.intValue == 1) {///普通号
+            if (order.visitType.intValue == 0) {///挂号
+                NewNormalAcceptViewController * normalAccVC = [GHViewControllerLoader NewNormalAcceptViewController];
+                normalAccVC.serialNo = order.serialNo;
+                [self.navigationController pushViewController:normalAccVC animated:YES];
+                
+            }else if (order.visitType.intValue == 1) {////预约
+                NewNormalCardAcceptViewController * normalCardAccVC = [GHViewControllerLoader NewNormalCardAcceptViewController];
+                normalCardAccVC.serialNo = order.serialNo;
+                [self.navigationController pushViewController:normalCardAccVC animated:YES];
+            }
+        }else{
+            GHAcceptDetailViewController *acceptDetailVC = [GHViewControllerLoader GHAcceptDetailViewController];
+            //传值
+            acceptDetailVC.order = order;
+            [self.navigationController pushViewController:acceptDetailVC animated:YES];
+        }
+        
 
     }
 }

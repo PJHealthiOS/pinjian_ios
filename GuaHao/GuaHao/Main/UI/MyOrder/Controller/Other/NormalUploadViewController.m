@@ -245,21 +245,23 @@
     image = [Utils image:image rotation:UIImageOrientationRight];
     
         //上传凭证
-        [[ServerManger getInstance] normalOrderUploadTicket:_postOrderVO.id visitSeq:self.serialNoTextField.text currentVisitSeq:self.currentSerialNoTextField.text currentVisitTime:self.selectStr front:isChangeImage?self.selectImage:nil isNormalOrder:self.isNormal  andCallback:^(id data) {
+        [[ServerManger getInstance] normalOrderUploadTicket:_postOrderVO.id visitSeq:self.serialNoTextField.text currentVisitSeq:self.currentSerialNoTextField.text currentVisitTime:self.selectStr front:isChangeImage?self.selectImage:nil isNormalOrder:YES  andCallback:^(id data) {
             [self.view hideToastActivity];
             if (data!=[NSNull class]&&data!=nil) {
                 NSNumber * code = data[@"code"];
                 NSString * msg = data[@"msg"];
                 [self inputToast:msg];
-                if (self.myblock) {
-                    self.myblock(image);
-                }
-                [self.navigationController popViewControllerAnimated:YES];
+                
+                
                 if (code.intValue == 0) {
-                    
+                    if (self.myblock) {
+                        self.myblock(image);
+                    }
                 }else{
                     
                 }
+                [self.navigationController popViewControllerAnimated:YES];
+
             }
         }];
   

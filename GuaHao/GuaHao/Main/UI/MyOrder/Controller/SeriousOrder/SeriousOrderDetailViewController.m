@@ -115,6 +115,7 @@
     self.expertScrollView.showsHorizontalScrollIndicator = YES;
 }
 -(void)addStatus{
+    [self.statusBackView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSInteger count = self.orderVO.statusLogs.count;
     CGFloat originX = SCREEN_WIDTH /(count * 2.0);
     CGFloat space = SCREEN_WIDTH /count;
@@ -153,6 +154,7 @@
             if (code.intValue == 0) {
                 sender.selected = YES;
                 sender.userInteractionEnabled = NO;
+                [weakSelf getData];
             }else{
                 [weakSelf inputToast:msg];
             }

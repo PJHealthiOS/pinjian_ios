@@ -188,7 +188,7 @@
 //                        [alertView show];
 //                    }
                     
-//                    [self updateApp:versionVO.version.versionId];
+                    [self updateApp:versionVO.version.versionId];
                     
                    
                     
@@ -241,17 +241,23 @@
     return YES;
 }
 -(void)updateApp:(NSString *)versionId{
-    if (versionVO.version.isForceUpdate) {
-        if (![APP_VERSION isEqualToString:versionId] ) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"升级提示" message:@"获取最新号源信息，立刻更新！" delegate:self cancelButtonTitle:@"立即更新" otherButtonTitles:nil, nil];
-            [alertView show];
-        }
+    if (versionVO.version.isAppstoreAudit) {///yes时正在审核不提示更新
+        
     }else{
-        if (![APP_VERSION isEqualToString:versionId] ) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"升级提示" message:@"获取最新号源信息，立刻更新！" delegate:self cancelButtonTitle:@"立即更新" otherButtonTitles:@"再等等...", nil];
-            [alertView show];
+        if (versionVO.version.isForceUpdate) {
+            if (![APP_VERSION isEqualToString:versionId] ) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"升级提示" message:@"获取最新号源信息，立刻更新！" delegate:self cancelButtonTitle:@"立即更新" otherButtonTitles:nil, nil];
+                [alertView show];
+            }
+        }else{
+            if (![APP_VERSION isEqualToString:versionId] ) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"升级提示" message:@"获取最新号源信息，立刻更新！" delegate:self cancelButtonTitle:@"立即更新" otherButtonTitles:@"再等等...", nil];
+                [alertView show];
+            }
         }
     }
+    
+  
     
     
 }

@@ -14,4 +14,6 @@
 @property(nonatomic,copy)NSString * title;
 @property(nonatomic,copy)NSString * content;
 @property(nonatomic,copy)NSString * img;
+@property(nonatomic,copy)NSString * price;
+@property(nonatomic,copy)NSString * subtitle;
 @end

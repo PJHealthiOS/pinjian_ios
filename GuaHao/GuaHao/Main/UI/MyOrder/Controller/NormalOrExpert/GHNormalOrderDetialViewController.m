@@ -9,7 +9,6 @@
 #import "GHNormalOrderDetialViewController.h"
 #import "OrderVO.h"
 #import "ZoomImageView.h"
-#import "PayViewController.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import "OrderDetailPriceView.h"
 
@@ -146,11 +145,15 @@
 
     
     
-    if (self.orderVO.visitSeqNotice.length > 0 && self.orderVO.status.intValue == 4) {
+    if (self.orderVO.visitSeqNotice.length > 0 && self.orderVO.status.intValue == 4  ) {
+        if (self.orderVO.visitType.intValue == 1) {///预约
+            
+        }else{
+            self.status_progress_label.backgroundColor = UIColorFromRGB(0xf0f0f0);
+            NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[self.orderVO.visitSeqNotice dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+            self.status_progress_label.attributedText = attrStr;
+        }
         
-        self.status_progress_label.backgroundColor = UIColorFromRGB(0xf0f0f0);
-        NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[self.orderVO.visitSeqNotice dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
-        self.status_progress_label.attributedText = attrStr;
     }else{
         self.status_progress_label.backgroundColor = [UIColor whiteColor];
 
@@ -167,7 +170,7 @@
     self.patient_phone_label.text = self.orderVO.patientMobile;
     self.patient_remark_label.text = self.orderVO.patientComments;
     self.price_label.text = [NSString stringWithFormat:@"%@ 元",self.orderVO.totalFee];;
-    self.pay_type_label.text = self.orderVO.payType;
+    self.pay_type_label.text = _orderVO.payType.intValue == 2 ? @"到院支付":@"在线支付";
     
     
     //如果待挂号就显示接单这信息
@@ -310,16 +313,35 @@
         self.order_info_height.constant = self.order_info_height.constant - 230;
         [self.orderPriceView removeFromSuperview];
     }else{
-        self.price_info_height.constant = 220;
+        
+        
+        
+        
+        
+        NSString *serviceFee = [NSString stringWithFormat:@"%.2f",_orderVO.pzFee.floatValue];///陪诊费
+        NSString *orderFee = (_orderVO.payType.intValue == 1 && _orderVO.visitType.intValue == 1) ? [NSString stringWithFormat:@"%.2f(到院支付)",_orderVO.regFee.floatValue ] :  [NSString stringWithFormat:@"%.2f",_orderVO.regFee.floatValue ];///挂号费
+        NSString *cardFee = [NSString stringWithFormat:@"%.2f",_orderVO.cardFee.floatValue ];///挂号费
+
+        NSString *couponsePay = _orderVO.payType.intValue == 2 ? @"限在线支付" : [NSString stringWithFormat:@"-%.2f",_orderVO.couponsePay.floatValue];///优惠券
+        NSString *discountPay = _orderVO.payType.intValue == 2 ? @"限在线支付" : [NSString stringWithFormat:@"-%.2f",_orderVO.banlancePay.floatValue];///余额支付
+        
+        
+        NSString *actualPay = [NSString stringWithFormat:@"%.2f",_orderVO.actualPay.floatValue];///实际支付
+        NSMutableArray *reportSourceArr = [NSMutableArray arrayWithArray: @[
+  @{@"type":@"陪诊服务",@"value":serviceFee,@"hidden":@"0",@"gary":@"0"},
+  @{@"type":@"挂号费用",@"value":orderFee,@"hidden":@"0",@"gary":(_orderVO.payType.intValue == 1 && _orderVO.visitType.intValue == 1) ? @"1" : @"0"},
+  @{@"type":@"优惠券",@"value":couponsePay,@"hidden":@"1",@"gary":_orderVO.payType.intValue == 2 ? @"1":@"0"},
+  @{@"type":@"余额支付",@"value":discountPay,@"hidden":@"0",@"gary":_orderVO.payType.intValue == 2 ? @"1":@"0"},
+  @{@"type":@"实际支付",@"value":actualPay,@"hidden":@"1",@"gary":@"0"}
+  ]];
+        if (_orderVO.cardFee.floatValue > 0) {///有工本费
+            [reportSourceArr insertObject:@{@"type":@"工本费",@"value":cardFee,@"hidden":@"0",@"gary":(_orderVO.payType.intValue == 1 && _orderVO.visitType.intValue == 1) ? @"1" : @"0"} atIndex:2];
+        }
+        
+        self.price_info_height.constant = reportSourceArr.count *44;
         self.price_info_view.hidden = NO;
-        self.order_info_height.constant = self.order_info_height.constant + 230;
-        NSString *serviceFee = [NSString stringWithFormat:@"%@",[[_orderVO.orderFeeFrom objectAtIndex:0] objectForKey:@"value"]];
-        NSString *orderFee = [NSString stringWithFormat:@"%@",[[_orderVO.orderFeeFrom objectAtIndex:1] objectForKey:@"value"]];
-        NSString *couponsePay = [NSString stringWithFormat:@"%@",[[_orderVO.orderFeeTo objectAtIndex:0] objectForKey:@"value"]];
-        NSString *discountPay = [NSString stringWithFormat:@"%@",[[_orderVO.orderFeeTo objectAtIndex:1] objectForKey:@"value"]];
-        NSString *actualPay = [NSString stringWithFormat:@"%@",_orderVO.actualPay];
-        NSArray *reportSourceArr = @[@{@"type":[[_orderVO.orderFeeFrom objectAtIndex:0] objectForKey:@"name"],@"value":serviceFee,@"hidden":@"0"},@{@"type":[[_orderVO.orderFeeFrom objectAtIndex:1] objectForKey:@"name"],@"value":orderFee,@"hidden":@"1"},@{@"type":[[_orderVO.orderFeeTo objectAtIndex:0] objectForKey:@"name"],@"value":couponsePay,@"hidden":@"0"},@{@"type":[[_orderVO.orderFeeTo objectAtIndex:1] objectForKey:@"name"],@"value":discountPay,@"hidden":@"1"},@{@"type":@"实际支付",@"value":actualPay,@"hidden":@"0"}];
-        self.orderPriceView = [[OrderDetailPriceView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 40, 5 * 44)];
+        self.order_info_height.constant = self.order_info_height.constant + reportSourceArr.count *44 + 10;
+        self.orderPriceView = [[OrderDetailPriceView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 40, reportSourceArr.count *44)];
         [self.orderPriceView reloadTableViewWithSourceArr:reportSourceArr];
         [self.price_info_view addSubview:self.orderPriceView];
     }
@@ -385,6 +407,7 @@
             if (code.intValue == 0) {
                 [weakSelf inputToast:@"取消订单成功!"];
                 [weakSelf getData];
+                weakSelf.right_bottom_button.hidden = NO;
             }else{
                 [weakSelf inputToast:msg];
             }
@@ -434,10 +457,9 @@
     }
 
     if (_orderVO.status.intValue == 1) {
-        PayViewController * view = [GHViewControllerLoader PayViewController];
+        NormalOrderPayViewController * view = [GHViewControllerLoader NormalOrderPayViewController];
         view.orderID = _orderVO.id;
-        view.isExpert = NO;
-        
+        view.isScoialCard = _orderVO.visitType.boolValue;
         
         [self.navigationController pushViewController:view animated:YES];
         

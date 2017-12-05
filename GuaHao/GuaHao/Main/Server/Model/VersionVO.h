@@ -15,5 +15,6 @@
 @property(strong) NSString * versionId;
 @property(strong) NSString * downloadUrl;
 @property(strong) NSString * serverUrl;
+@property(assign) BOOL isAppstoreAudit;
 @property BOOL  isForceUpdate;
 @end

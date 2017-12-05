@@ -498,9 +498,15 @@ static ServerManger * instance;
     [self getHttp:URL.absoluteString parameters:nil version:@"3" andCallback:callback];
 }
 ///特需号优惠券
--(void) getSpecialCouponslistPageNo:(int)pageNo  andCallback: (void (^)(id  data))callback
+-(void) getSpecialCouponslistPageNo:(int)pageNo orderID:(NSString *)orderID andCallback: (void (^)(id  data))callback
 {
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@pjOrder/couponsList?pageSize=10&pageNo=%d",[ServerManger getInstance].serverURL,pageNo]];
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@pjOrder/couponsList?pageSize=10&pageNo=%d&orderId=%@",[ServerManger getInstance].serverURL,pageNo,orderID]];
+    [self getHttp:URL.absoluteString parameters:nil version:@"4" andCallback:callback];
+}
+///普通号优惠券
+-(void) getNormalCouponslistPageNo:(int)pageNo  andCallback: (void (^)(id  data))callback
+{
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@order/couponsList?pageSize=10&pageNo=%d",[ServerManger getInstance].serverURL,pageNo]];
     [self getHttp:URL.absoluteString parameters:nil version:@"4" andCallback:callback];
 }
 -(void) cancelRealnameAuth:(NSNumber*) patientID andCallback: (void (^)(id  data))callback
@@ -847,7 +853,15 @@ static ServerManger * instance;
     }
     [self postHttp:orderURL parameters:nil version:@"4" andCallback:callback];
 }
-
+///新普通号号支付
+-(void) payNormalOrder:(NSNumber*) orderID channel:(NSString*) channel couponID:(NSString *)couponID useBalance:(BOOL)useBalance andCallback: (void (^)(id  data))callback
+{
+    NSString * orderURL = [NSString stringWithFormat:@"%@order/%@/pay?channel=%@&useBalance=%@",[ServerManger getInstance].serverURL,orderID,channel,useBalance?@"1":@"0"];
+    if (couponID.length > 1) {
+        orderURL = [NSString stringWithFormat:@"%@&couponseId=%@",orderURL,couponID];
+    }
+    [self postHttp:orderURL parameters:nil version:@"4" andCallback:callback];
+}
 ///普通挂号详情
 -(void) getOrderStatus:(NSString*) serialNo longitude:(NSString*) longitude latitude:(NSString*) latitude andCallback:(void (^)(id  data))callback
 {
@@ -855,7 +869,7 @@ static ServerManger * instance;
     if (longitude.length >0) {
         urlStr = [NSString stringWithFormat:@"%@?longitude=%@&latitude=%@",urlStr,longitude,latitude];
     }
-    [self getHttp:urlStr parameters:nil version:@"3" andCallback:callback];
+    [self getHttp:urlStr parameters:nil version:@"4" andCallback:callback];
 }
 //陪诊挂号详情
 -(void) getAccDetailOrderStatus:(NSString*) serialNo longitude:(NSString*) longitude latitude:(NSString*) latitude andCallback:(void (^)(id  data))callback
@@ -879,7 +893,7 @@ static ServerManger * instance;
 -(void) acceptChangeNormalOrder:(NSNumber*) orderID accept:(NSString *) accept andCallback: (void (^)(id  data))callback
 {
     NSString * orderURL = [NSString stringWithFormat:@"%@order/%@/doFeedback?isAgree=%@",[ServerManger getInstance].serverURL,orderID,accept];
-    [self postHttp:orderURL parameters:nil version:@"3" andCallback:callback];
+    [self postHttp:orderURL parameters:nil version:@"4" andCallback:callback];
 }
 //改变订单专家用户是否同意
 -(void) acceptChangeExpertOrder:(NSNumber*) orderID accept:(NSString *) accept andCallback: (void (^)(id  data))callback
@@ -917,6 +931,16 @@ static ServerManger * instance;
 }
 
 /////普通号接单详情页
+-(void) getNormalOrderDetail:(NSString*) serialNo longitude:(NSString*) longitude latitude:(NSString*) latitude andCallback:(void (^)(id  data))callback
+{
+    NSString * urlStr = [NSString stringWithFormat:@"%@order/acceptinfo/%@",[ServerManger getInstance].serverURL,serialNo];
+    if (longitude.length >0) {
+        urlStr = [NSString stringWithFormat:@"%@?longitude=%@&latitude=%@",urlStr,longitude,latitude];
+    }
+    [self getHttp:urlStr parameters:nil version:@"3" andCallback:callback];
+}
+
+////专家号结单详情页
 -(void) getOrderDetailStatus:(NSString*) serialNo andNormalType:(BOOL)orderType longitude:(NSString*) longitude latitude:(NSString*) latitude andCallback:(void (^)(id  data))callback
 {
     NSString *typeStr = orderType ? @"order/acceptinfo" : @"pjOrder/myAcceptedOrders";
@@ -926,6 +950,7 @@ static ServerManger * instance;
     }
     [self getHttp:urlStr parameters:nil version:@"3" andCallback:callback];
 }
+
 /////万家接单详情页
 -(void) getWJOrderDetail:(NSString*) orderID  andCallback:(void (^)(id  data))callback
 {
@@ -1164,13 +1189,24 @@ static ServerManger * instance;
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@department/getTagsByHospitalDepartment?hospitalDepartmentId=%@",[ServerManger getInstance].serverURL,depID]];
     [self getHttp:URL.absoluteString parameters:nil version:@"3" andCallback:callback];
 }
-
+////专家号支付
 -(void) getPayOrderPageData:(NSNumber*) orderID isExpert:(BOOL)isExpert andCallback:(void (^)(id  data))callback
 {
     NSString * urlString = [NSString stringWithFormat:@"%@%@/%@/getPayOrderPageData",[ServerManger getInstance].serverURL,isExpert?@"pjOrder":@"order",orderID];
     [self getHttp:urlString parameters:nil version:isExpert?@"4":@"3" andCallback:callback];
 }
-
+////专家号新版本支付
+-(void) getPayExpertOrderPageData:(NSNumber*) orderID andCallback:(void (^)(id  data))callback
+{
+    NSString * urlString = [NSString stringWithFormat:@"%@pjOrder/%@/getPayOrderPageData",[ServerManger getInstance].serverURL,orderID];
+    [self getHttp:urlString parameters:nil version:@"4" andCallback:callback];
+}
+////普通号新版本支付
+-(void) getPayNormalOrderPageData:(NSNumber*) orderID andCallback:(void (^)(id  data))callback
+{
+    NSString * urlString = [NSString stringWithFormat:@"%@order/%@/getPayOrderPageData",[ServerManger getInstance].serverURL,orderID];
+    [self getHttp:urlString parameters:nil version:@"4" andCallback:callback];
+}
 -(void) fillInvitationCode:(NSString*) ids andCallback:(void (^)(id  data))callback
 {
     NSString *urlString = [[NSString stringWithFormat:@"%@user/fillInvitationCode?referrercode=%@",[ServerManger getInstance].serverURL,ids] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -1778,7 +1814,26 @@ static ServerManger * instance;
 
     [self getHttp:urlStr parameters:nil version:@"1" andCallback:callback];
 }
-
-
-
+///普通号挂号单号满
+-(void) normalOrderFullAction:(NSNumber*) orderID andCallback: (void (^)(id  data))callback
+{
+    NSString * orderURL = [NSString stringWithFormat:@"%@order/%@/noMore",[ServerManger getInstance].serverURL,orderID];
+    [self postHttp:orderURL parameters:nil version:@"4" andCallback:callback];
+    
+}
+///普通号预约完成预约
+-(void) normalOrderCompleteRegAction:(NSNumber*) orderID dateStr:(NSString *)dateStr andCallback: (void (^)(id  data))callback
+{
+    NSString * urlString = [NSString stringWithFormat:@"%@order/%@/completeReg?recommendVisitTime=%@",[ServerManger getInstance].serverURL,orderID,dateStr];
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self postHttp:urlString parameters:nil version:@"4" andCallback:callback];
+    
+}
+///普通号操作
+-(void) normalOrderOperationAction:(NSNumber*)orderID Operation:(NSString *)operation andCallback: (void (^)(id  data))callback
+{
+    NSString * orderURL = [NSString stringWithFormat:@"%@order/%@/%@",[ServerManger getInstance].serverURL,orderID,operation];
+    [self postHttp:orderURL parameters:nil version:@"4" andCallback:callback];
+    
+}
 @end

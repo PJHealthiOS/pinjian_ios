@@ -23,9 +23,18 @@
     [super awakeFromNib];
     // Initialization code
 }
--(void)loadCellWith:(NSString *)typeStr valueStr:(NSString *)valueStr hidden:(BOOL)hidden{
+-(void)loadCellWith:(NSString *)typeStr valueStr:(NSString *)valueStr hidden:(BOOL)hidden gary:(BOOL)gary{
     self.typeLabel.text = typeStr;
-    self.valueLabel.text = [NSString stringWithFormat:@"%.2f元",valueStr.doubleValue];
+    self.valueLabel.text = valueStr;
+    if (gary) {
+        self.typeLabel.textColor = [UIColor grayColor];
+        self.valueLabel.textColor = [UIColor grayColor];
+    }else{
+        self.typeLabel.textColor = [UIColor blackColor];
+        self.valueLabel.textColor = UIColorFromRGB(0xFEA44E);
+    }
+    
+    
     self.lineView.hidden = hidden;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

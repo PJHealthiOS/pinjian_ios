@@ -10,6 +10,7 @@
 #import "NSObject+MJExtension.h"
 @interface NewOrderVO : NSObject
 @property(strong) NSNumber * id;
+@property(strong) NSNumber * visitType;
 @property(strong) NSString * departmentName;
 @property(strong) NSString * hospitalName;
 @property(strong) NSString * outpatientType;

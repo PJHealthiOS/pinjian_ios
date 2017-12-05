@@ -11,5 +11,6 @@
 @interface CreateOrderPriceCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *middleLabel;
 + (instancetype)renderCell:(CreateOrderPriceCell *)cell typeStr:(NSString *)typeStr valueStr:(NSString *)valueStr;
 @end

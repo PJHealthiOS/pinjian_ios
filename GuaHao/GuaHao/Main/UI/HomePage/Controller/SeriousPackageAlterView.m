@@ -38,7 +38,7 @@
     [self removeFromSuperview];
 }
 - (IBAction)selectAction:(id)sender {
-    self.MyAction(YES);
+//    self.MyAction(YES);
     [self removeFromSuperview];
 }
 

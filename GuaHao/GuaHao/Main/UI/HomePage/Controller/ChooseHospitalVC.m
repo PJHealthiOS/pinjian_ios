@@ -45,7 +45,7 @@
 
 @implementation ChooseHospitalVC
 -(void)viewWillAppear:(BOOL)animated{
-    [super viewWillDisappear:animated];
+    [super viewWillAppear:animated];
     self.title = @"选择医院";
     self.navigationController.navigationBarHidden = NO;
 }
@@ -88,7 +88,7 @@
                         
                     }else{
                         weakSelf.countyArray = [NSMutableArray arrayWithArray:arr];
-                        
+                        [weakSelf.countyArray insertObject:@{@"id":@"",@"name":@"全城"} atIndex:0];
                         [weakSelf addCountyTableView];
                         
                     }

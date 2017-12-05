@@ -1,4 +1,4 @@
-#import "SweepViewController.h"
+#import "SweepVIewController.h"
 #import "QRCodeGenerator.h"
 #import <AVFoundation/AVFoundation.h>
 #import "UIViewController+Toast.h"
@@ -151,9 +151,9 @@
                     NSString * msg = data[@"msg"];
                     if (code.intValue == 0) {
                         AcceptOrderVO *orderVO = [AcceptOrderVO mj_objectWithKeyValues:data[@"object"]];
-                        GHAcceptDetailViewController *view = [GHViewControllerLoader GHAcceptDetailViewController];
-                        view.acceptVO = orderVO;
-                        view.isSweep = YES;
+                        NewNormalAcceptViewController *view = [GHViewControllerLoader NewNormalAcceptViewController];
+                        view.serialNo = orderVO.serialNo;
+//                        view.isSweep = YES;
                         [self.navigationController pushViewController:view animated:YES];
                     }else{
                         [self inputToast:msg];

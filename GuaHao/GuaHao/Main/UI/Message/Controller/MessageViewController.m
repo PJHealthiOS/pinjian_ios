@@ -47,7 +47,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMSGBack:) name:@"UserMSGUpdate" object:nil];
     messages = [NSMutableArray new];
     
-    [_MessageTabV registerNib:[UINib nibWithNibName:@"NormalNewsCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NormalNewsCellID"];
+//    [_MessageTabV registerNib:[UINib nibWithNibName:@"NormalNewsCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NormalNewsCellID"];
     [_MessageTabV registerNib:[UINib nibWithNibName:@"ImageNewsCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"OrderCellID"];
     [_MessageTabV registerNib:[UINib nibWithNibName:@"SystemMessageExpertSpecialCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SpecialCellID"];
 
@@ -131,12 +131,26 @@
 
 -(void) takeOrderComplete:(NewOrderVO*) vo
 {
-    GHAcceptDetailViewController *accDetailVC = [GHViewControllerLoader GHAcceptDetailViewController];
-    AcceptVO *order  = [AcceptVO mj_objectWithKeyValues:@{@"serialNo":vo.serialNo,@"type":@"1"}];
-    accDetailVC.order = order;
+    if (vo.visitType.intValue == 0) {///挂号
+        NewNormalAcceptViewController *accDetailVC = [GHViewControllerLoader NewNormalAcceptViewController];
+        accDetailVC.serialNo = vo.serialNo;
+        
+        
+        [self.navigationController pushViewController:accDetailVC animated:YES];
+        
+    }else if (vo.visitType.intValue == 1){
+        NewNormalCardAcceptViewController *accDetailVC = [GHViewControllerLoader NewNormalCardAcceptViewController];
+        accDetailVC.serialNo = vo.serialNo;
+        
+        
+        [self.navigationController pushViewController:accDetailVC animated:YES];
+    }
+//    ghacc *accDetailVC = [GHViewControllerLoader GHAcceptDetailViewController];
+//    AcceptVO *order  = [AcceptVO mj_objectWithKeyValues:@{@"serialNo":vo.serialNo,@"type":@"1"}];
+//    accDetailVC.order = order;
     
 
-    [self.navigationController pushViewController:accDetailVC animated:YES];
+//    [self.navigationController pushViewController:accDetailVC animated:YES];
 }
 
 -(void) loginComplete
@@ -151,13 +165,12 @@
     MessageVO * vo;
     if (messages.count>0) {
         vo = messages[indexPath.row];
-        if (vo.type.intValue == 0&&[self isExpert:vo.extraData]) {
-            return 250;
-        }else{
-            return 191;
-        }
+//        if (vo.type.intValue == 0&&[self isExpert:vo.extraData]) {
+//            return 250;
+//        }
     }
-    return 191;
+    CGRect rect = [vo.content boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 30, 0) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
+    return 125 + rect.size.height;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -165,25 +178,28 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    MessageVO * vo;
-    NormalNewsCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NormalNewsCellID"];
-    if (messages.count>0) {
-        vo = messages[indexPath.row];
-        if (vo.type.intValue == 0 &&[self isExpert:vo.extraData]) {
-            SystemMessageExpertSpecialCell * cell3 = [tableView dequeueReusableCellWithIdentifier:@"SpecialCellID"];
-            cell3.selectionStyle = UITableViewCellSelectionStyleNone;
-            [cell3 setCell:vo];
-            return cell3;
-        }else{
-            
-            cell.selectionStyle =UITableViewCellSelectionStyleNone;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            [cell setCell:vo];
-            return cell;
+     MessageVO * vo;
+        if (messages.count>0) {
+            vo = messages[indexPath.row];
         }
-    }
-    
+    NormalNewsCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NormalNewsCell"];
+//    if (messages.count>0) {
+//        vo = messages[indexPath.row];
+//        if (vo.type.intValue == 0 &&[self isExpert:vo.extraData]) {
+//            SystemMessageExpertSpecialCell * cell3 = [tableView dequeueReusableCellWithIdentifier:@"SpecialCellID"];
+//            cell3.selectionStyle = UITableViewCellSelectionStyleNone;
+//            [cell3 setCell:vo];
+//            return cell3;
+//        }else{
+//
+//            cell.selectionStyle =UITableViewCellSelectionStyleNone;
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            [cell setCell:vo];
+//            return cell;
+//        }
+//    }
+    [cell setCell:vo];
+
     return cell;
 }
 
@@ -257,10 +273,20 @@
 
         }else if(vo.type.intValue == 15){
             [self setRead:vo.id];
-            GHAcceptDetailViewController* view = [GHViewControllerLoader GHAcceptDetailViewController];
-            view.isNormal = YES;
-            view.serialNo = orderSerialNo;
-            [self.navigationController pushViewController:view animated:YES];
+            
+       
+                NewNormalAcceptViewController *accDetailVC = [GHViewControllerLoader NewNormalAcceptViewController];
+                accDetailVC.serialNo = orderSerialNo;
+                
+                
+                [self.navigationController pushViewController:accDetailVC animated:YES];
+                
+          
+            
+//            GHAcceptDetailViewController* view = [GHViewControllerLoader GHAcceptDetailViewController];
+//            view.isNormal = YES;
+//            view.serialNo = orderSerialNo;
+//            [self.navigationController pushViewController:view animated:YES];
         }else if(vo.type.intValue == 16 || vo.type.intValue == 28){
             [self setRead:vo.id];
             GHAcceptDetailViewController* view = [GHViewControllerLoader GHAcceptDetailViewController];

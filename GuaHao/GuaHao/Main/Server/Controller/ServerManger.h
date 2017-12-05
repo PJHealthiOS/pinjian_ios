@@ -231,9 +231,10 @@
 
 -(void) getPatient:(NSNumber*) patientID andCallback: (void (^)(id  data))callback;
 
-/////普通号接单详情页
+////专家号结单详情页
 -(void) getOrderDetailStatus:(NSString*) serialNo andNormalType:(BOOL)orderType longitude:(NSString*) longitude latitude:(NSString*) latitude andCallback:(void (^)(id  data))callback;
-
+/////普通号接单详情页
+-(void) getNormalOrderDetail:(NSString*) serialNo longitude:(NSString*) longitude latitude:(NSString*) latitude andCallback:(void (^)(id  data))callback;
 -(void) getBankInfo:(NSNumber*) bankID andCallback: (void (^)(id  data))callback;
 
 -(void) codeLogin:(NSString *) name code:(NSString *)pwd andCallback: (void (^)(id  data))callback;
@@ -387,18 +388,26 @@
 ///专家号支付
 -(void) payOrder:(NSNumber*) orderID channel:(NSString*) channel couponID:(NSString *)couponID useBalance:(BOOL)useBalance andCallback: (void (^)(id  data))callback;
 ///特需号优惠券
--(void) getSpecialCouponslistPageNo:(int)pageNo  andCallback: (void (^)(id  data))callback;
+-(void) getSpecialCouponslistPageNo:(int)pageNo orderID:(NSString *)orderID andCallback: (void (^)(id  data))callback;
 ///企业订单专员操作/acceptedOrder/{order_id}/operation
 -(void)companyOrderOperation:(NSNumber*) orderID operationID:(NSNumber*) operationID  andCallback: (void (^)(id  data))callback;
 /////企业接单详情页/2b/pjorder/acceptedOrder/{order_id}
 -(void) getCompanyOrderDetail:(NSString*) orderID  andCallback:(void (^)(id  data))callback;
+////普通号新版本支付
+-(void) getPayNormalOrderPageData:(NSNumber*) orderID andCallback:(void (^)(id  data))callback;
+////专家号新版本支付
+-(void) getPayExpertOrderPageData:(NSNumber*) orderID andCallback:(void (^)(id  data))callback;
+///新普通号号支付
+-(void) payNormalOrder:(NSNumber*) orderID channel:(NSString*) channel couponID:(NSString *)couponID useBalance:(BOOL)useBalance andCallback: (void (^)(id  data))callback;
+///普通号优惠券
+-(void) getNormalCouponslistPageNo:(int)pageNo  andCallback: (void (^)(id  data))callback;
 
-
-
-
-
-
-
+///普通号挂号单号满
+-(void) normalOrderFullAction:(NSNumber*) orderID andCallback: (void (^)(id  data))callback;
+///普通号预约完成预约
+-(void) normalOrderCompleteRegAction:(NSNumber*) orderID dateStr:(NSString *)dateStr andCallback: (void (^)(id  data))callback;
+///普通号操作
+-(void) normalOrderOperationAction:(NSNumber*)orderID Operation:(NSString *)operation andCallback: (void (^)(id  data))callback;
 
 
 
