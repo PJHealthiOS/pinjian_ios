@@ -20,8 +20,8 @@
 +(GHMySelfViewController *)GHMySelfViewController{
     return  (GHMySelfViewController *)[[self MySelfStoryBoard]instantiateViewControllerWithIdentifier:@"GHMySelfViewController"];
 }
-+(GHSettingViewController *)GHSettingViewController{
-    return  (GHSettingViewController *)[[self MySelfStoryBoard]instantiateViewControllerWithIdentifier:@"GHSettingViewController"];
++(SettingController *)SettingController{
+    return  (SettingController *)[[self MySelfStoryBoard]instantiateViewControllerWithIdentifier:@"SettingController"];
 }
 +(GHFamilyMemberViewController *)GHFamilyMemberViewController{
     return  (GHFamilyMemberViewController *)[[self MySelfStoryBoard]instantiateViewControllerWithIdentifier:@"GHFamilyMemberViewController"];

@@ -31,7 +31,7 @@
 @implementation FeedbackVC
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = NO;
     [self.textView becomeFirstResponder];
     mType =1;
     _tabView.itemTitles = @[@"建议",@"咨询",@"投诉"];
@@ -46,6 +46,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"意见反馈";
     _textView.delegate = self;
     //    手势
     UITapGestureRecognizer * Guesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(GuestureTap:)];

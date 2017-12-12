@@ -876,7 +876,6 @@
 		CB44DEDB1D7921D30094C26D /* MySelf.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB44DEDA1D7921D30094C26D /* MySelf.storyboard */; };
 		CB44DEDE1D794C3D0094C26D /* GHMySelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44DEDD1D794C3D0094C26D /* GHMySelfViewController.m */; };
 		CB44DEE01D797B310094C26D /* person_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = CB44DEDF1D797B310094C26D /* person_setting.png */; };
-		CB44DEE51D79A29A0094C26D /* GHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44DEE41D79A29A0094C26D /* GHSettingViewController.m */; };
 		CB44DEE91D79AAD60094C26D /* PersonCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44DEE71D79AAD60094C26D /* PersonCommonCell.m */; };
 		CB44DEEA1D79AAD60094C26D /* PersonCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB44DEE81D79AAD60094C26D /* PersonCommonCell.xib */; };
 		CB44DEED1D79AB0B0094C26D /* GHSettingNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44DEEC1D79AB0B0094C26D /* GHSettingNoticeCell.m */; };
@@ -952,6 +951,7 @@
 		CB7A09D41F20AFD4006D201F /* member_center_left.png in Resources */ = {isa = PBXBuildFile; fileRef = CB7A09CF1F20AFD4006D201F /* member_center_left.png */; };
 		CB7A09D51F20AFD4006D201F /* member_center_right.png in Resources */ = {isa = PBXBuildFile; fileRef = CB7A09D01F20AFD4006D201F /* member_center_right.png */; };
 		CB7D3E091DED13F0002EC13E /* GHFixPersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7D3E081DED13F0002EC13E /* GHFixPersonInfoViewController.m */; };
+		CB82E0981FDE7A6600F76A0D /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB82E0971FDE7A6600F76A0D /* SettingController.m */; };
 		CB86B37C1F21D8C8007A4F6C /* MemberCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB86B37B1F21D8C8007A4F6C /* MemberCenterModel.m */; };
 		CB86B37F1F21DD01007A4F6C /* MemberLevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB86B37E1F21DD01007A4F6C /* MemberLevelModel.m */; };
 		CB86B3821F21F10C007A4F6C /* member_center_left_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = CB86B3801F21F10C007A4F6C /* member_center_left_yes.png */; };
@@ -2370,8 +2370,6 @@
 		CB44DEDC1D794C3D0094C26D /* GHMySelfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHMySelfViewController.h; sourceTree = "<group>"; };
 		CB44DEDD1D794C3D0094C26D /* GHMySelfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMySelfViewController.m; sourceTree = "<group>"; };
 		CB44DEDF1D797B310094C26D /* person_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_setting.png; sourceTree = "<group>"; };
-		CB44DEE31D79A29A0094C26D /* GHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHSettingViewController.h; sourceTree = "<group>"; };
-		CB44DEE41D79A29A0094C26D /* GHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSettingViewController.m; sourceTree = "<group>"; };
 		CB44DEE61D79AAD60094C26D /* PersonCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCommonCell.h; sourceTree = "<group>"; };
 		CB44DEE71D79AAD60094C26D /* PersonCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCommonCell.m; sourceTree = "<group>"; };
 		CB44DEE81D79AAD60094C26D /* PersonCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCommonCell.xib; sourceTree = "<group>"; };
@@ -2483,6 +2481,8 @@
 		CB7A09D01F20AFD4006D201F /* member_center_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = member_center_right.png; sourceTree = "<group>"; };
 		CB7D3E071DED13F0002EC13E /* GHFixPersonInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHFixPersonInfoViewController.h; sourceTree = "<group>"; };
 		CB7D3E081DED13F0002EC13E /* GHFixPersonInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHFixPersonInfoViewController.m; sourceTree = "<group>"; };
+		CB82E0961FDE7A6600F76A0D /* SettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
+		CB82E0971FDE7A6600F76A0D /* SettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
 		CB86B37A1F21D8C8007A4F6C /* MemberCenterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberCenterModel.h; sourceTree = "<group>"; };
 		CB86B37B1F21D8C8007A4F6C /* MemberCenterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberCenterModel.m; sourceTree = "<group>"; };
 		CB86B37D1F21DD01007A4F6C /* MemberLevelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberLevelModel.h; sourceTree = "<group>"; };
@@ -5310,8 +5310,8 @@
 				736755EC1D85634A00381F3E /* ExpertSweepViewController.xib */,
 				CB44DEDC1D794C3D0094C26D /* GHMySelfViewController.h */,
 				CB44DEDD1D794C3D0094C26D /* GHMySelfViewController.m */,
-				CB44DEE31D79A29A0094C26D /* GHSettingViewController.h */,
-				CB44DEE41D79A29A0094C26D /* GHSettingViewController.m */,
+				CB82E0961FDE7A6600F76A0D /* SettingController.h */,
+				CB82E0971FDE7A6600F76A0D /* SettingController.m */,
 				CB44DEFC1D7AD48C0094C26D /* GHFamilyMemberViewController.h */,
 				CB44DEFD1D7AD48C0094C26D /* GHFamilyMemberViewController.m */,
 				CBEB39111D7BBFE1009FE25A /* GHPersonInfoViewController.h */,
@@ -6651,7 +6651,6 @@
 				EE6D3BF81E65190C00D7F408 /* PackageVO.m in Sources */,
 				EE6D3C051E665FDD00D7F408 /* SeriousSelectExpertViewModel.m in Sources */,
 				7308CBC71C8049C800980FF8 /* VersionVO.m in Sources */,
-				CB44DEE51D79A29A0094C26D /* GHSettingViewController.m in Sources */,
 				CB973FCC1D81526800AC52E9 /* GHSearchBar.m in Sources */,
 				735DA5301D6D9041008C7706 /* UIImage+XHGIF.m in Sources */,
 				73CCBDEF1D53484200CFEB29 /* EaseFacialView.m in Sources */,
@@ -6737,6 +6736,7 @@
 				73831EDC1CFAE19400458021 /* UIDevice+FCUUID.m in Sources */,
 				8E906E711D51F5E200613A01 /* CALayer+UIColor.m in Sources */,
 				732915231D0D58A400AB44B0 /* SelectDepartmentView.m in Sources */,
+				CB82E0981FDE7A6600F76A0D /* SettingController.m in Sources */,
 				73AD01EB1CC9FC090069DC6E /* SelfCodeViewController.m in Sources */,
 				CBE92C461EB1C4220054651E /* SeriousOrderListViewController.m in Sources */,
 				73CCBDAC1D53484200CFEB29 /* EMSDWebImageDownloaderOperation.m in Sources */,

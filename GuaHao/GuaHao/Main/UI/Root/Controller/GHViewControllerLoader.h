@@ -10,7 +10,7 @@
 #import "GHTabBarController.h"              
 
 #import "GHMySelfViewController.h"          ///个人中心
-#import "GHSettingViewController.h"         ///设置
+#import "SettingController.h"         ///设置
 #import "GHFamilyMemberViewController.h"    ///家庭成员
 #import "GHPersonInfoViewController.h"      ///家庭成员个人信息
 #import "GHRechargeViewController.h"        ///支付界面
@@ -101,7 +101,7 @@
 
 +(GHTabBarController *)baseTabBarController;
 +(GHMySelfViewController *)GHMySelfViewController;
-+(GHSettingViewController *)GHSettingViewController;
++(SettingController *)SettingController;
 +(GHFamilyMemberViewController *)GHFamilyMemberViewController;
 +(GHPersonInfoViewController *)GHPersonInfoViewController;
 +(GHRechargeViewController *)GHRechargeViewController;

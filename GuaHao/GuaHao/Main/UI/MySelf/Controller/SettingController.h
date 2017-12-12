@@ -1,9 +1,9 @@
 //
-//  GHSettingViewController.h
+//  SettingController.h
 //  GuaHao
 //
-//  Created by PJYL on 16/9/2.
-//  Copyright © 2016年 pinjian. All rights reserved.
+//  Created by PJYL on 2017/12/11.
+//  Copyright © 2017年 pinjian. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,6 +12,7 @@
 -(void)accountNumberViewDelegate;
 
 @end
-@interface GHSettingViewController : UIViewController
+@interface SettingController : UITableViewController
 @property(assign) id<AccountNumberViewDelegate> delegate;
+
 @end

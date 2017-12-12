@@ -38,7 +38,7 @@
         [passBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 //        [passBtn sizeToFit];
         [passBtn addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:passBtn];
+//        [self addSubview:passBtn];
         _passButton = passBtn;
         
     }

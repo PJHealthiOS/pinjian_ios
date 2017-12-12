@@ -791,7 +791,7 @@
 -(void)pushToHtmlAllViewControllerWithTitle:(NSString *)title URL:(NSString *)url {
     HtmlAllViewController *controller = [[HtmlAllViewController alloc] init];
     controller.isTest = YES;
-    controller.mUrl = [DataManager getInstance].user.token;
+    controller.mUrl = url;
     controller.mTitle = title;
     [self.navigationController pushViewController:controller animated:YES];
 }

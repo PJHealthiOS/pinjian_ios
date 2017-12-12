@@ -95,7 +95,7 @@
                     
                 }
             }else{
-                
+                [_tableView.mj_header endRefreshing];
             }
         }
     }];

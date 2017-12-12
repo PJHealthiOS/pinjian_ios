@@ -42,7 +42,8 @@
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = YES;
+    [super viewWillAppear:animated];
+//    self.navigationController.navigationBarHidden = YES;
     [_searchBar becomeFirstResponder];
     
 

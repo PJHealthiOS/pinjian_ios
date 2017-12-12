@@ -13,7 +13,7 @@
 #import "InformationVC.h"
 #import "PonitViewController.h"
 #import "PurseViewController.h"
-#import "GHSettingViewController.h"
+#import "SettingController.h"
 #import "GHFamilyMemberViewController.h"
 #import "PersonalCenterVO.h"
 #import "ExpertSweepViewController.h"
@@ -22,7 +22,7 @@
 #import "UIView+Shadow.h"
 #import "UITableView+MJ.h"
 #import "GHAcceptOrderViewController.h"
-@interface GHMySelfViewController ()<UITableViewDataSource,UITableViewDelegate,AccountNumberViewDelegate,LoginViewDelegate>{
+@interface GHMySelfViewController ()<UITableViewDataSource,AccountNumberViewDelegate,UITableViewDelegate,LoginViewDelegate>{
     PersonalCenterVO * personVO;
 
 }
@@ -395,7 +395,7 @@
         [self isLogin];
         return ;
     }
-    GHSettingViewController *settingVC = [GHViewControllerLoader GHSettingViewController];
+    SettingController *settingVC = [GHViewControllerLoader SettingController];
     settingVC.delegate = self;
     [self.navigationController pushViewController:settingVC animated:YES];
 }

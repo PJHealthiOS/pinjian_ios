@@ -32,11 +32,11 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = NO;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"设置登录密码";
     _poneTF.textColor = [UIColor lightGrayColor];
     
     _codeTF.textColor = [UIColor lightGrayColor];

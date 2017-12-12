@@ -41,12 +41,13 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
+    self.title = @"绑定";
+    self.navigationController.navigationBarHidden = NO;
     _isSelected = YES;
 }
 - (IBAction)onRule:(id)sender {

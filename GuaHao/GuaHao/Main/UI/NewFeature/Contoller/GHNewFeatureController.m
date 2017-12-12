@@ -36,6 +36,7 @@ static NSString *ID = @"cell";
     [super viewDidLoad];
     
     
+    
     // 注册cell,默认就会创建这个类型的cell
     [self.collectionView registerClass:[GHNewFeatureCell class] forCellWithReuseIdentifier:ID];
 
@@ -62,8 +63,25 @@ static NSString *ID = @"cell";
     control.center = CGPointMake(self.view.width * 0.5, self.view.height-30);
     _control = control;
     [self.view addSubview:control];
+    
+    UIButton *skipButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    skipButton.frame = CGRectMake(SCREEN_WIDTH - 100, SCREEN_HEIGHT - 80, 80, 30);
+    [skipButton setTitle:@"跳过" forState:UIControlStateNormal];
+    skipButton.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+    skipButton.layer.cornerRadius = 15;
+    skipButton.layer.masksToBounds = YES;
+    [skipButton addTarget:self action:@selector(skipAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [self.view addSubview:skipButton];
+    
 }
-
+-(void)skipAction{
+    GHTabBarController *tabBarVc = [[GHTabBarController alloc] init];
+    
+    // 切换根控制器:可以直接把之前的根控制器清空
+    GHKeyWindow.rootViewController = tabBarVc;
+}
 #pragma mark - UIScrollView代理
 // 只要一滚动就会调用
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
