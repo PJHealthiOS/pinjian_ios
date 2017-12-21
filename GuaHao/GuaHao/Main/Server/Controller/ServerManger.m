@@ -12,7 +12,7 @@
 #import "LoginViewController.h"
 #import "UIDevice+FCUUID.h"
 #import <CommonCrypto/CommonCrypto.h>
-
+#import "AFAppDotNetAPIClient.h"
 static ServerManger * instance;
 
 @implementation ServerManger
@@ -27,12 +27,17 @@ static ServerManger * instance;
 }
 + (AFSecurityPolicy*)customSecurityPolicy
 {
+    
+    
+    
+    
+    
     // /先导入证书
-    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"pjyl" ofType:@"cer"];//证书的路径
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"pinjian" ofType:@"cer"];//证书的路径
     NSData *certData = [NSData dataWithContentsOfFile:cerPath];
     
     // AFSSLPinningModeCertificate 使用证书验证模式
-    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     
     // allowInvalidCertificates 是否允许无效证书（也就是自建的证书），默认为NO
     // 如果是需要验证自建证书，需要设置为YES
@@ -87,12 +92,12 @@ static ServerManger * instance;
     NSLog(@"城市编码------------------%@",[DataManager getInstance].cityId);
 
     NSLog(@"URLString--token-%@--->>>%@",[DataManager getInstance].user.token ,URLString);
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
    //manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
 
     manager.requestSerializer=[AFJSONRequestSerializer serializer];
-     [manager setSecurityPolicy:[ServerManger customSecurityPolicy]];
+//     [manager setSecurityPolicy:[ServerManger customSecurityPolicy]];
     
     if(apt){
         [manager.requestSerializer setValue:apt forHTTPHeaderField:@"apt-version"];
@@ -166,11 +171,11 @@ static ServerManger * instance;
 {
     NSLog(@"URLString------>>>%@",URLString);
     NSLog(@"城市编码------------------%@",[DataManager getInstance].cityId);
-
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer=[AFJSONRequestSerializer serializer];
-     [manager setSecurityPolicy:[ServerManger customSecurityPolicy]];
+//     [manager setSecurityPolicy:[ServerManger customSecurityPolicy]];
     
     /////////////////////////
     if(apt){
@@ -231,11 +236,11 @@ static ServerManger * instance;
 {
     NSLog(@"URLString------>>>%@",URLString);
     NSLog(@"城市编码------------------%@",[DataManager getInstance].cityId);
-
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer=[AFJSONRequestSerializer serializer];
-     [manager setSecurityPolicy:[ServerManger customSecurityPolicy]];
+//     [manager setSecurityPolicy:[ServerManger customSecurityPolicy]];
     if(apt){
         [manager.requestSerializer setValue:apt forHTTPHeaderField:@"apt-version"];
     }
@@ -289,11 +294,13 @@ static ServerManger * instance;
     NSLog(@"URLString------>>>%@",URLString);
     NSLog(@"城市编码------------------%@",[DataManager getInstance].cityId);
 
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
     manager.requestSerializer=[AFJSONRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-     [manager setSecurityPolicy:[ServerManger customSecurityPolicy]];
+//     [manager setSecurityPolicy:[ServerManger customSecurityPolicy]];
     if(apt){
         [manager.requestSerializer setValue:apt forHTTPHeaderField:@"apt-version"];
     }

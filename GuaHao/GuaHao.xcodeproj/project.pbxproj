@@ -888,6 +888,8 @@
 		CB4715D01DE2BB8500D5E2FE /* SpecialHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4715CF1DE2BB8500D5E2FE /* SpecialHomeCell.m */; };
 		CB4715D41DE2BBB000D5E2FE /* SpecialHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4715D31DE2BBB000D5E2FE /* SpecialHomeCell.xib */; };
 		CB4715D61DE3145B00D5E2FE /* common_order_alipay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB4715D51DE3145B00D5E2FE /* common_order_alipay@2x.png */; };
+		CB4D7BB91FEBAD8A00E4E4E2 /* pinjian.cer in Resources */ = {isa = PBXBuildFile; fileRef = CB4D7BB81FEBAD8900E4E4E2 /* pinjian.cer */; };
+		CB4D7BBC1FEBB2D900E4E4E2 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4D7BBB1FEBB2D900E4E4E2 /* AFAppDotNetAPIClient.m */; };
 		CB4EB9451DDD9D2B0050BCD2 /* AccompanySuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4EB9431DDD9D2B0050BCD2 /* AccompanySuccessViewController.m */; };
 		CB4EB9461DDD9D2B0050BCD2 /* AccompanySuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4EB9441DDD9D2B0050BCD2 /* AccompanySuccessViewController.xib */; };
 		CB4F6C4C1F74A85D0037599C /* ChooseHospitalcell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4F6C4A1F74A85D0037599C /* ChooseHospitalcell.m */; };
@@ -2389,6 +2391,9 @@
 		CB4715CF1DE2BB8500D5E2FE /* SpecialHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialHomeCell.m; sourceTree = "<group>"; };
 		CB4715D31DE2BBB000D5E2FE /* SpecialHomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialHomeCell.xib; sourceTree = "<group>"; };
 		CB4715D51DE3145B00D5E2FE /* common_order_alipay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_order_alipay@2x.png"; sourceTree = "<group>"; };
+		CB4D7BB81FEBAD8900E4E4E2 /* pinjian.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = pinjian.cer; sourceTree = "<group>"; };
+		CB4D7BBA1FEBB2D900E4E4E2 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
+		CB4D7BBB1FEBB2D900E4E4E2 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
 		CB4EB9421DDD9D2B0050BCD2 /* AccompanySuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccompanySuccessViewController.h; sourceTree = "<group>"; };
 		CB4EB9431DDD9D2B0050BCD2 /* AccompanySuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccompanySuccessViewController.m; sourceTree = "<group>"; };
 		CB4EB9441DDD9D2B0050BCD2 /* AccompanySuccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccompanySuccessViewController.xib; sourceTree = "<group>"; };
@@ -4098,6 +4103,8 @@
 			children = (
 				73DA75C41C507EFB00CFDCB1 /* ServerManger.h */,
 				73DA75C51C507EFB00CFDCB1 /* ServerManger.m */,
+				CB4D7BBA1FEBB2D900E4E4E2 /* AFAppDotNetAPIClient.h */,
+				CB4D7BBB1FEBB2D900E4E4E2 /* AFAppDotNetAPIClient.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4164,6 +4171,7 @@
 				8EE839861D2A61FC002326B3 /* Resources */,
 				730688F31CF84F09007C9493 /* 品简挂号.entitlements */,
 				CB2429EF1E10F55A00D477A0 /* pjyl.cer */,
+				CB4D7BB81FEBAD8900E4E4E2 /* pinjian.cer */,
 				73F7D5881C4DE19A00F6EDD9 /* Main */,
 				73F7D5971C4DE23300F6EDD9 /* Info.plist */,
 				73F7D56B1C4DDE3F00F6EDD9 /* Assets.xcassets */,
@@ -6199,6 +6207,7 @@
 				8EEDC8831D2D10E0005B12C3 /* me_DiscountCouponVC_bgImage_07@2x.png in Resources */,
 				8EE83AD11D2A61FC002326B3 /* point_bg_white1_02@2x.png in Resources */,
 				8EE83AD01D2A61FC002326B3 /* point_bg_solidBlue@2x.png in Resources */,
+				CB4D7BB91FEBAD8A00E4E4E2 /* pinjian.cer in Resources */,
 				730CD7B01D8194EE00E67812 /* order_choose_appointment@2x.png in Resources */,
 				7338B2F11D35E4E800FA8045 /* share_defalt_icon@2x.png in Resources */,
 				73E642491DC2F69200F8CF6A /* TipSureView.xib in Resources */,
@@ -6530,6 +6539,7 @@
 				CB973FB01D7EAB7A00AC52E9 /* StatusLogVO.m in Sources */,
 				8E59FE2F1D62A99500DDEDAC /* OrderPayCell.m in Sources */,
 				EEB4F4A31E8396A4002367E1 /* GeoLocationManager.m in Sources */,
+				CB4D7BBC1FEBB2D900E4E4E2 /* AFAppDotNetAPIClient.m in Sources */,
 				EE32FC1A1E7243F60065B357 /* OrderDetailPriceView.m in Sources */,
 				CBB078F21DAF578800B969D1 /* HealthTestCell.m in Sources */,
 				73FB356B1D1BB1B20099CE5C /* qrinput.c in Sources */,
