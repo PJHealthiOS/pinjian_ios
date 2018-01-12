@@ -226,7 +226,11 @@
     NSInteger result = [self getDifferenceByDate:vo.scheduleDate];
     if (result < 14) {
         ///弹框
-        ExpertOrderDiscountAlterView * alter = [[ExpertOrderDiscountAlterView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        NSNumber *firstDiscountStr = [[expertVO.discountRules objectAtIndex:0]objectForKey:@"value"];
+        NSNumber *secondDiscountStr = [[expertVO.discountRules objectAtIndex:1]objectForKey:@"value"];
+        NSString *descStr = [NSString stringWithFormat:@"%@%@,%@%@",[[expertVO.discountRules objectAtIndex:0]objectForKey:@"desc"],[NSString stringWithFormat:@"陪诊费享%.1f折优惠",firstDiscountStr.floatValue * 10],[[expertVO.discountRules objectAtIndex:1]objectForKey:@"desc"],[NSString stringWithFormat:@"陪诊费享%.1f折优惠",secondDiscountStr.floatValue * 10]];
+        ExpertOrderDiscountAlterView * alter = [[ExpertOrderDiscountAlterView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) descStr:descStr];
+        
         [alter clickAction:^(BOOL result) {
             if (result) {
                 CreateOrderExpertViewController * createVC = [GHViewControllerLoader CreateOrderExpertViewController];

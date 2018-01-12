@@ -14,6 +14,25 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *msgRedIcon;
 
+@property (weak, nonatomic) IBOutlet UIImageView *oneIconImage;
+@property (weak, nonatomic) IBOutlet UILabel *oneTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *oneDescLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *twoIconImage;
+@property (weak, nonatomic) IBOutlet UILabel *twoTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *twoDescLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *threeIconImage;
+@property (weak, nonatomic) IBOutlet UILabel *threeTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *threeDescLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *fourIconImage;
+@property (weak, nonatomic) IBOutlet UILabel *fourTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fourDescLabel;
+
+
+
+
 @end
 @implementation GHCreateOrderOneCell
 

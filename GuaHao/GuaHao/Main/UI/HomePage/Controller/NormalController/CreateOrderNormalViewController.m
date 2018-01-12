@@ -635,21 +635,25 @@
                 case 1:
                 {
                     if ([_level isEqualToString:@"0"]) {//自费挂号
+                        if (_department.serviceFee.intValue == infoVO.orderPzFee.intValue){////只有自费单且相等才会选择支付方式
+                            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请选择支付方式" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                            __weak typeof(self) weakSelf = self;
+                            [alertController addAction:[UIAlertAction actionWithTitle:@"在线支付" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                NSLog(@"在线支付");
+                                [weakSelf updateTableViewWithSection:3 row:1 key:@"value" newValue:@"在线支付"];
+                            }]];
+                            [alertController addAction:[UIAlertAction actionWithTitle:@"到院支付" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                                NSLog(@"到院支付");
+                                [weakSelf updateTableViewWithSection:3 row:1 key:@"value" newValue:@"到院支付"];
+                            }]];
+                            
+                            [self presentViewController:alertController animated:YES completion:nil];
+                        }
+                        
                         if (_department.serviceFee.intValue > 1) {///只能在线支付
                             return;
                         }
-                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请选择支付方式" message:nil preferredStyle:UIAlertControllerStyleAlert];
-                        __weak typeof(self) weakSelf = self;
-                        [alertController addAction:[UIAlertAction actionWithTitle:@"在线支付" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                            NSLog(@"在线支付");
-                            [weakSelf updateTableViewWithSection:3 row:1 key:@"value" newValue:@"在线支付"];
-                        }]];
-                        [alertController addAction:[UIAlertAction actionWithTitle:@"到院支付" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                            NSLog(@"到院支付");
-                            [weakSelf updateTableViewWithSection:3 row:1 key:@"value" newValue:@"到院支付"];
-                        }]];
                         
-                        [self presentViewController:alertController animated:YES completion:nil];
                     }
                 }
                     break;
@@ -688,18 +692,36 @@
     
 }
 -(NSAttributedString *)getAttributedStr{
-    if (_department.serviceFee.floatValue > 0) {
-        NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",_department.serviceFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:UIColorFromRGB(0x45c768)}];
-        return nameString;
+    if (_department) {
+        if (_department.serviceFee.intValue > 0) {
+//            NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",_department.serviceFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:UIColorFromRGB(0x45c768)}];
+//            return nameString;
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:self.rightButton.isSelected ? @"(平台收取)" : @" "] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+            
+            
+            NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",_department.serviceFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:UIColorFromRGB(0x45c768)}];
+            [attrStr appendAttributedString:nameString];
+            return attrStr;
+            
+            
+        }else{
+            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:self.rightButton.isSelected ? @"(平台收取)" : @" "] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+            
+            
+            NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",infoVO.orderPzFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:UIColorFromRGB(0x45c768)}];
+            [attrStr appendAttributedString:nameString];
+            return attrStr;
+        }
+        
         
         
     }else{
-        NSAttributedString *attrStr = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"(原价%@元)",infoVO.orderOriginPzFee] attributes:@{NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle|NSUnderlinePatternSolid),NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:self.rightButton.isSelected ? @"(平台收取)" : @" "] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
         
         
-        NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",infoVO.orderPzFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor redColor]}];
-        [nameString appendAttributedString:attrStr];
-        return nameString;
+        NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",infoVO.orderPzFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:UIColorFromRGB(0x45c768)}];
+        [attrStr appendAttributedString:nameString];
+        return attrStr;
         
     }
     
@@ -792,19 +814,64 @@
     [self.navigationController pushViewController:departmentVC animated:YES];
 }
 //选择部门回调
--(void) onBlockDepartment:(DepartmentVO*) vo
+-(void)onBlockDepartment:(DepartmentVO*) vo
 {
     selectDic = nil;
     _department = vo;
 
     [self updateTableViewWithSection:0 row:1 key:@"value" newValue:vo.name];
     [self updateTableViewWithSection:4 row:0 key:@"value" newValue:@""];
+    [self updateTableViewWithSection:2 row:1 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue]];
     
-    [self updateTableViewWithSection:3 row:0 key:@"value" newValue:self.rightButton.isSelected ? [NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue > 1 ? vo.serviceFee.intValue: infoVO.totalFee.intValue] : [NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue + infoVO.totalFee.intValue]];
-    if (vo.serviceFee.intValue > 1 ) {///只能在线支付
-        [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"在线支付"];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    if (self.rightButton.isSelected) {///医保卡
+        
+        [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue + infoVO.normalPrice.intValue]];
     }else{
-        [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"到院支付"];
+        
+            [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%.1f 元",vo.serviceFee.intValue + infoVO.normalPrice.intValue + _hospital.issuingFee.floatValue]];
+    }
+    
+    if (vo.serviceFee.intValue != infoVO.orderPzFee.intValue) {///不等的话自费的在线，挂号的在线
+        
+        [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"在线支付"];
+        
+        if (self.rightButton.isSelected) {///医保卡
+            
+            [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue]];
+
+            if (vo.serviceFee.intValue == 0) {
+                [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"到院支付"];
+                [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",0]];
+
+        }
+        
+       
+        }
+        
+    }else{///相等的话自费两种挂号方式，挂号到院支付
+        if (self.rightButton.isSelected){///医保卡
+            [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"在线支付"];
+            [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue ]];
+
+
+        }else{///自费
+            
+            [self updateTableViewWithSection:3 row:1 key:@"value" newValue:infoVO.defPayType.intValue == 1 ? @"线上支付":@"到院支付"];
+
+        }
+        
     }
     [self choseDate];
 }

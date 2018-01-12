@@ -79,7 +79,7 @@
     self.remarkLabel.text = _orderVO.patientComments.length == 0 ? @"无" : _orderVO.patientComments;
     self.priceLabel.text = [NSString stringWithFormat:@"%@ 元",_orderVO.totalFee];;
     self.certificateLabel.text = _orderVO.patientStatus.intValue > 0 ? @"已认证" : @"未认证";
-    
+    [self.phoneNoButton setTitle:_orderVO.patientMobile forState:UIControlStateNormal];
     ///对下面的按钮进行控制
     if (_orderVO.ticketImgUrl.length > 2) {
         [self.UploadCertificateButton sd_setBackgroundImageWithURL:[NSURL URLWithString:_orderVO.ticketImgUrl] forState:UIControlStateNormal];

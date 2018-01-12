@@ -30,14 +30,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"搜索医生";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"DoctorSelectTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"DoctorSelectTableViewCell"];
     self.sourceArr = [NSMutableArray array];
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     _tableView.mj_footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-    self.searchBar = [[GHSearchBar alloc]initWithFrame:CGRectMake(10, 25, SCREEN_WIDTH - 70, 30)  isHome:NO];
+    self.searchBar = [[GHSearchBar alloc]initWithFrame:CGRectMake(10, 15, SCREEN_WIDTH - 70, 30)  isHome:NO];
 
     [self.searchBar setCancelButtonTitle:@" 搜索医生"  setPlaceholder:@"搜索医生"];
     self.searchBar.delegate = self;
@@ -45,7 +45,8 @@
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = YES;
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
     [_searchBar becomeFirstResponder];
     
     

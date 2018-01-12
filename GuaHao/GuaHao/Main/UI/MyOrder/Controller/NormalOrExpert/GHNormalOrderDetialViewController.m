@@ -358,6 +358,11 @@
 }
 
 - (IBAction)certificate_button_action:(UIButton *)sender {
+    if (self.orderVO.ticketImgUrl.length > 1) {
+        ZoomImageView *zoomView = [[ZoomImageView alloc]initWithFrame:self.view.frame];
+        [zoomView zoomImageWith:self.orderVO.ticketImgUrl];
+        [self.view addSubview:zoomView];
+    }
     
     
 }

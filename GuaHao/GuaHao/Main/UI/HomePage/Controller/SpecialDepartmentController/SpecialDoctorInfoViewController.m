@@ -10,6 +10,9 @@
 #import "ExpertDayCell.h"
 #import "CreateOrderExpertViewController.h"
 #import "HtmlAllViewController.h"
+#import "ExpertOrderDiscountAlterView.h"
+#import "UIViewController+Guide.h"
+
 @interface SpecialDoctorInfoViewController (){
     ExpertVO *expertVO;
     
@@ -43,6 +46,14 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *experienceViewHeight;
 @property (weak, nonatomic) IBOutlet UILabel *experienceLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *firstLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *first_discount_label;
+@property (weak, nonatomic) IBOutlet UILabel *second_discount_label;
+
+
+
 @end
 
 
@@ -54,7 +65,8 @@
     self.navigationController.navigationBar.hidden = NO;
     self.title = @"医生信息";
     [self getData];
-    
+    [self addGuidePageWithImageName:@"expert_detial_guide" frame:CGRectMake(20, 300, SCREEN_WIDTH - 80,GetHeightExtra(80, 388, 334) )];
+
     // Do any additional setup after loading the view.
 }
 
@@ -139,10 +151,37 @@
     self.locationLabel.text = [NSString stringWithFormat:@"%@-%@",expertVO.departmentName,expertVO.hospitalName];
     
     self.experienceLabel.text = expertVO.resume;
+    self.firstLabel.text = [[expertVO.discountRules objectAtIndex:0]objectForKey:@"desc"];
+    self.secondLabel.text = [[expertVO.discountRules objectAtIndex:1]objectForKey:@"desc"];
+    
+    NSNumber *firstDiscountStr = [[expertVO.discountRules objectAtIndex:0]objectForKey:@"value"];
+    NSNumber *secondDiscountStr = [[expertVO.discountRules objectAtIndex:1]objectForKey:@"value"];
+    self.first_discount_label.text =[NSString stringWithFormat:@"陪诊费%.1f折",firstDiscountStr.floatValue * 10];
+    self.second_discount_label.text = [NSString stringWithFormat:@"陪诊费%.1f折",secondDiscountStr.floatValue * 10];
+    
+    [self changeLabel:self.first_discount_label withTextColor:UIColorFromRGB(0x45c768)];
+    [self changeLabel:self.second_discount_label withTextColor:UIColorFromRGB(0x45c768)];
     
 }
 
-
+- (void)changeLabel:(UILabel *)label withTextColor:(UIColor *)color {
+    NSArray *number = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"."];
+    NSString *content = label.text;
+    NSMutableAttributedString *attributeString  = [[NSMutableAttributedString alloc]initWithString:content];
+    for (int i = 0; i < content.length; i ++) {
+        //这里的小技巧，每次只截取一个字符的范围
+        NSString *a = [content substringWithRange:NSMakeRange(i, 1)];
+        //判断装有0-9的字符串的数字数组是否包含截取字符串出来的单个字符，从而筛选出符合要求的数字字符的范围NSMakeRange
+        if ([number containsObject:a]) {
+            [attributeString setAttributes:@{NSForegroundColorAttributeName:color} range:NSMakeRange(i, 1)];
+        }
+        
+    }
+    //完成查找数字，最后将带有字体下划线的字符串显示在UILabel上
+    label.attributedText = attributeString;
+    
+    
+}
 -(void)reloadListView{
      [self.listView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSArray *arr = [expertVO getAllDays];
@@ -175,15 +214,59 @@
         return;
     }
     
-    
-    CreateOrderExpertViewController * createVC = [GHViewControllerLoader CreateOrderExpertViewController];
-    createVC.dayVO = vo;
-    createVC.expertVO = expertVO;
-    
-    
-    [self.navigationController pushViewController:createVC animated:YES];
-}
+    NSInteger result = [self getDifferenceByDate:vo.scheduleDate];
+    if (result < 14) {
+        ///弹框
+        NSNumber *firstDiscountStr = [[expertVO.discountRules objectAtIndex:0]objectForKey:@"value"];
+        NSNumber *secondDiscountStr = [[expertVO.discountRules objectAtIndex:1]objectForKey:@"value"];
+        NSString *descStr = [NSString stringWithFormat:@"%@%@,%@%@",[[expertVO.discountRules objectAtIndex:0]objectForKey:@"desc"],[NSString stringWithFormat:@"陪诊费享%.1f折优惠",firstDiscountStr.floatValue * 10],[[expertVO.discountRules objectAtIndex:1]objectForKey:@"desc"],[NSString stringWithFormat:@"陪诊费享%.1f折优惠",secondDiscountStr.floatValue * 10]];
+        ExpertOrderDiscountAlterView * alter = [[ExpertOrderDiscountAlterView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) descStr:descStr];
+        
+        [alter clickAction:^(BOOL result) {
+            if (result) {
+                CreateOrderExpertViewController * createVC = [GHViewControllerLoader CreateOrderExpertViewController];
+                createVC.dayVO = vo;
+                createVC.expertVO = expertVO;
+                [self.navigationController pushViewController:createVC animated:YES];
+                
+            }else{
+                //不作处理
+            }
+        }];
+        [self.view addSubview:alter];
+        
+        
+    }else{
+        CreateOrderExpertViewController * createVC = [GHViewControllerLoader CreateOrderExpertViewController];
+        createVC.dayVO = vo;
+        createVC.expertVO = expertVO;
+        [self.navigationController pushViewController:createVC animated:YES];
+    }
 
+    
+    
+    
+}
+- (NSInteger)getDifferenceByDate:(NSString *)date {
+    
+    //实例化一个NSDateFormatter对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *newDate = [dateFormatter dateFromString:date];
+    
+    //获得当前时间
+    NSDate *now = [dateFormatter dateFromString:[dateFormatter stringFromDate:[NSDate date]]];
+    
+    
+    
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    unsigned int unitFlags = NSDayCalendarUnit;
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:now  toDate:newDate  options:0];
+    NSInteger result = [comps day] + 0;
+    return result;
+}
 
 - (IBAction)expertRuleAction:(id)sender {
     HtmlAllViewController * view = [[HtmlAllViewController alloc] init];
@@ -215,7 +298,12 @@
 }
 
 
-
+- (IBAction)discountRuleAction:(id)sender {
+    HtmlAllViewController * view = [[HtmlAllViewController alloc] init];
+    view.mTitle = @"折扣说明";
+    view.mUrl   = expertVO.discountRuleDoc;
+    [self.navigationController pushViewController:view animated:YES];
+}
 
 - (CGSize)boundingRectWithSize:(CGSize)size str:(NSString *)str fount:(CGFloat)fount
 {

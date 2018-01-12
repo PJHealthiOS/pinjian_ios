@@ -12,7 +12,14 @@
 }
 @property (weak, nonatomic) IBOutlet UIButton *attentionButton;
 @property (weak, nonatomic) IBOutlet UIButton *accompanyButton;
-
+@property (weak, nonatomic) IBOutlet UILabel *leftTopLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *leftIconImage;
+@property (weak, nonatomic) IBOutlet UILabel *leftOrderTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *leftDescLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rightTopLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *rightIconImage;
+@property (weak, nonatomic) IBOutlet UILabel *rightOrderTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rightDescLabel;
 @end
 @implementation GHCreateOrderTwoCell
 

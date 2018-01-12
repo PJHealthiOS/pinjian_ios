@@ -182,10 +182,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row  == 0) {
-        if(self.addableNum.intValue <= 0){
-            [self inputToast:@"就诊人已满！"];
-            return;
-        }
+//        if(self.addableNum.intValue <= 0){
+//            [self inputToast:@"就诊人已满！"];
+//            return;
+//        }
         AddPersonViewController *addVC = [[AddPersonViewController alloc]init];
         addVC.delegate = self;
         [self.navigationController pushViewController:addVC animated:YES];

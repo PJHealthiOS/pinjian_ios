@@ -22,7 +22,7 @@
 #import "UIView+Shadow.h"
 #import "UITableView+MJ.h"
 #import "GHAcceptOrderViewController.h"
-@interface GHMySelfViewController ()<UITableViewDataSource,AccountNumberViewDelegate,UITableViewDelegate,LoginViewDelegate>{
+@interface GHMySelfViewController ()<UITableViewDataSource,UIScrollViewDelegate,AccountNumberViewDelegate,UITableViewDelegate,LoginViewDelegate>{
     PersonalCenterVO * personVO;
 
 }
@@ -41,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *myBeanLabel;
 @property (weak, nonatomic) IBOutlet UILabel *myTacketLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *backViewHeight;
 
 
 
@@ -131,6 +132,25 @@
 }
 
 -(void)loadSubView{
+    if ([DataManager getInstance].user.verifyStatus.intValue ==2) {
+        self.backViewHeight.constant = 260 + 8 * 55;
+    }else{
+        self.backViewHeight.constant = 260 + 6 * 55;
+    }
+    UserVO * user = [DataManager getInstance].user;
+    if (user) {
+        self.nameLabel.text = user.nickName;
+        if (personVO) {
+            self.myBeanLabel.text = [NSString stringWithFormat:@"我的挂号豆%d",personVO.pointNum.intValue];
+            self.myTacketLabel.text = [NSString stringWithFormat:@"我的优惠券%d",personVO.couponsNum.intValue];
+            self.myAccountLabel.text = @"我的钱包";
+        }
+        if (user.avatar) {
+            [self.iconImage sd_setImageWithURL: [NSURL URLWithString:user.avatar]];
+        }
+    }else{
+        self.nameLabel.text = @"未登录";
+    }
     if ([DataManager getInstance].user.nickName.length > 0) {
         self.nameLabel.text = [DataManager getInstance].user.nickName;
     }else{
@@ -207,29 +227,9 @@
     }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
-}
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
-    view.backgroundColor = [UIColor clearColor];
-    UserVO * user = [DataManager getInstance].user;
-    if (user) {
-        self.nameLabel.text = user.nickName;
-        if (personVO) {
-            self.myBeanLabel.text = [NSString stringWithFormat:@"我的挂号豆%d",personVO.pointNum.intValue];
-             self.myTacketLabel.text = [NSString stringWithFormat:@"我的优惠券%d",personVO.couponsNum.intValue];
-             self.myAccountLabel.text = @"我的钱包";
-        }
-        if (user.avatar) {
-            [self.iconImage sd_setImageWithURL: [NSURL URLWithString:user.avatar]];
-        }
-    }else{
-        self.nameLabel.text = @"未登录";
-    }
-    return view;
-}
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 55;
 }
@@ -260,12 +260,13 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //获取偏移量
 //    CGPoint offset = scrollView.contentOffset;
+//    NSLog(@"offset ------****%f",offset.y);
 //    //判断是否改变
 //    if (offset.y < 0) {
 //        CGRect rect = self.headerImageView.frame;
 //        //我们只需要改变图片的y值和高度即可
 //        rect.origin.y = offset.y;
-//        rect.size.height = 200 - offset.y;
+//        rect.size.height = 322 - offset.y;
 //        self.headerImageView.frame = rect;
 //    }
 }

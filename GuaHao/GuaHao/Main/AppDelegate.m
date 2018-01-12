@@ -17,7 +17,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
-
+#import <JSPatchPlatform/JSPatch.h>
 @interface AppDelegate ()<WXApiDelegate,JPUSHRegisterDelegate,UNUserNotificationCenterDelegate>
 
 @end
@@ -31,6 +31,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [JSPatch setupCallback:^(JPCallbackType type, NSDictionary *data, NSError *error) {
+        if (type == JPCallbackTypeJSException) {
+            NSAssert(NO, data[@"msg"]);
+        }
+    }];
+    [JSPatch startWithAppKey:@"ee40234d4da021d9"];
+
+    [JSPatch setupRSAPublicKey:@"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCir4AgOU1HZJo8yv2y1C+sEzzO\n1XoZg/3GQlkw5ozBqkWDIUMoNtdLDIGcVnDuRuC6PKkrshUDxd5aUSacZcSaCOO8\n+Z3a0B3geqZCQy1mo7h3yq6qjvnT8YrxbORUczjBAIYvAGSLHgoJtdiwKAt3WMJG\nly1P6sSNtzrWnqEeCwIDAQAB\n-----END PUBLIC KEY-----"];
+#ifdef DEBUG
+    [JSPatch setupDevelopment];
+#endif
+    [JSPatch sync];
+
+    
+    
     
     isOpen = YES;
     // 创建窗口

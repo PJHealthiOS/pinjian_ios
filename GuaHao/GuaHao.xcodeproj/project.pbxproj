@@ -852,6 +852,8 @@
 		CB22D55A1D86CEA300FDB5A8 /* GHSettingPayPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB22D5591D86CEA300FDB5A8 /* GHSettingPayPasswordViewController.m */; };
 		CB22D55C1D8808F300FDB5A8 /* acceptDetail_add.png in Resources */ = {isa = PBXBuildFile; fileRef = CB22D55B1D8808F300FDB5A8 /* acceptDetail_add.png */; };
 		CB2429F01E10F55A00D477A0 /* pjyl.cer in Resources */ = {isa = PBXBuildFile; fileRef = CB2429EF1E10F55A00D477A0 /* pjyl.cer */; };
+		CB2D015D1FF334F800E723C1 /* JSPatchPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2D015C1FF334F700E723C1 /* JSPatchPlatform.framework */; };
+		CB2D015F1FF3355000E723C1 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2D015E1FF3355000E723C1 /* JavaScriptCore.framework */; };
 		CB356F981EEFB7F40071DB68 /* order_remind_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB356F971EEFB7F40071DB68 /* order_remind_icon.png */; };
 		CB356F9C1EEFC5660071DB68 /* AddPersonFootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB356F9A1EEFC5660071DB68 /* AddPersonFootCell.m */; };
 		CB356F9D1EEFC5660071DB68 /* AddPersonFootCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB356F9B1EEFC5660071DB68 /* AddPersonFootCell.xib */; };
@@ -2339,6 +2341,8 @@
 		CB22D5591D86CEA300FDB5A8 /* GHSettingPayPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHSettingPayPasswordViewController.m; sourceTree = "<group>"; };
 		CB22D55B1D8808F300FDB5A8 /* acceptDetail_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acceptDetail_add.png; sourceTree = "<group>"; };
 		CB2429EF1E10F55A00D477A0 /* pjyl.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = pjyl.cer; sourceTree = "<group>"; };
+		CB2D015C1FF334F700E723C1 /* JSPatchPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatchPlatform.framework; sourceTree = "<group>"; };
+		CB2D015E1FF3355000E723C1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		CB356F971EEFB7F40071DB68 /* order_remind_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_remind_icon.png; sourceTree = "<group>"; };
 		CB356F991EEFC5660071DB68 /* AddPersonFootCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPersonFootCell.h; sourceTree = "<group>"; };
 		CB356F9A1EEFC5660071DB68 /* AddPersonFootCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPersonFootCell.m; sourceTree = "<group>"; };
@@ -2773,6 +2777,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB2D015F1FF3355000E723C1 /* JavaScriptCore.framework in Frameworks */,
 				73CCBE351D534E6A00CFEB29 /* libstdc++.6.0.9.tbd in Frameworks */,
 				73CCBE331D534E5A00CFEB29 /* libc++.tbd in Frameworks */,
 				73CCBE311D534E4800CFEB29 /* libz.tbd in Frameworks */,
@@ -2784,6 +2789,7 @@
 				73FB35311D1BAEE20099CE5C /* libiconv.tbd in Frameworks */,
 				73CCBD9D1D53484200CFEB29 /* libopencore-amrnb.a in Frameworks */,
 				73C6883B1CA9381900BD7453 /* libsqlite3.tbd in Frameworks */,
+				CB2D015D1FF334F800E723C1 /* JSPatchPlatform.framework in Frameworks */,
 				73FB356F1D1BB1B20099CE5C /* libzbar.a in Frameworks */,
 				73CCBD9E1D53484200CFEB29 /* libopencore-amrwb.a in Frameworks */,
 				731BBCA71C7EB1C6008EFB06 /* MediaPlayer.framework in Frameworks */,
@@ -2810,6 +2816,7 @@
 		019FF9C3A1E3C5184C7C0E73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB2D015E1FF3355000E723C1 /* JavaScriptCore.framework */,
 				73CCBE341D534E6A00CFEB29 /* libstdc++.6.0.9.tbd */,
 				73CCBE321D534E5A00CFEB29 /* libc++.tbd */,
 				73CCBE301D534E4800CFEB29 /* libz.tbd */,
@@ -3499,6 +3506,7 @@
 		73BC01731C4E39880013CD3C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CB2D015C1FF334F700E723C1 /* JSPatchPlatform.framework */,
 				CB7A09C61F20A537006D201F /* UIView+Shadow.h */,
 				CB7A09C71F20A537006D201F /* UIView+Shadow.m */,
 				73A276751CD1B961006DE6AC /* UIViewBorders.h */,
@@ -7052,6 +7060,7 @@
 					"$(PROJECT_DIR)/GuaHao/thrids/pay/Channels/Alipay",
 					"$(PROJECT_DIR)/GuaHao/Main/thrids/DIOpenSDK_V1.1.0_0421",
 					"$(PROJECT_DIR)/GuaHao/Main/thrids",
+					"$(PROJECT_DIR)/GuaHao/Main/Utils",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GuaHao/Main/PrefixHeader.pch";
@@ -7095,6 +7104,7 @@
 					"$(PROJECT_DIR)/GuaHao/thrids/pay/Channels/Alipay",
 					"$(PROJECT_DIR)/GuaHao/Main/thrids/DIOpenSDK_V1.1.0_0421",
 					"$(PROJECT_DIR)/GuaHao/Main/thrids",
+					"$(PROJECT_DIR)/GuaHao/Main/Utils",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GuaHao/Main/PrefixHeader.pch";

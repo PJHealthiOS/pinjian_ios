@@ -333,7 +333,6 @@
 -(void)submitOrder{
     [self.tableView endEditing:YES];
     [self.view endEditing:YES];
-    NSLog(@"self.souceArr ------%@",self.souceArr);
 
     if ([self getLabelValueWithRow:0].length == 0) {
 //        [_nameTexF becomeFirstResponder];
@@ -370,53 +369,66 @@
         [self inputToast:@"请填写出生日期！"];
         return;
     }
-    if ([self getLabelValueWithRow:self.souceArr.count - 3].length>0) {
-        if ([self getLabelValueWithRow:self.souceArr.count - 3].length==15) {
-            
-        }else{
-//            [_MedicalCardNumberTF becomeFirstResponder];
-            [self inputToast:@"请填写正确的就诊卡号"];
-            return;
-        }
-    }
-
+//    if ([self getLabelValueWithRow:self.souceArr.count - 3].length>0) {
+//        if ([self getLabelValueWithRow:self.souceArr.count - 3].length==15) {
+//
+//        }else{
+////            [_MedicalCardNumberTF becomeFirstResponder];
+//            [self inputToast:@"请填写正确的就诊卡号"];
+//            return;
+//        }
+//    }
 
     NSMutableDictionary* dic = [NSMutableDictionary dictionary];
     if ([[self getLabelValueWithRow:1] isEqualToString:@"身份证"]) {
-        dic[@"cardType"] = [NSString stringWithFormat:@"%d",self.isChildren ? 3: 1];
+//        dic[@"cardType"] = [NSString stringWithFormat:@"%d",self.isChildren ? 3: 1];
+        [dic setObject: [NSString stringWithFormat:@"%@",self.isChildren ? @"3": @"1"] forKey:@"cardType"];
+
     }else{
-        dic[@"cardType"] = [NSString stringWithFormat:@"%d",2];
+//        dic[@"cardType"] = [NSString stringWithFormat:@"%d",2];
+        [dic setObject:[NSString stringWithFormat:@"%@",@"2"] forKey:@"cardType"];
     }
-    dic[@"type"] = self.isChildren?@"2":@"1";
+    [dic setObject:self.isChildren?@"2":@"1" forKey:@"type"];
+//    dic[@"type"] = self.isChildren?@"2":@"1";
     [dic setObject:[self getLabelValueWithRow:0] forKey:@"name"];
     [dic setObject:[[self getLabelValueWithRow:3] isEqualToString:@"男"]?@"0":@"1" forKey:@"sex"];
-    dic[@"mobile"] = [self getLabelValueWithRow:5];
-    dic[@"idcard"]   = [self getLabelValueWithRow:2];
-    NSString * medicalCard =[self getLabelValueWithRow:self.souceArr.count - 3];
+//    dic[@"mobile"] = [self getLabelValueWithRow:5];
+    [dic setObject:[self getLabelValueWithRow:5] forKey:@"mobile"];
+
+//    dic[@"idcard"]   = [self getLabelValueWithRow:2];
+    [dic setObject:[self getLabelValueWithRow:2] forKey:@"idcard"];
+
+    NSString * medicalCard =[self getLabelValueWithRow:7];
     if(medicalCard&&medicalCard.length>0){
-        dic[@"medicalCard"] = medicalCard;
+//        dic[@"medicalCard"] = medicalCard;
+        [dic setObject:medicalCard forKey:@"medicalCard"];
+
     }
-    NSString * socialSecurityCard =[self getLabelValueWithRow:self.souceArr.count - 4];
+    NSString * socialSecurityCard =[self getLabelValueWithRow:6];
     if(socialSecurityCard&&socialSecurityCard.length>0){
-        dic[@"socialSecurityCard"] = socialSecurityCard;
+//        dic[@"socialSecurityCard"] = socialSecurityCard;
+        [dic setObject:socialSecurityCard forKey:@"socialSecurityCard"];
+
     }
     if ([self getLabelValueWithRow:4].length!=0) {
-        dic[@"birthday"] = [NSString stringWithFormat:@"%@ 00:00:00",[self getLabelValueWithRow:4]];
+//        dic[@"birthday"] = [NSString stringWithFormat:@"%@ 00:00:00",[self getLabelValueWithRow:4]];
+        [dic setObject:[NSString stringWithFormat:@"%@ 00:00:00",[self getLabelValueWithRow:4]] forKey:@"birthday"];
+
     }
     [self.view makeToastActivity:CSToastPositionCenter];
     [[ServerManger getInstance] createPatient:dic andCallback:^(id data) {
         
         [self.view hideToastActivity];
         if (data!=[NSNull class]&&data!=nil) {
-            NSNumber * code = data[@"code"];
-            NSString * msg = data[@"msg"];
+            NSNumber * code = [data objectForKey:@"code"];
+            NSString * msg = [data objectForKey:@"msg"];
             [self inputToast:msg];
-            PatientVO * vo = [PatientVO mj_objectWithKeyValues:data[@"object"]];
+            PatientVO * vo = [PatientVO mj_objectWithKeyValues:[data objectForKey:@"object"]];
             vv  = [PatientVO mj_objectWithKeyValues:data[@"object"]];
-            if (code.intValue == 0) {
+            if ([code.stringValue isEqualToString:@"0"]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdatePatientInfo" object:nil];
-                if (_delegate) {
-                    [_delegate addComplete:vo];
+                if (self.delegate) {
+                    [self.delegate addComplete:vo];
                 }
                 [self popRevise];
             }else{

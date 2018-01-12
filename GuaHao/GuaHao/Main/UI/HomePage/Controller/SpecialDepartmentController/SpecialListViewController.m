@@ -23,6 +23,13 @@
 
 @implementation SpecialListViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self getData];
+    NSLog(@"进入新页面啦啦啦啦绿绿");
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"特色科室";

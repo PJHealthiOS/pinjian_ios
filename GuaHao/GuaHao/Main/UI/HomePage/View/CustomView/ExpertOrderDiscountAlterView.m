@@ -16,12 +16,13 @@
 @end
 @implementation ExpertOrderDiscountAlterView
 
--(instancetype)initWithFrame:(CGRect)frame{
+-(instancetype)initWithFrame:(CGRect)frame descStr:(NSString *)descStr{
     self = [super initWithFrame:frame];
     if (self) {
         self = [[[UINib nibWithNibName:@"ExpertOrderDiscountAlterView" bundle:nil] instantiateWithOwner:self options:nil] objectAtIndex:0];
         self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
         self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        self.desc_label.text = descStr;
         [self changeLabel:self.desc_label withTextColor:UIColorFromRGB(0x45c768)];
     }return self;
 }
@@ -31,7 +32,7 @@
 }
 
 - (void)changeLabel:(UILabel *)label withTextColor:(UIColor *)color {
-    NSArray *number = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@".",@"~",@"周"];
+    NSArray *number = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@".",@"-",@"周"];
     NSString *content = label.text;
     NSMutableAttributedString *attributeString  = [[NSMutableAttributedString alloc]initWithString:content];
     for (int i = 0; i < content.length; i ++) {

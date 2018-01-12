@@ -16,6 +16,6 @@ typedef void(^AlterSureAction)(BOOL result);
 
 @property (copy, nonatomic)AlterSureAction myAction;
 -(void)clickAction:(AlterSureAction)action;
-
+-(instancetype)initWithFrame:(CGRect)frame descStr:(NSString *)descStr;
 
 @end
