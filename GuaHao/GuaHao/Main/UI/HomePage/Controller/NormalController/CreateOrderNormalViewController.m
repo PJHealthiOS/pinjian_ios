@@ -868,7 +868,7 @@
 
         }else{///自费
             
-            [self updateTableViewWithSection:3 row:1 key:@"value" newValue:infoVO.defPayType.intValue == 1 ? @"线上支付":@"到院支付"];
+            [self updateTableViewWithSection:3 row:1 key:@"value" newValue:infoVO.defPayType.intValue == 1 ? @"在线支付":@"到院支付"];
 
         }
         

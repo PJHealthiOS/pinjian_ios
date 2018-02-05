@@ -887,7 +887,7 @@
                 
                 
                 NSLog(@"XXXXXXX:%ld  ,%ld , %ld，%ld",(long)yearIndex ,(long)monthIndex,(long)dayIndex,(long)periodIndex);
-                NSLog(@"------------%@",self.minLimitDate)
+                NSLog(@"------------%@",self.minLimitDate);
             }
 //            if ([pickerView selectedRowInComponent:0] == yearMinIndex && [pickerView selectedRowInComponent:1] == monthMinIndex && dayIndex == dayMinIndex) {
 //               [self drawRect:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 200)];

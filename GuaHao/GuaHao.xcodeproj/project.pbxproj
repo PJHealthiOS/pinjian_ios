@@ -900,6 +900,25 @@
 		CB51E9D81EDFEABB00DDC344 /* GHNormalOrderDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB51E9D71EDFEABB00DDC344 /* GHNormalOrderDetialViewController.m */; };
 		CB51E9DB1EE01CAF00DDC344 /* GHExpertOrderDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB51E9DA1EE01CAF00DDC344 /* GHExpertOrderDetialViewController.m */; };
 		CB51FDB51DB5CD1A0051DE44 /* GHShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB51FDB41DB5CD1A0051DE44 /* GHShareModel.m */; };
+		CB57121C201715590085B084 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB57121A201715580085B084 /* AlipaySDK.framework */; };
+		CB57121D201715590085B084 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CB57121B201715590085B084 /* AlipaySDK.bundle */; };
+		CB57121F2017162F0085B084 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB57121E2017162F0085B084 /* SystemConfiguration.framework */; };
+		CB5712212017163E0085B084 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5712202017163E0085B084 /* CoreTelephony.framework */; };
+		CB571223201716580085B084 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB571222201716570085B084 /* QuartzCore.framework */; };
+		CB5712252017166F0085B084 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5712242017166F0085B084 /* CoreText.framework */; };
+		CB5712272017167B0085B084 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5712262017167A0085B084 /* CoreGraphics.framework */; };
+		CB571229201716880085B084 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB571228201716880085B084 /* UIKit.framework */; };
+		CB57122B2017170E0085B084 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB57122A2017170E0085B084 /* Foundation.framework */; };
+		CB57122D2017171A0085B084 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB57122C2017171A0085B084 /* CFNetwork.framework */; };
+		CB57122F201717370085B084 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB57122E201717370085B084 /* CoreMotion.framework */; };
+		CB57123520171F590085B084 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB57123120171F570085B084 /* libWeChatSDK.a */; };
+		CB57123620171F590085B084 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = CB57123320171F580085B084 /* README.txt */; };
+		CB571239201723F40085B084 /* GHPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB571238201723F40085B084 /* GHPayManager.m */; };
+		CB57123B201725830085B084 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB57123A201725820085B084 /* Security.framework */; };
+		CB57123E20172A4F0085B084 /* GHWXPay.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57123D20172A4F0085B084 /* GHWXPay.m */; };
+		CB571250201834EE0085B084 /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = CB57124B201834ED0085B084 /* ApiXml.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CB571252201834EE0085B084 /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = CB57124F201834ED0085B084 /* WXUtil.mm */; };
+		CB57125520183B660085B084 /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = CB57125320183B640085B084 /* payRequsestHandler.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CB587DA01EBAD53F0012957D /* GHDisdcountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB587D9F1EBAD53F0012957D /* GHDisdcountListViewController.m */; };
 		CB587DA31EBAD5BA0012957D /* HDiscountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB587DA21EBAD5BA0012957D /* HDiscountListCell.m */; };
 		CB587DA61EBAF8C10012957D /* discount_already_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB587DA41EBAF8C10012957D /* discount_already_icon.png */; };
@@ -2413,6 +2432,33 @@
 		CB51E9DA1EE01CAF00DDC344 /* GHExpertOrderDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHExpertOrderDetialViewController.m; sourceTree = "<group>"; };
 		CB51FDB31DB5CD1A0051DE44 /* GHShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHShareModel.h; sourceTree = "<group>"; };
 		CB51FDB41DB5CD1A0051DE44 /* GHShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHShareModel.m; sourceTree = "<group>"; };
+		CB57121A201715580085B084 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		CB57121B201715590085B084 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		CB57121E2017162F0085B084 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CB5712202017163E0085B084 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		CB571222201716570085B084 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CB5712242017166F0085B084 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		CB5712262017167A0085B084 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CB571228201716880085B084 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CB57122A2017170E0085B084 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CB57122C2017171A0085B084 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CB57122E201717370085B084 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		CB57123020171F550085B084 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		CB57123120171F570085B084 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		CB57123220171F570085B084 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		CB57123320171F580085B084 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		CB57123420171F580085B084 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		CB571237201723F40085B084 /* GHPayManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHPayManager.h; sourceTree = "<group>"; };
+		CB571238201723F40085B084 /* GHPayManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHPayManager.m; sourceTree = "<group>"; };
+		CB57123A201725820085B084 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CB57123C20172A4F0085B084 /* GHWXPay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHWXPay.h; sourceTree = "<group>"; };
+		CB57123D20172A4F0085B084 /* GHWXPay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHWXPay.m; sourceTree = "<group>"; };
+		CB57124A201834ED0085B084 /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
+		CB57124B201834ED0085B084 /* ApiXml.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApiXml.mm; sourceTree = "<group>"; };
+		CB57124E201834ED0085B084 /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
+		CB57124F201834ED0085B084 /* WXUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXUtil.mm; sourceTree = "<group>"; };
+		CB57125320183B640085B084 /* payRequsestHandler.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = payRequsestHandler.mm; sourceTree = "<group>"; };
+		CB57125420183B650085B084 /* payRequsestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = payRequsestHandler.h; sourceTree = "<group>"; };
 		CB587D9E1EBAD53F0012957D /* GHDisdcountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHDisdcountListViewController.h; sourceTree = "<group>"; };
 		CB587D9F1EBAD53F0012957D /* GHDisdcountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHDisdcountListViewController.m; sourceTree = "<group>"; };
 		CB587DA11EBAD5BA0012957D /* HDiscountListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDiscountListCell.h; sourceTree = "<group>"; };
@@ -2777,6 +2823,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB57123B201725830085B084 /* Security.framework in Frameworks */,
+				CB57122F201717370085B084 /* CoreMotion.framework in Frameworks */,
+				CB57122D2017171A0085B084 /* CFNetwork.framework in Frameworks */,
+				CB57122B2017170E0085B084 /* Foundation.framework in Frameworks */,
+				CB571229201716880085B084 /* UIKit.framework in Frameworks */,
+				CB5712272017167B0085B084 /* CoreGraphics.framework in Frameworks */,
+				CB5712252017166F0085B084 /* CoreText.framework in Frameworks */,
+				CB571223201716580085B084 /* QuartzCore.framework in Frameworks */,
+				CB5712212017163E0085B084 /* CoreTelephony.framework in Frameworks */,
+				CB57121F2017162F0085B084 /* SystemConfiguration.framework in Frameworks */,
 				CB2D015F1FF3355000E723C1 /* JavaScriptCore.framework in Frameworks */,
 				73CCBE351D534E6A00CFEB29 /* libstdc++.6.0.9.tbd in Frameworks */,
 				73CCBE331D534E5A00CFEB29 /* libc++.tbd in Frameworks */,
@@ -2786,6 +2842,7 @@
 				73CCBE2B1D534E0700CFEB29 /* AVFoundation.framework in Frameworks */,
 				73CCBE291D534DF900CFEB29 /* AudioToolbox.framework in Frameworks */,
 				73CCBE271D534DEA00CFEB29 /* CoreMedia.framework in Frameworks */,
+				CB57123520171F590085B084 /* libWeChatSDK.a in Frameworks */,
 				73FB35311D1BAEE20099CE5C /* libiconv.tbd in Frameworks */,
 				73CCBD9D1D53484200CFEB29 /* libopencore-amrnb.a in Frameworks */,
 				73C6883B1CA9381900BD7453 /* libsqlite3.tbd in Frameworks */,
@@ -2794,6 +2851,7 @@
 				73CCBD9E1D53484200CFEB29 /* libopencore-amrwb.a in Frameworks */,
 				731BBCA71C7EB1C6008EFB06 /* MediaPlayer.framework in Frameworks */,
 				73CCBE221D534D1400CFEB29 /* libcrypto.a in Frameworks */,
+				CB57121C201715590085B084 /* AlipaySDK.framework in Frameworks */,
 				73CCBE251D534D1400CFEB29 /* libHyphenateFullSDK.a in Frameworks */,
 				73A190EF1C71D80D00B8B5F1 /* CoreLocation.framework in Frameworks */,
 				73CCBE241D534D1400CFEB29 /* libssl.a in Frameworks */,
@@ -2816,6 +2874,16 @@
 		019FF9C3A1E3C5184C7C0E73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB57123A201725820085B084 /* Security.framework */,
+				CB57122E201717370085B084 /* CoreMotion.framework */,
+				CB57122C2017171A0085B084 /* CFNetwork.framework */,
+				CB57122A2017170E0085B084 /* Foundation.framework */,
+				CB571228201716880085B084 /* UIKit.framework */,
+				CB5712262017167A0085B084 /* CoreGraphics.framework */,
+				CB5712242017166F0085B084 /* CoreText.framework */,
+				CB571222201716570085B084 /* QuartzCore.framework */,
+				CB5712202017163E0085B084 /* CoreTelephony.framework */,
+				CB57121E2017162F0085B084 /* SystemConfiguration.framework */,
 				CB2D015E1FF3355000E723C1 /* JavaScriptCore.framework */,
 				73CCBE341D534E6A00CFEB29 /* libstdc++.6.0.9.tbd */,
 				73CCBE321D534E5A00CFEB29 /* libc++.tbd */,
@@ -3045,6 +3113,8 @@
 		7370E8EA1D7000B7002B2D52 /* Pay */ = {
 			isa = PBXGroup;
 			children = (
+				CBC37605201713DF00D908BC /* AlipaySDK */,
+				CBC37606201713DF00D908BC /* WXPaySDK */,
 				7370E8EB1D7000B7002B2D52 /* Controller */,
 				7370E8EC1D7000B7002B2D52 /* View */,
 			);
@@ -3054,6 +3124,8 @@
 		7370E8EB1D7000B7002B2D52 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CB571237201723F40085B084 /* GHPayManager.h */,
+				CB571238201723F40085B084 /* GHPayManager.m */,
 				7370E8EF1D702B55002B2D52 /* PayViewController.h */,
 				7370E8F01D702B55002B2D52 /* PayViewController.m */,
 				7370E8FE1D7596FB002B2D52 /* PaySuccessController.h */,
@@ -5422,6 +5494,19 @@
 			path = FDFullscreenPopGesture;
 			sourceTree = "<group>";
 		};
+		CB571249201834ED0085B084 /* WxPay */ = {
+			isa = PBXGroup;
+			children = (
+				CB57125420183B650085B084 /* payRequsestHandler.h */,
+				CB57125320183B640085B084 /* payRequsestHandler.mm */,
+				CB57124A201834ED0085B084 /* ApiXml.h */,
+				CB57124B201834ED0085B084 /* ApiXml.mm */,
+				CB57124E201834ED0085B084 /* WXUtil.h */,
+				CB57124F201834ED0085B084 /* WXUtil.mm */,
+			);
+			path = WxPay;
+			sourceTree = "<group>";
+		};
 		CB6B89F51DD9A25500901305 /* SpecialDepartmentController */ = {
 			isa = PBXGroup;
 			children = (
@@ -5464,6 +5549,30 @@
 				CBB078FA1DB0B76700B969D1 /* share_wechat.png */,
 			);
 			path = myself_2.0;
+			sourceTree = "<group>";
+		};
+		CBC37605201713DF00D908BC /* AlipaySDK */ = {
+			isa = PBXGroup;
+			children = (
+				CB57121B201715590085B084 /* AlipaySDK.bundle */,
+				CB57121A201715580085B084 /* AlipaySDK.framework */,
+			);
+			path = AlipaySDK;
+			sourceTree = "<group>";
+		};
+		CBC37606201713DF00D908BC /* WXPaySDK */ = {
+			isa = PBXGroup;
+			children = (
+				CB571249201834ED0085B084 /* WxPay */,
+				CB57123120171F570085B084 /* libWeChatSDK.a */,
+				CB57123320171F580085B084 /* README.txt */,
+				CB57123020171F550085B084 /* WechatAuthSDK.h */,
+				CB57123420171F580085B084 /* WXApi.h */,
+				CB57123220171F570085B084 /* WXApiObject.h */,
+				CB57123C20172A4F0085B084 /* GHWXPay.h */,
+				CB57123D20172A4F0085B084 /* GHWXPay.m */,
+			);
+			path = WXPaySDK;
 			sourceTree = "<group>";
 		};
 		CBE92BA31EAEEB410054651E /* healthmanager */ = {
@@ -6115,7 +6224,9 @@
 				7338B2F31D35E4E800FA8045 /* share_get_btn@2x.png in Resources */,
 				734083CF1DBA042700427E78 /* tabbar_search0@2x.png in Resources */,
 				CB973FB21D8034BC00AC52E9 /* HomePage.storyboard in Resources */,
+				CB57123620171F590085B084 /* README.txt in Resources */,
 				8EEDC8D91D2E02C9005B12C3 /* order_expert_new_bg_images@2x.png in Resources */,
+				CB57121D201715590085B084 /* AlipaySDK.bundle in Resources */,
 				8EEDC8BF1D2DFC6B005B12C3 /* order_expert_cell_grayicon_bg0@2x.png in Resources */,
 				8EEDC8C11D2DFCCC005B12C3 /* order_expert_cell_up_image@2x.png in Resources */,
 				8E2D45261CF29FD700746524 /* PaymentsuccessVC.xib in Resources */,
@@ -6300,8 +6411,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GuaHao/Pods-GuaHao-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/Pingpp/lib/Channels/Alipay/AlipaySDK.bundle",
-				"${PODS_ROOT}/Pingpp/lib/Pingpp.bundle",
 				"${PODS_ROOT}/ShareSDK3/ShareSDK/Support/Required/ShareSDK.bundle",
 				"${PODS_ROOT}/ShareSDK3/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenApi_IOS_Bundle.bundle",
 				"${PODS_ROOT}/ShareSDK3/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle",
@@ -6609,6 +6718,8 @@
 				CB6B8A061DDA98F600901305 /* SpecialCollectionCell.m in Sources */,
 				73B7D1521CCC6AA800C8BE4C /* BannerVO.m in Sources */,
 				731D5ABC1DAE1A4800066EFC /* InformationController.m in Sources */,
+				CB571250201834EE0085B084 /* ApiXml.mm in Sources */,
+				CB571252201834EE0085B084 /* WXUtil.mm in Sources */,
 				CBE92BB51EAF31830054651E /* HealthBasicOrderViewController.m in Sources */,
 				732157FD1CC62F9300034821 /* DayCell.m in Sources */,
 				CB1CC1E61DAB9AB3008CB273 /* AccompanyFlowVO.m in Sources */,
@@ -6650,6 +6761,7 @@
 				736FFB421D890F920045DFDF /* CityVO.m in Sources */,
 				739678501C573C1400D1DD95 /* Validator.m in Sources */,
 				7326D40D1D4F3483003836A3 /* HosAuthenticationView.m in Sources */,
+				CB57125520183B660085B084 /* payRequsestHandler.mm in Sources */,
 				8E757F771D4B4B980020EE3A /* GHAdvertView.m in Sources */,
 				73E852AC1D8111A000077B69 /* BankVO.m in Sources */,
 				73FB356D1D1BB1B20099CE5C /* rscode.c in Sources */,
@@ -6658,6 +6770,7 @@
 				CBE92C3F1EB1C4220054651E /* GHOrderTypeViewController.m in Sources */,
 				CB6B8A111DDAF61D00901305 /* SpecialDoctorInfoViewController.m in Sources */,
 				7338B2C91D35E46100FA8045 /* CrashViewController.m in Sources */,
+				CB57123E20172A4F0085B084 /* GHWXPay.m in Sources */,
 				CB64EC5B1F2AEB4A00EFAE3D /* ExpertOrderDiscountAlterView.m in Sources */,
 				73A190F61C71DF5400B8B5F1 /* SiteVO.m in Sources */,
 				CBD616BC1D76B672003B8FBB /* GHAcceptPatientRemarkCell.m in Sources */,
@@ -6778,6 +6891,7 @@
 				EEC7FFC41E5A7D4400B3ABF0 /* CreateOrderCardPriceCell.m in Sources */,
 				732158071CC773E500034821 /* ExpInfoVO.m in Sources */,
 				CBE92C431EB1C4220054651E /* GHUploadCertificateViewController.m in Sources */,
+				CB571239201723F40085B084 /* GHPayManager.m in Sources */,
 				CB8D83931DC987F400B79F19 /* Foundation+Log.m in Sources */,
 				8E7E22CF1D4EF015006C55BE /* AddPersonInputCell.m in Sources */,
 				731D5A5C1DAC88AE00066EFC /* Message3VO.m in Sources */,
@@ -7061,9 +7175,31 @@
 					"$(PROJECT_DIR)/GuaHao/Main/thrids/DIOpenSDK_V1.1.0_0421",
 					"$(PROJECT_DIR)/GuaHao/Main/thrids",
 					"$(PROJECT_DIR)/GuaHao/Main/Utils",
+					"$(PROJECT_DIR)/GuaHao/Main/UI/Pay",
+					"$(PROJECT_DIR)/GuaHao/Main/UI/Pay/AlipaySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GuaHao/Main/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapLocation\"",
+					"\"${PODS_ROOT}/Headers/Public/JPush\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJExtension\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/MOBFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/ShareSDK3\"",
+					"\"${PODS_ROOT}/Headers/Public/TPKeyboardAvoiding\"",
+					"\"${PODS_ROOT}/Headers/Public/TZImagePickerController\"",
+					"\"${PODS_ROOT}/Headers/Public/Toast\"",
+					"\"${PODS_ROOT}/Headers/Public/UMengAnalytics-NO-IDFA\"",
+					"$(PROJECT_DIR)/GuaHao/Main/UI/Pay/AlipaySDK",
+				);
 				INFOPLIST_FILE = GuaHao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -7077,8 +7213,85 @@
 					"$(PROJECT_DIR)/GuaHao/Main/thrids/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/GuaHao/Main/thrids/HyphenateFullSDK/lib/3rdparty",
 					"$(PROJECT_DIR)/GuaHao/Main/thrids/HyphenateFullSDK/lib",
+					"$(PROJECT_DIR)/GuaHao/Main/UI/Pay/WXPaySDK",
+					"$(PROJECT_DIR)/GuaHao/Main/UI/Pay/AlipaySDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"Masonry\"",
+					"-l\"SDWebImage\"",
+					"-l\"TPKeyboardAvoiding\"",
+					"-l\"TZImagePickerController\"",
+					"-l\"Toast\"",
+					"-l\"WeChatSDK\"",
+					"-l\"WeiboSDK\"",
+					"-l\"icucore\"",
+					"-l\"jpush-ios-2.1.9\"",
+					"-l\"sqlite3\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-l\"z.1.2.5\"",
+					"-framework",
+					"\"AMapFoundationKit\"",
+					"-framework",
+					"\"AMapLocationKit\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"JavaScriptCore\"",
+					"-framework",
+					"\"MOBFoundation\"",
+					"-framework",
+					"\"MOBFoundationEx\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QQConnector\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"ShareSDK\"",
+					"-framework",
+					"\"ShareSDKConnector\"",
+					"-framework",
+					"\"ShareSDKExtension\"",
+					"-framework",
+					"\"ShareSDKUI\"",
+					"-framework",
+					"\"SinaWeiboConnector\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TencentOpenAPI\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"UMMobClick\"",
+					"-framework",
+					"\"WechatConnector\"",
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pinjian.gh;
 				PRODUCT_NAME = "品简挂号";
 				PROVISIONING_PROFILE = "";
@@ -7105,9 +7318,31 @@
 					"$(PROJECT_DIR)/GuaHao/Main/thrids/DIOpenSDK_V1.1.0_0421",
 					"$(PROJECT_DIR)/GuaHao/Main/thrids",
 					"$(PROJECT_DIR)/GuaHao/Main/Utils",
+					"$(PROJECT_DIR)/GuaHao/Main/UI/Pay",
+					"$(PROJECT_DIR)/GuaHao/Main/UI/Pay/AlipaySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GuaHao/Main/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapLocation\"",
+					"\"${PODS_ROOT}/Headers/Public/JPush\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJExtension\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/MOBFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/ShareSDK3\"",
+					"\"${PODS_ROOT}/Headers/Public/TPKeyboardAvoiding\"",
+					"\"${PODS_ROOT}/Headers/Public/TZImagePickerController\"",
+					"\"${PODS_ROOT}/Headers/Public/Toast\"",
+					"\"${PODS_ROOT}/Headers/Public/UMengAnalytics-NO-IDFA\"",
+					"$(PROJECT_DIR)/GuaHao/Main/UI/Pay/AlipaySDK",
+				);
 				INFOPLIST_FILE = GuaHao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -7121,6 +7356,83 @@
 					"$(PROJECT_DIR)/GuaHao/Main/thrids/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/GuaHao/Main/thrids/HyphenateFullSDK/lib/3rdparty",
 					"$(PROJECT_DIR)/GuaHao/Main/thrids/HyphenateFullSDK/lib",
+					"$(PROJECT_DIR)/GuaHao/Main/UI/Pay/WXPaySDK",
+					"$(PROJECT_DIR)/GuaHao/Main/UI/Pay/AlipaySDK",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"Masonry\"",
+					"-l\"SDWebImage\"",
+					"-l\"TPKeyboardAvoiding\"",
+					"-l\"TZImagePickerController\"",
+					"-l\"Toast\"",
+					"-l\"WeChatSDK\"",
+					"-l\"WeiboSDK\"",
+					"-l\"icucore\"",
+					"-l\"jpush-ios-2.1.9\"",
+					"-l\"sqlite3\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-l\"z.1.2.5\"",
+					"-framework",
+					"\"AMapFoundationKit\"",
+					"-framework",
+					"\"AMapLocationKit\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"JavaScriptCore\"",
+					"-framework",
+					"\"MOBFoundation\"",
+					"-framework",
+					"\"MOBFoundationEx\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QQConnector\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"ShareSDK\"",
+					"-framework",
+					"\"ShareSDKConnector\"",
+					"-framework",
+					"\"ShareSDKExtension\"",
+					"-framework",
+					"\"ShareSDKUI\"",
+					"-framework",
+					"\"SinaWeiboConnector\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TencentOpenAPI\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"UMMobClick\"",
+					"-framework",
+					"\"WechatConnector\"",
+					"-Objc",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pinjian.gh;
 				PRODUCT_NAME = "品简挂号";

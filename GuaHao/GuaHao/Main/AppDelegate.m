@@ -18,6 +18,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <JSPatchPlatform/JSPatch.h>
+#import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
 @interface AppDelegate ()<WXApiDelegate,JPUSHRegisterDelegate,UNUserNotificationCenterDelegate>
 
 @end
@@ -94,7 +96,8 @@
     
 #pragma mark - 向微信注册
     //向微信注册
-    [WXApi registerApp:@"wx696fa79565c46811" withDescription:@"pjgh"];
+    [WXApi registerApp:@"wx696fa79565c46811"];
+//    [WXApi registerApp:@"wx696fa79565c46811" withDescription:@"pjgh"];
     [ShareSDK registerApp:@"10daf2d424989"
      
           activePlatforms:@[
@@ -182,7 +185,7 @@
     //要注视 XXXXXXX
 
 //    [ServerManger getInstance].serverURL =  @"http://192.168.1.172:8080/";///孟立测试rbd665  pgd606
-//    [ServerManger getInstance].serverURL =  @"http://192.168.1.168:8080/";//段超本地
+    [ServerManger getInstance].serverURL =  @"http://192.168.1.134:8080/";//段超本地
 //    [ServerManger getInstance].serverURL =  @"http://139.196.220.224:8090/";///测试
     [[ServerManger getInstance] getAppVersion:^(id data) {
         if (data!=[NSNull class]&&data!=nil) {
@@ -195,7 +198,7 @@
                     //要注视 XXXXXXX
 
 //                        [ServerManger getInstance].serverURL =  @"http://192.168.1.172:8080/";///孟立测试
-//                       [ServerManger getInstance].serverURL =  @"http://192.168.1.168:8080/";//段超本地
+                       [ServerManger getInstance].serverURL =  @"http://192.168.1.134:8080/";//段超本地
 //                    [ServerManger getInstance].serverURL =  @"http://139.196.220.224:8090/";///测试
                     
 //                    if (![APP_VERSION isEqualToString:version.version.versionId] &&version.version.isForceUpdate) {
@@ -353,17 +356,17 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    BOOL result = [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"PingppCallBack" object:error];
-        
-    }];
-    if(result){
-        return YES;
-    }
-    BOOL wechatBool = [WXApi handleOpenURL:url delegate:self];
-    if(wechatBool){
-        return YES;
-    }
+//    BOOL result = [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"PingppCallBack" object:error];
+//
+//    }];
+//    if(result){
+//        return YES;
+//    }
+//    BOOL wechatBool = [WXApi handleOpenURL:url delegate:self];
+//    if(wechatBool){
+//        return YES;
+//    }
     return YES;
 }
 
@@ -376,22 +379,56 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)app
-            openURL:(NSURL *)url
-            options:(NSDictionary *)options {
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options {
+    
+    NSLog(@"%@",url);
+    
     BOOL wechatBool = [WXApi handleOpenURL:url delegate:self];
     if(wechatBool){
         return YES;
     }
-    BOOL canHandleURL = [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"PingppCallBack" object:error];
+    
+    [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+         NSLog(@"result = %@",resultDic);//返回的支付结果
+        NSString *codeStr = [resultDic objectForKey:@"resultStatus"];
+        switch (codeStr.integerValue) {
+            case 9000:{///成功
+                NSLog(@"支付成功");
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"wxPayBack" object:@{@"errCode":@"0"}];
+                NSLog(@"支付成功");
+                
+            }
+                break;
+            case 6001:{///取消
+                NSLog(@"/取消");
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"wxPayBack" object:@{@"errCode":@"-2"}];
+                NSLog(@"/取消");
+                
+            }
+                break;
+            default:{///失败
+                NSLog(@"支付失败");
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"wxPayBack" object:@{@"errCode":@"1"}];
+                NSLog(@"支付失败");
+                
+            }
+                break;
+        }
         
-    }];
-    return canHandleURL;
+        
+        
+        
+     }];
+    
+    
+    
+
+    return YES;
 }
 
 #pragma mark - WXApiDelegate
-- (void)onResp:(BaseResp *)resp {
+-(void)onResp:(BaseResp *)resp{
+    
     //    [ProgressHUD showSuccess:[NSString stringWithFormat:@"登录成功：%@",resp.code]];
     if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
         
@@ -400,6 +437,40 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
         NSLog(@"%@",rep.code);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WxLoginBack" object:rep.code];
         //        [self otherLogin:rep.code type:2];
+    }else if ([resp isKindOfClass:[PayResp class]]){///支付成功
+        PayResp *response = (PayResp *)resp;
+        //         WXSuccess           = 0,    /**< 成功    */
+//        WXErrCodeCommon     = -1,   /**< 普通错误类型    */
+//        WXErrCodeUserCancel = -2,   /**< 用户点击取消并返回    */
+//        WXErrCodeSentFail   = -3,   /**< 发送失败    */
+//        WXErrCodeAuthDeny   = -4,   /**< 授权失败    */
+//        WXErrCodeUnsupport  = -5,   /**< 微信不支持    */
+//
+        NSString *str = [NSString stringWithFormat:@"%d",response.errCode];
+        switch (response.errCode) {
+
+            case WXSuccess:{///成功
+                NSLog(@"支付成功");
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"wxPayBack" object:@{@"errCode":str}];
+                NSLog(@"支付成功");
+
+            }
+                break;
+            case WXErrCodeUserCancel:{///取消
+                 NSLog(@"/取消");
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"wxPayBack" object:@{@"errCode":str}];
+                NSLog(@"/取消");
+
+            }
+                break;
+            default:{///失败
+                NSLog(@"支付失败");
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"wxPayBack" object:@{@"errCode":str}];
+                NSLog(@"支付失败");
+
+            }
+                break;
+        }
     }
 }
 

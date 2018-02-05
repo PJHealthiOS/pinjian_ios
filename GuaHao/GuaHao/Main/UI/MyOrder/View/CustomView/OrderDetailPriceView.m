@@ -32,7 +32,7 @@
 -(void)reloadTableViewWithSourceArr:(NSArray *)sourceArr{
     self.sourceArr = sourceArr;
     [self.tableView reloadData];
-
+    NSLog(@"sourceArr-------%@",sourceArr);
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -44,7 +44,7 @@
     NSDictionary *dic = [self.sourceArr objectAtIndex:indexPath.row];
     
     OrderDetailPriceCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"OrderDetailPriceCell"];
-    [cell loadCellWith:[dic objectForKey:@"type"] valueStr:[dic objectForKey:@"value"] hidden:[[dic objectForKey:@"hidden"] isEqualToString:@"0"] gary:[[dic objectForKey:@"gary"] isEqualToString:@"1"]];
+    [cell loadCellWith:[dic objectForKey:@"type"] valueStr:[NSString stringWithFormat:@"%@",[dic objectForKey:@"value"]] hidden:[[dic objectForKey:@"hidden"] isEqualToString:@"0"] gary:[[dic objectForKey:@"gary"] isEqualToString:@"1"]];
     return cell;
 }
 

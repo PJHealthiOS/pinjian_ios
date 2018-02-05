@@ -85,8 +85,6 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "${PODS_ROOT}/Pingpp/lib/Channels/Alipay/AlipaySDK.bundle"
-  install_resource "${PODS_ROOT}/Pingpp/lib/Pingpp.bundle"
   install_resource "${PODS_ROOT}/ShareSDK3/ShareSDK/Support/Required/ShareSDK.bundle"
   install_resource "${PODS_ROOT}/ShareSDK3/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenApi_IOS_Bundle.bundle"
   install_resource "${PODS_ROOT}/ShareSDK3/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle"
@@ -95,8 +93,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "${PODS_ROOT}/Pingpp/lib/Channels/Alipay/AlipaySDK.bundle"
-  install_resource "${PODS_ROOT}/Pingpp/lib/Pingpp.bundle"
   install_resource "${PODS_ROOT}/ShareSDK3/ShareSDK/Support/Required/ShareSDK.bundle"
   install_resource "${PODS_ROOT}/ShareSDK3/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenApi_IOS_Bundle.bundle"
   install_resource "${PODS_ROOT}/ShareSDK3/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle"

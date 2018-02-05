@@ -408,10 +408,14 @@
 -(void) normalOrderCompleteRegAction:(NSNumber*) orderID dateStr:(NSString *)dateStr andCallback: (void (^)(id  data))callback;
 ///普通号操作
 -(void) normalOrderOperationAction:(NSNumber*)orderID Operation:(NSString *)operation andCallback: (void (^)(id  data))callback;
-
-
-
-
+///充值支付结果
+-(void) getAccountRechargePayStatus:(NSString*) orderID  andCallback: (void (^)(id  data))callback;
+////普通号支付结果查询
+-(void) getNormalOrderPayStatus:(NSString*) orderID  andCallback: (void (^)(id  data))callback;
+////专家特需号支付结果查询/pjOrder/pay/query
+-(void) getSpecialOrderPayStatus:(NSString*) orderID  andCallback: (void (^)(id  data))callback;
+////陪诊号支付结果查询/pjOrder/pay/query
+-(void) getAccompanyOrderPayStatus:(NSString*) orderID  andCallback: (void (^)(id  data))callback;
 
 
 

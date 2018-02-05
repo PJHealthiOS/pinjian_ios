@@ -834,10 +834,10 @@ AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
     [self getHttp:urlString parameters:nil version:@"3" andCallback:callback];
 }
 
-//充值
+//充值 支付方式：1支付宝 2微信APP 3微信公众号 4支付宝沙箱
 -(void) topdUpMoney:(float) money channel:(NSString*) channel andCallback: (void (^)(id  data))callback{
-    NSString * orderURL = [NSString stringWithFormat:@"%@account/recharge?amount=%.2f&channel=%@",[ServerManger getInstance].serverURL,money,channel];
-    [self postHttp:orderURL parameters:nil version:@"3" andCallback:callback];
+    NSString * orderURL = [NSString stringWithFormat:@"%@account/recharge?amount=%.2f&payId=%@&transactionType=APP",[ServerManger getInstance].serverURL,money,channel];
+    [self postHttp:orderURL parameters:nil version:@"4" andCallback:callback];
 }
 //充值回调
 -(void) notifyAccount:(NSString*) chargeid andCallback:(void (^)(id  data))callback
@@ -854,20 +854,20 @@ AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
 ///专家号支付
 -(void) payOrder:(NSNumber*) orderID channel:(NSString*) channel couponID:(NSString *)couponID useBalance:(BOOL)useBalance andCallback: (void (^)(id  data))callback
 {
-    NSString * orderURL = [NSString stringWithFormat:@"%@pjOrder/%@/pay?channel=%@&useBalance=%@",[ServerManger getInstance].serverURL,orderID,channel,useBalance?@"1":@"0"];
+    NSString * orderURL = [NSString stringWithFormat:@"%@pjOrder/%@/pay?payId=%@&useBalance=%@&transactionType=APP",[ServerManger getInstance].serverURL,orderID,channel,useBalance?@"1":@"0"];
     if (couponID.length > 1) {
         orderURL = [NSString stringWithFormat:@"%@&couponseId=%@",orderURL,couponID];
     }
-    [self postHttp:orderURL parameters:nil version:@"4" andCallback:callback];
+    [self postHttp:orderURL parameters:nil version:@"5" andCallback:callback];
 }
 ///新普通号号支付
 -(void) payNormalOrder:(NSNumber*) orderID channel:(NSString*) channel couponID:(NSString *)couponID useBalance:(BOOL)useBalance andCallback: (void (^)(id  data))callback
 {
-    NSString * orderURL = [NSString stringWithFormat:@"%@order/%@/pay?channel=%@&useBalance=%@",[ServerManger getInstance].serverURL,orderID,channel,useBalance?@"1":@"0"];
+    NSString * orderURL = [NSString stringWithFormat:@"%@order/%@/pay?payId=%@&useBalance=%@&transactionType=APP",[ServerManger getInstance].serverURL,orderID,channel,useBalance?@"1":@"0"];
     if (couponID.length > 1) {
         orderURL = [NSString stringWithFormat:@"%@&couponseId=%@",orderURL,couponID];
     }
-    [self postHttp:orderURL parameters:nil version:@"4" andCallback:callback];
+    [self postHttp:orderURL parameters:nil version:@"5" andCallback:callback];
 }
 ///普通挂号详情
 -(void) getOrderStatus:(NSString*) serialNo longitude:(NSString*) longitude latitude:(NSString*) latitude andCallback:(void (^)(id  data))callback
@@ -1537,7 +1537,7 @@ AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
 -(NSDictionary*) getErrorCode:(NSError*) error
 {
     NSDictionary *dic = error.userInfo;
-    NSLog(@"%@",[dic objectForKey:@"NSUnderlyingError"])
+    NSLog(@"%@",[dic objectForKey:@"NSUnderlyingError"]);
     
     if (error.code == -1009) {
         return @{@"code":@"-1009",@"msg":@"网络连接失败，请检查您是否开启网络连接！"};
@@ -1594,8 +1594,8 @@ AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
 ///陪诊支付
 -(void) payAccompanyOrder:(NSNumber*) orderID channel:(NSString*) channel  andCallback: (void (^)(id  data))callback
 {
-    NSString * orderURL = [NSString stringWithFormat:@"%@pzOrder/%@/pay?channel=%@",[ServerManger getInstance].serverURL,orderID,channel];
-    [self postHttp:orderURL parameters:nil version:@"2" andCallback:callback];
+    NSString * orderURL = [NSString stringWithFormat:@"%@pzOrder/%@/pay?payId=%@&transactionType=APP",[ServerManger getInstance].serverURL,orderID,channel];
+    [self postHttp:orderURL parameters:nil version:@"5" andCallback:callback];
 }
 ///陪诊支付回调
 -(void) notifyAccompanyOrder:(NSString*) chargeid andCallback:(void (^)(id  data))callback
@@ -1689,7 +1689,7 @@ AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
     
     NSString* urlString = [NSString stringWithFormat:@"%@%@/%@/qrpay?channel=%@",[ServerManger getInstance].serverURL,isNormal ? @"order":@"pjOrder",patientID,channel];
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [self postHttp:urlString parameters:nil version:@"3" andCallback:callback];
+    [self postHttp:urlString parameters:nil version:@"5" andCallback:callback];
     
 }
 ///轮询支付结果
@@ -1843,4 +1843,35 @@ AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
     [self postHttp:orderURL parameters:nil version:@"4" andCallback:callback];
     
 }
+///充值支付结果
+-(void) getAccountRechargePayStatus:(NSString*) orderID  andCallback: (void (^)(id  data))callback{
+    NSString * orderURL = [NSString stringWithFormat:@"%@account/recharge/query?out_trade_no=%@",[ServerManger getInstance].serverURL,orderID];
+    [self getHttp:orderURL parameters:nil version:@"4" andCallback:callback];
+}
+
+////普通号支付结果查询
+-(void) getNormalOrderPayStatus:(NSString*) orderID  andCallback: (void (^)(id  data))callback{
+    NSString * orderURL = [NSString stringWithFormat:@"%@order/pay/query?out_trade_no=%@",[ServerManger getInstance].serverURL,orderID];
+    [self getHttp:orderURL parameters:nil version:@"5" andCallback:callback];
+}
+
+////专家特需号支付结果查询/pjOrder/pay/query
+-(void) getSpecialOrderPayStatus:(NSString*) orderID  andCallback: (void (^)(id  data))callback{
+    NSString * orderURL = [NSString stringWithFormat:@"%@pjOrder/pay/query?out_trade_no=%@",[ServerManger getInstance].serverURL,orderID];
+    [self getHttp:orderURL parameters:nil version:@"5" andCallback:callback];
+}
+
+////陪诊号支付结果查询/pjOrder/pay/query
+-(void) getAccompanyOrderPayStatus:(NSString*) orderID  andCallback: (void (^)(id  data))callback{
+    NSString * orderURL = [NSString stringWithFormat:@"%@pzOrder/pay/query?out_trade_no=%@",[ServerManger getInstance].serverURL,orderID];
+    [self getHttp:orderURL parameters:nil version:@"5" andCallback:callback];
+}
+
+
+
+
+
+
+
+
 @end

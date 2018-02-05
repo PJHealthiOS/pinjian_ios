@@ -119,7 +119,7 @@
     }else{
         [self.selectArr addObject:str];
     }
-    NSLog(@"现在选中了几个------%lu",(unsigned long)self.selectArr.count)
+    NSLog(@"现在选中了几个------%lu",(unsigned long)self.selectArr.count);
 }
 ///选择发起人
 - (IBAction)applyPerosnAction:(UIButton *)sender {

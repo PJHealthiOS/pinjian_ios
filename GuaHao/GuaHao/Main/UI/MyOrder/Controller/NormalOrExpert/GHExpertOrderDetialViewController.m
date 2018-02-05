@@ -615,7 +615,7 @@
         countdownTimer= nil;
     }
     [self returnCountStr:self.payRemainingTime];
-    //    NSLog(@"定时器再走---d");
+        NSLog(@"定时器再走---d时器再走");
 }
 -(void)returnCountStr:(int)time{
     //    NSLog(@"------------------------%d",time);

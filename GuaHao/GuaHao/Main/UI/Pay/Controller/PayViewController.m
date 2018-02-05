@@ -9,11 +9,12 @@
 #import "PayViewController.h"
 #import "PaySuccessController.h"
 #import "PayPageVO.h"
-#import "Pingpp.h"
 #import "ServerManger.h"
 #import "UIViewController+Toast.h"
 #import "AccOrderDetailViewController.h"
 #import "OrderDetailPriceView.h"
+#import "GHPayManager.h"
+
 @interface PayViewController (){
     int countdown;
 }
@@ -94,7 +95,6 @@
     isPayMore = !isPayMore;
     isWxPay = YES;
     self.wxButton.selected = YES;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pingppCallBack:) name:@"PingppCallBack" object:nil];
     __weak typeof(self) weakSelf = self;
     if (self.isAccompany) {
         ///支付界面数据
@@ -107,7 +107,7 @@
                         [ServerManger getInstance].payTime = [Utils getCurrentSecond];
                         payVO = [PayPageVO mj_objectWithKeyValues:data[@"object"]];
                         [weakSelf creatrCountDownTimer];
-                        [weakSelf initView];
+                        [weakSelf initView];////有错
                     }
                     
                 }
@@ -206,8 +206,8 @@
 
 - (IBAction)submitAction:(id)sender {
     NSLog(@"pay....");
-    NSString * type = isWxPay?@"wx":@"alipay";
-    
+    NSString * type = isWxPay?@"2":@"1";
+    GHPayType payType = isWxPay?GHPayTypeWX:GHPayTypeAlipay ;
     if (self.isAccompany) {
         ///陪诊支付
         __weak typeof(self) weakSelf = self;
@@ -219,7 +219,7 @@
                 if (code.intValue == 0) {
                     [weakSelf inputToast:@"请求支付!"];
                     if (data[@"object"] == [NSNull null]) {
-                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"PingppCallBack" object:nil];
+//                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"PingppCallBack" object:nil];
                         PaySuccessController * view = [[PaySuccessController alloc]init];
                         view.isExpert = _isExpert;
                         view.isAccompany = YES;
@@ -227,8 +227,10 @@
                         [weakSelf.navigationController pushViewController:view animated:YES];
                     }else{
                         lastChargeID = data[@"object"][@"id"];
-                        [Pingpp createPayment:data[@"object"] viewController:weakSelf appURLScheme:@"com.pinjian.gh.pay" withCompletion:^(NSString *result, PingppError *error) {
-                            [[NSNotificationCenter defaultCenter] postNotificationName:@"PingppCallBack" object:error];
+                        
+                        [[GHPayManager sharePayManager] getPayWithPayType:payType parameters:[data objectForKey:@"object"]  action:^(NSString *orderID, NSInteger errorCode) {
+                            NSLog(@"%ld",(long)errorCode);
+                            [weakSelf payBackAction:errorCode parameters:[data objectForKey:@"object"]];
                         }];
                     }
                 }else{
@@ -254,8 +256,9 @@
                         [weakSelf.navigationController pushViewController:view animated:YES];
                     }else{
                         lastChargeID = data[@"object"][@"id"];
-                        [Pingpp createPayment:data[@"object"] viewController:weakSelf appURLScheme:@"com.pinjian.gh.pay" withCompletion:^(NSString *result, PingppError *error) {
-                            [[NSNotificationCenter defaultCenter] postNotificationName:@"PingppCallBack" object:error];
+                        [[GHPayManager sharePayManager] getPayWithPayType:payType parameters:[data objectForKey:@"object"]  action:^(NSString *orderID, NSInteger errorCode) {
+                            NSLog(@"%ld",(long)errorCode);
+                            [weakSelf payBackAction:errorCode parameters:[data objectForKey:@"object"]];
                         }];
                     }
                 }else{
@@ -271,56 +274,73 @@
 
 }
 
-
--(void)pingppCallBack:(NSNotification *)notification{
-    if (lastChargeID == nil) {
-        [self performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
-        return;
-    }
-    PingppError *error = notification.object;
-    if (error == nil) {
-        __weak typeof(self) weakSelf = self;
-        if (self.isAccompany) {
-            [[ServerManger getInstance] notifyAccompanyOrder:lastChargeID  andCallback:^(id data) {
-                [weakSelf.view hideToastActivity];
-                if (data!=[NSNull class]&&data!=nil) {
-                    NSNumber * code = data[@"code"];
-                    NSString * msg = data[@"msg"];
-                    if (code.intValue == 0) {
-                        [weakSelf inputToast:@"支付成功!"];
-                    }else{
-                        isSucess = NO;
-                        [weakSelf inputToast:msg];
-                    }
-
-                    [weakSelf performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
-                }
-            }];
-        }else{
-            [[ServerManger getInstance] notifyOrder:lastChargeID isExpert:_isExpert  andCallback:^(id data) {
-                [weakSelf.view hideToastActivity];
-                if (data!=[NSNull class]&&data!=nil) {
-                    NSNumber * code = data[@"code"];
-                    NSString * msg = data[@"msg"];
-                    if (code.intValue == 0) {
-                        [weakSelf inputToast:@"支付成功!"];
-                    }else{
-                        isSucess = NO;
-                        [weakSelf inputToast:msg];
-                    }
-                    [weakSelf performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
-                }
-            }];
-        }
+-(void)payBackAction:(NSInteger)errorCode parameters:(NSDictionary *)parameters{
+    if (errorCode == 0) {///成功
+//        [self inputToast:@"支付成功!"];
         
+        [self accountPayPolling:parameters[@"out_trade_no"] parameters:parameters];
         
-    } else {
-        NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
-        isSucess = NO;
-        [self performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
+    }else if (errorCode == 1){///取消
+        [self inputToast:@"取消支付!"];
+    }else{//错误
+        [self inputToast:@"支付失败!"];
+        
     }
     
+    
 }
+
+
+-(void)accountPayPolling:(NSString *)orderID parameters:(NSDictionary *)parameters{
+    __weak typeof(self) weakSelf = self;
+    __block int countTimes = 0;
+    
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    __block dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 1 * NSEC_PER_SEC, 0); //每秒执行
+    dispatch_source_set_event_handler(_timer, ^{
+        [self.view makeToastActivity:CSToastPositionCenter];
+
+        //在这里执行事件
+        [[ServerManger getInstance] getAccompanyOrderPayStatus:orderID andCallback:^(id data) {
+            [weakSelf.view hideToasts];
+            if (data!=[NSNull class]&&data!=nil) {
+                NSNumber * code = data[@"code"];
+                //                NSString * msg = data[@"msg"];
+                
+                if (code.intValue == 0) {
+                    
+                    // 取消定时器
+                    dispatch_cancel(_timer);
+                    _timer = nil;
+                    [weakSelf inputToast:@"支付成功!"];
+                    [weakSelf performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
+                    
+                    
+                }
+                if (code.intValue != 0 && countTimes > 15) {
+                    dispatch_cancel(_timer);
+                    _timer = nil;
+                    [weakSelf inputToast:@"支付异常!"];
+                    [weakSelf performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
+
+                }
+                
+                
+                
+                countTimes ++;
+                
+            }
+        }];
+        
+    });
+    
+    dispatch_resume(_timer);
+    
+    
+    
+}
+
 
 
 -(void)back{

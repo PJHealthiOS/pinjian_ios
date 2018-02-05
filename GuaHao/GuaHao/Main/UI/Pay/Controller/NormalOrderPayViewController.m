@@ -9,7 +9,10 @@
 #import "NormalOrderPayViewController.h"
 #import "PaySuccessController.h"
 #import "PayPageVO.h"
-#import "Pingpp.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "GHPayManager.h"
+#import "GHWXPay.h"
+#import "payRequsestHandler.h"
 #import "ServerManger.h"
 #import "UIViewController+Toast.h"
 #import "AccOrderDetailViewController.h"
@@ -90,7 +93,6 @@
     isPayMore = !isPayMore;
     isWxPay = YES;
     self.wxButton.selected = YES;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pingppCallBack:) name:@"PingppCallBack" object:nil];
     __weak typeof(self) weakSelf = self;
     
     [[ServerManger getInstance] getPayNormalOrderPageData:_orderID andCallback:^(id data) {
@@ -129,39 +131,7 @@
     view.orderType = 0;
     [self.navigationController pushViewController:view animated:YES];
 }
--(void)pingppCallBack:(NSNotification *)notification{
-    if (lastChargeID == nil) {
-        [self performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
-        return;
-    }
-    PingppError *error = notification.object;
-    if (error == nil) {
-        __weak typeof(self) weakSelf = self;
-        
-        [[ServerManger getInstance] notifyOrder:lastChargeID isExpert:NO  andCallback:^(id data) {
-            [weakSelf.view hideToastActivity];
-            if (data!=[NSNull class]&&data!=nil) {
-                NSNumber * code = data[@"code"];
-                NSString * msg = data[@"msg"];
-                if (code.intValue == 0) {
-                    [weakSelf inputToast:@"支付成功!"];
-                }else{
-                    isSucess = NO;
-                    [weakSelf inputToast:msg];
-                }
-                [weakSelf performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
-            }
-        }];
-        
-        
-        
-    } else {
-        NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
-        isSucess = NO;
-        [self performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
-    }
-    
-}
+
 
 
 -(void)initView{
@@ -314,9 +284,10 @@
 
 - (IBAction)sureAction:(id)sender {
     NSLog(@"pay....");
-    NSString * type = isWxPay?@"wx":@"alipay";
+    NSString * type = isWxPay?@"2":@"1";
     __weak typeof(self) weakSelf = self;
-    
+    GHPayType payType = isWxPay?GHPayTypeWX:GHPayTypeAlipay ;
+
     [[ServerManger getInstance] payNormalOrder:payVO.id channel:type couponID:self.selectCoupon.id.stringValue useBalance:self.balanceSwitch.isOn andCallback:^(id data) {
         [self.view hideToastActivity];
         if (data!=[NSNull class]&&data!=nil) {
@@ -331,9 +302,11 @@
                     [weakSelf.navigationController pushViewController:view animated:YES];
                 }else{
                     lastChargeID = data[@"object"][@"id"];
-                    [Pingpp createPayment:data[@"object"] viewController:weakSelf appURLScheme:@"com.pinjian.gh.pay" withCompletion:^(NSString *result, PingppError *error) {
-                        [[NSNotificationCenter defaultCenter] postNotificationName:@"PingppCallBack" object:error];
+                    [[GHPayManager sharePayManager] getPayWithPayType:payType parameters:[data objectForKey:@"object"]  action:^(NSString *orderID, NSInteger errorCode) {
+                        NSLog(@"%ld",(long)errorCode);
+                        [weakSelf payBackAction:errorCode parameters:[data objectForKey:@"object"]];
                     }];
+
                 }
             }else{
                 [weakSelf inputToast:msg];
@@ -345,6 +318,87 @@
     
     
 }
+
+
+
+
+
+-(void)payBackAction:(NSInteger)errorCode parameters:(NSDictionary *)parameters{
+    if (errorCode == 0) {///成功
+//        [self inputToast:@"支付成功!"];
+        
+        [self accountPayPolling:parameters[@"out_trade_no"] parameters:parameters];
+        
+    }else if (errorCode == 1){///取消
+        [self inputToast:@"取消支付!"];
+    }else{//错误
+        [self inputToast:@"支付失败!"];
+        
+    }
+    
+    
+}
+
+
+-(void)accountPayPolling:(NSString *)orderID parameters:(NSDictionary *)parameters{
+    __weak typeof(self) weakSelf = self;
+    __block int countTimes = 0;
+    
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    __block dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 1 * NSEC_PER_SEC, 0); //每秒执行
+    dispatch_source_set_event_handler(_timer, ^{
+        [self.view makeToastActivity:CSToastPositionCenter];
+
+        //在这里执行事件
+        [[ServerManger getInstance] getNormalOrderPayStatus:orderID andCallback:^(id data) {
+            [weakSelf.view hideToasts];
+            if (data!=[NSNull class]&&data!=nil) {
+                NSNumber * code = data[@"code"];
+                //                NSString * msg = data[@"msg"];
+                
+                if (code.intValue == 0) {
+                    
+                    // 取消定时器
+                    dispatch_cancel(_timer);
+                    _timer = nil;
+                    [weakSelf inputToast:@"支付成功!"];
+                    [weakSelf performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
+
+                    
+                }
+                if (code.intValue != 0 && countTimes > 15) {
+                    dispatch_cancel(_timer);
+                    _timer = nil;
+                    [weakSelf inputToast:@"支付异常!"];
+                    [weakSelf performSelector:@selector(onBack:) withObject:nil afterDelay:1.0];
+
+                }
+                
+                
+                
+                countTimes ++;
+                
+            }
+        }];
+        
+    });
+    
+    dispatch_resume(_timer);
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

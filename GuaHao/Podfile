@@ -7,7 +7,7 @@ target 'GuaHao' do
 	pod 'MBProgressHUD', '~> 0.9.2'
 	pod 'Toast', '~> 3.0'
 	pod 'TPKeyboardAvoiding'
-	pod 'Pingpp','~> 2.2.8'
+	
 	pod 'SDWebImage', '~>3.7'
 	pod 'AMapLocation'
 	pod 'JPush','~>2.1.0'
