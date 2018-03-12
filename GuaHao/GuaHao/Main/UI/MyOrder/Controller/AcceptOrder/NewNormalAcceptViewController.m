@@ -31,6 +31,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
 @property (weak, nonatomic) IBOutlet UIButton *fullButton;
 @property (weak, nonatomic) IBOutlet UIButton *closedButton;
+@property (weak, nonatomic) IBOutlet UILabel *AccompanyPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cardPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *payTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *payTypeStatusLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *infoViewHeight;
 
@@ -41,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"接单详情";
-    self.infoViewHeight.constant =  300;
+    self.infoViewHeight.constant =  381;
 
     [self getInfoDesc];
     
@@ -77,25 +81,31 @@
     self.cardLabel.text = _orderVO.patientIdcard;
 //    [self.payButton setTitle:_orderVO.patientMobile forState:UIControlStateNormal] ;
     self.remarkLabel.text = _orderVO.patientComments.length == 0 ? @"无" : _orderVO.patientComments;
-    self.priceLabel.text = [NSString stringWithFormat:@"%@ 元",_orderVO.totalFee];;
+    self.priceLabel.text = [NSString stringWithFormat:@"%@ 元",_orderVO.regFee];;
     self.certificateLabel.text = _orderVO.patientStatus.intValue > 0 ? @"已认证" : @"未认证";
     [self.phoneNoButton setTitle:_orderVO.patientMobile forState:UIControlStateNormal];
     ///对下面的按钮进行控制
     if (_orderVO.ticketImgUrl.length > 2) {
         [self.UploadCertificateButton sd_setBackgroundImageWithURL:[NSURL URLWithString:_orderVO.ticketImgUrl] forState:UIControlStateNormal];
     }
+    self.AccompanyPriceLabel.text = [NSString stringWithFormat:@"%@ 元",IsValue(_orderVO.pzFee) ];
+    self.cardPriceLabel.text = [NSString stringWithFormat:@"%@ 元",IsValue(_orderVO.cardFee)];
+    self.payTypeLabel.text = _orderVO.payType.intValue == 2 ? @"到院支付":@"在线支付";
+
     if (_orderVO.qrPaidStatus.intValue == 0) {///无需显示
-        
-        
+        self.payButton.hidden = YES;
+        self.payTypeStatusLabel.hidden = YES;
         
     }else if (_orderVO.qrPaidStatus.intValue == 1){////待扫码支付
-        
-
-        
+        self.payTypeStatusLabel.text = @"待扫码支付";
+        self.payTypeStatusLabel.hidden = NO;
+         self.payButton.hidden = NO;
     }else if (_orderVO.qrPaidStatus.intValue == 2){///已经支付过了
-        
-        
+        self.payTypeStatusLabel.text = @"已支付";
+        self.payTypeStatusLabel.hidden = NO;
+         self.payButton.hidden = NO;
     }
+   
     
     
     
@@ -141,9 +151,9 @@
     sender.selected = !sender.selected;
     self.remarkLabel.hidden = !sender.selected ;
     if (sender.selected) {
-        self.infoViewHeight.constant = [self boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 60, 0) str: _orderVO.patientComments.length == 0 ? @"无" : _orderVO.patientComments fount:13].height + 328;
+        self.infoViewHeight.constant = [self boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 60, 0) str: _orderVO.patientComments.length == 0 ? @"无" : _orderVO.patientComments fount:13].height + 410;
     }else{
-        self.infoViewHeight.constant =  300;
+        self.infoViewHeight.constant =  381;
     }
     
 }
@@ -151,6 +161,7 @@
 - (IBAction)uploadCertificateAction:(UIButton *)sender {
     __weak typeof(self) weakSelf = self;
     NormalUploadViewController *upload = [GHViewControllerLoader NormalUploadViewController];
+    upload.isNormal = YES;
     upload.postOrderVO = _orderVO;
 
     [upload uploadSuccessAction:^(UIImage *image) {

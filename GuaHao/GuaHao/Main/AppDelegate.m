@@ -185,7 +185,7 @@
     //要注视 XXXXXXX
 
 //    [ServerManger getInstance].serverURL =  @"http://192.168.1.172:8080/";///孟立测试rbd665  pgd606
-    [ServerManger getInstance].serverURL =  @"http://192.168.1.134:8080/";//段超本地
+//    [ServerManger getInstance].serverURL =  @"http://192.168.1.134:8080/";//段超本地
 //    [ServerManger getInstance].serverURL =  @"http://139.196.220.224:8090/";///测试
     [[ServerManger getInstance] getAppVersion:^(id data) {
         if (data!=[NSNull class]&&data!=nil) {
@@ -198,7 +198,7 @@
                     //要注视 XXXXXXX
 
 //                        [ServerManger getInstance].serverURL =  @"http://192.168.1.172:8080/";///孟立测试
-                       [ServerManger getInstance].serverURL =  @"http://192.168.1.134:8080/";//段超本地
+//                       [ServerManger getInstance].serverURL =  @"http://192.168.1.134:8080/";//段超本地
 //                    [ServerManger getInstance].serverURL =  @"http://139.196.220.224:8090/";///测试
                     
 //                    if (![APP_VERSION isEqualToString:version.version.versionId] &&version.version.isForceUpdate) {
@@ -207,11 +207,6 @@
 //                    }
                     
                     [self updateApp:versionVO.version.versionId];
-                    
-                   
-                    
-                    
-                    
                     
                     if(versionVO.advImgUrl&&versionVO.advImgUrl.length>0&&value&&[value isEqualToString:@"1"]){
                         

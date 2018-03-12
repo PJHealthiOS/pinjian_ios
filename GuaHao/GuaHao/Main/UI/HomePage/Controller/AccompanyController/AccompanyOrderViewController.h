@@ -14,8 +14,8 @@
 @interface AccompanyOrderViewController : UIViewController
 @property (nonatomic,assign)NSInteger accompanyType;
 @property (nonatomic, copy)NSString *titleStr;
-@property (nonatomic) PatientVO *patientVO;
-@property (nonatomic) HospitalVO *hospital;
+@property (nonatomic,strong) PatientVO *patientVO;
+@property (nonatomic, strong) HospitalVO *hospital;
 
 @property (nonatomic,assign)int accompanyPrice;
 @end

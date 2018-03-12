@@ -1866,8 +1866,13 @@ AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
     NSString * orderURL = [NSString stringWithFormat:@"%@pzOrder/pay/query?out_trade_no=%@",[ServerManger getInstance].serverURL,orderID];
     [self getHttp:orderURL parameters:nil version:@"5" andCallback:callback];
 }
-
-
+///专家号结束陪诊评价页面
+-(void) expertEndFeedBack:(NSDictionary *) dic orderID:(NSString*) orderID andCallback: (void (^)(id  data))callback
+{
+    NSString * urlString = [NSString stringWithFormat:@"%@pjOrder/%@/feedback?%@",[ServerManger getInstance].serverURL,orderID,[self getFormString:dic]];
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self postHttp:urlString parameters:nil version:@"5" andCallback:callback];
+}
 
 
 

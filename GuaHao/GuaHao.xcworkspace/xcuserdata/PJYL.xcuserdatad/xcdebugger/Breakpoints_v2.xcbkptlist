@@ -20,39 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GuaHao/Main/UI/MySelf/Controller/GHRechargeViewController.m"
-            timestampString = "538648060.46987"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "-accountRechargePolling:parameters:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GuaHao/Main/UI/MySelf/Controller/GHRechargeViewController.m"
-            timestampString = "538648060.469928"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "-accountRechargePolling:parameters:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GuaHao/Main/UI/MySelf/Controller/GHRechargeViewController.m"
-            timestampString = "538648060.469972"
+            timestampString = "541558637.068085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
@@ -74,22 +42,6 @@
             startingLineNumber = "172"
             endingLineNumber = "172"
             landmarkName = "-payBack:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GuaHao/Main/UI/MySelf/Controller/GHRechargeViewController.m"
-            timestampString = "538648060.470049"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "-accountRechargePolling:parameters:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -132,12 +84,12 @@
                   moduleName = "&#x54c1;&#x7b80;&#x6302;&#x53f7;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/PJYL/Desktop/work/GuaHao/GuaHao/Main/UI/Pay/Controller/GHPayManager.m"
-                  timestampString = "539169694.9584039"
+                  timestampString = "542258670.380565"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "64"
                   endingLineNumber = "64"
-                  offsetFromSymbolStart = "1240">
+                  offsetFromSymbolStart = "1296">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -147,12 +99,12 @@
                   moduleName = "&#x54c1;&#x7b80;&#x6302;&#x53f7;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/PJYL/Desktop/work/GuaHao/GuaHao/Main/UI/Pay/Controller/GHPayManager.m"
-                  timestampString = "539169694.961184"
+                  timestampString = "542258670.38415"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "64"
                   endingLineNumber = "64"
-                  offsetFromSymbolStart = "15">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -196,12 +148,12 @@
                   moduleName = "&#x54c1;&#x7b80;&#x6302;&#x53f7;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/PJYL/Desktop/work/GuaHao/GuaHao/Main/UI/Pay/Controller/SpecialPayViewController.m"
-                  timestampString = "539169694.969813"
+                  timestampString = "542258670.4001369"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "269"
                   endingLineNumber = "269"
-                  offsetFromSymbolStart = "295">
+                  offsetFromSymbolStart = "288">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -211,12 +163,12 @@
                   moduleName = "&#x54c1;&#x7b80;&#x6302;&#x53f7;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/PJYL/Desktop/work/GuaHao/GuaHao/Main/UI/Pay/Controller/SpecialPayViewController.m"
-                  timestampString = "539169694.971825"
+                  timestampString = "542258670.4021291"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "269"
                   endingLineNumber = "269"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -244,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GuaHao/Main/Server/Controller/ServerManger.m"
-            timestampString = "539169694.80735"
+            timestampString = "542258669.889295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "858"
@@ -334,12 +286,12 @@
                   moduleName = "&#x54c1;&#x7b80;&#x6302;&#x53f7;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/PJYL/Desktop/work/GuaHao/GuaHao/Main/UI/Pay/Controller/PayViewController.m"
-                  timestampString = "539169694.997749"
+                  timestampString = "542258670.426699"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "231"
                   endingLineNumber = "231"
-                  offsetFromSymbolStart = "930">
+                  offsetFromSymbolStart = "944">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -349,12 +301,12 @@
                   moduleName = "&#x54c1;&#x7b80;&#x6302;&#x53f7;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/PJYL/Desktop/work/GuaHao/GuaHao/Main/UI/Pay/Controller/PayViewController.m"
-                  timestampString = "539169695.000393"
+                  timestampString = "542258670.4286"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "231"
                   endingLineNumber = "231"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -381,13 +333,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GuaHao/Main/UI/HomePage/Controller/NormalController/CreateOrderNormalViewController.m"
-            timestampString = "539169694.817706"
+            filePath = "GuaHao/Main/UI/MyOrder/Controller/AcceptOrder/GHAcceptDetailViewController.m"
+            timestampString = "542258697.472151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "817"
-            endingLineNumber = "817"
-            landmarkName = "-onBlockDepartment:"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "-accompanyFinishAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

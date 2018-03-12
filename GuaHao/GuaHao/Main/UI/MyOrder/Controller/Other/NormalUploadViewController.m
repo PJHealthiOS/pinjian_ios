@@ -245,7 +245,7 @@
     image = [Utils image:image rotation:UIImageOrientationRight];
     
         //上传凭证
-        [[ServerManger getInstance] normalOrderUploadTicket:_postOrderVO.id visitSeq:self.serialNoTextField.text currentVisitSeq:self.currentSerialNoTextField.text currentVisitTime:self.selectStr front:isChangeImage?self.selectImage:nil isNormalOrder:YES  andCallback:^(id data) {
+        [[ServerManger getInstance] normalOrderUploadTicket:_postOrderVO.id visitSeq:self.serialNoTextField.text currentVisitSeq:self.currentSerialNoTextField.text currentVisitTime:self.selectStr front:isChangeImage?self.selectImage:nil isNormalOrder:self.isNormal  andCallback:^(id data) {
             [self.view hideToastActivity];
             if (data!=[NSNull class]&&data!=nil) {
                 NSNumber * code = data[@"code"];

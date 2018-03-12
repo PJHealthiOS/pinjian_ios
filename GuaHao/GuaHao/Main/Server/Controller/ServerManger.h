@@ -416,7 +416,8 @@
 -(void) getSpecialOrderPayStatus:(NSString*) orderID  andCallback: (void (^)(id  data))callback;
 ////陪诊号支付结果查询/pjOrder/pay/query
 -(void) getAccompanyOrderPayStatus:(NSString*) orderID  andCallback: (void (^)(id  data))callback;
-
+///专家号结束陪诊评价页面
+-(void) expertEndFeedBack:(NSDictionary *) dic orderID:(NSString*) orderID andCallback: (void (^)(id  data))callback;
 
 
 

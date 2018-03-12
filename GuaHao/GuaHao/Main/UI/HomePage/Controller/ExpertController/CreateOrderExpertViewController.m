@@ -61,6 +61,9 @@
 @property (weak, nonatomic) IBOutlet UIView *sectionHeaderView;
 @property (weak, nonatomic) IBOutlet UIView *discountAlterView;
 @property (assign, nonatomic) BOOL isCanUpdate;
+@property (assign, nonatomic) BOOL isGetSSC;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
+
 @end
 
 @implementation CreateOrderExpertViewController
@@ -152,7 +155,11 @@
         sender.selected = !sender.selected;
     
 }
-
+- (IBAction)selectGetSSCAction:(UIButton *)sender {
+    self.isGetSSC = !sender.selected;
+    sender.selected = !sender.selected;
+    
+}
 
 
 #pragma mark - UITableViewDelegate
@@ -436,7 +443,8 @@
     [self.view makeToastActivity:CSToastPositionCenter];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     if (_isAccompany) [dic setObject:@"1" forKey:@"serviceType"];
-
+    if (self.isGetSSC) [dic setObject:@"1" forKey:@"isGetSSC"];
+    
     dic[@"patientId"] = _patientVO.id;
     dic[@"hospitalId"] = _expertVO.hospitalId;
     dic[@"departmentId"] = _expertVO.departmentId;
@@ -517,6 +525,15 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)descriptionAction:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        self.bottomViewHeight.constant = 200;
+    }else{
+        self.bottomViewHeight.constant = 127;
+    }
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

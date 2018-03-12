@@ -17,7 +17,7 @@
         _sharedClient = [[AFAppDotNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://www.pjhealth.com.cn/"]];
 #ifdef DEBUG
 //        _sharedClient = [[AFAppDotNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://139.196.220.224:8090/"]];///测试
-        _sharedClient = [[AFAppDotNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.1.134:8080/"]];///段超测试
+//        _sharedClient = [[AFAppDotNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.1.134:8080/"]];///段超测试
 
 
 #endif

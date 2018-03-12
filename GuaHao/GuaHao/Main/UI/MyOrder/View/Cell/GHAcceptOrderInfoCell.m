@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *remarkInfoAction;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeight;
 @property (weak, nonatomic) IBOutlet UILabel *personTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *isNeedGetSocialCardLabel;
+
 @end
 @implementation GHAcceptOrderInfoCell
 
@@ -48,7 +50,7 @@
     cell.remarkLabel.text = order.patientComments;
    ///此处有问题
     cell.certificateLabel.text = order.patientStatus.intValue > 0 ? @"已认证" : @"未认证";
-    
+    cell.isNeedGetSocialCardLabel.text = order.isGetSSC ? @"是":@"否";
     return cell;
 }
 - (IBAction)remarkDetailAction:(UIButton *)sender {

@@ -30,16 +30,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *certificateButton;
 @property (weak, nonatomic) IBOutlet UIImageView *QRScanImageView;
 @property (weak, nonatomic) IBOutlet UIButton *stopOrder;
-@property (weak, nonatomic) IBOutlet UIButton *changeAMExpertOrderButton;
-@property (weak, nonatomic) IBOutlet UIButton *changePMExpertOrderButton;
-@property (weak, nonatomic) IBOutlet UIButton *changeAMNormalOrderButton;
-@property (weak, nonatomic) IBOutlet UIButton *changeGuaHaoButton;
-@property (weak, nonatomic) IBOutlet UIButton *changeYuYueButton;
-@property (weak, nonatomic) IBOutlet UIButton *fullOrderButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *attentionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *remarkLabel;
 @property (weak, nonatomic) IBOutlet UIButton *openOnlineServiceButton;
 @property (weak, nonatomic) IBOutlet UIButton *finishAccompanyButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *userFeedBackBUtton;
+
+
 
 @end
 
@@ -48,7 +47,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.sourceArr = [NSMutableArray arrayWithObjects:@{@"height":@"75",@"type":@"0",@"source":@[]},@{@"height":@"330",@"type":@"1",@"source":@[]}, nil];
+    self.sourceArr = [NSMutableArray arrayWithObjects:@{@"height":@"75",@"type":@"0",@"source":@[]},@{@"height":@"355",@"type":@"1",@"source":@[]}, nil];
     
     if(_acceptVO){
         _orderVO = _acceptVO;
@@ -190,16 +189,13 @@
     [self.QRScanImageView sd_setImageWithURL:[NSURL URLWithString:_orderVO.acceptQRCode] placeholderImage:nil];
     ///如果待审核或者已经审核了就不能点击
 
-
+    
+        self.userFeedBackBUtton.hidden = _orderVO.hasFeedback;
+    
     
     if (_orderVO.operation != 0) {///
         //不可以点击
-        [self setStatusWithButton:self.changeAMExpertOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-        [self setStatusWithButton:self.changePMExpertOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-        [self setStatusWithButton:self.changeAMNormalOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-        [self setStatusWithButton:self.fullOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-        [self setStatusWithButton:self.changeYuYueButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-        [self setStatusWithButton:self.changeGuaHaoButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
+   
         self.finishAccompanyButton.hidden = YES;
         self.stopOrder.hidden = YES;
     }
@@ -208,28 +204,16 @@
         self.finishAccompanyButton.hidden = YES;
 
         if (_orderVO.visitType.intValue == 0) {//挂号
-            [self setStatusWithButton:self.changeGuaHaoButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
 //            [self setStatusWithButton:self.changeGuaHaoButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
         }else{//预约
 //            [self setStatusWithButton:self.changeYuYueButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [self setStatusWithButton:self.changeYuYueButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
             
         }
 
-        self.changeAMExpertOrderButton.hidden = NO;
-        self.changePMExpertOrderButton.hidden = NO;
-        self.changeAMNormalOrderButton.hidden = NO;
-        self.changeGuaHaoButton.hidden = NO;
-        self.changeYuYueButton.hidden = NO;
-        self.fullOrderButton.hidden = NO;
+      
 
     }else{
-         self.changeAMExpertOrderButton.hidden = YES;
-         self.changePMExpertOrderButton.hidden = YES;
-         self.changeAMNormalOrderButton.hidden = YES;
-         self.changeGuaHaoButton.hidden = YES;
-         self.changeYuYueButton.hidden = YES;
-         self.fullOrderButton.hidden = YES;
+        
          self.stopOrder.hidden = NO;
          self.finishAccompanyButton.hidden = NO;
 
@@ -237,15 +221,14 @@
 
     }
     if (_orderVO.status.intValue != 2) {///如果不是待审核都不能点击
-        [self setStatusWithButton:self.changeAMExpertOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-        [self setStatusWithButton:self.changePMExpertOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-        [self setStatusWithButton:self.changeAMNormalOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-        [self setStatusWithButton:self.fullOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-        [self setStatusWithButton:self.changeYuYueButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-        [self setStatusWithButton:self.changeGuaHaoButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
+       
         [self setStatusWithButton:self.stopOrder color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
         [self setStatusWithButton:self.openOnlineServiceButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
 //        [self setStatusWithButton:self.finishAccompanyButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
+
+    }
+    if (_orderVO.status.intValue == 9  || _order.status.intValue == 10) {
+                [self setStatusWithButton:self.finishAccompanyButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
 
     }
     NSString *str;
@@ -305,15 +288,10 @@
             [weakSelf.certificateButton setBackgroundImage:image forState:UIControlStateNormal];
             //按钮都不能点击
             [weakSelf inputToast:@"成功"];
-            [weakSelf setStatusWithButton:weakSelf.changeGuaHaoButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [weakSelf setStatusWithButton:weakSelf.changeYuYueButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [weakSelf setStatusWithButton:weakSelf.changeAMExpertOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [weakSelf setStatusWithButton:weakSelf.changePMExpertOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [weakSelf setStatusWithButton:weakSelf.changeAMNormalOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [weakSelf setStatusWithButton:weakSelf.fullOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            weakSelf.stopOrder.hidden = YES;
-            weakSelf.finishAccompanyButton.hidden = YES;
-            weakSelf.openOnlineServiceButton.hidden = YES;
+            
+//            weakSelf.stopOrder.hidden = YES;
+//            weakSelf.finishAccompanyButton.hidden = YES;
+//            weakSelf.openOnlineServiceButton.hidden = YES;
         }];
         [self.navigationController pushViewController:upload animated:YES];
     }else{///预约
@@ -325,12 +303,6 @@
             [weakSelf.certificateButton setBackgroundImage:image forState:UIControlStateNormal];
             //按钮都不能点击
             [weakSelf inputToast:@"成功"];
-            [weakSelf setStatusWithButton:weakSelf.changeGuaHaoButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [weakSelf setStatusWithButton:weakSelf.changeYuYueButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [weakSelf setStatusWithButton:weakSelf.changeAMExpertOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [weakSelf setStatusWithButton:weakSelf.changePMExpertOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [weakSelf setStatusWithButton:weakSelf.changeAMNormalOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
-            [weakSelf setStatusWithButton:weakSelf.fullOrderButton color:UIColorFromRGB(0x888888) userInteractionEnabled:NO];
             weakSelf.stopOrder.hidden = YES;
             weakSelf.finishAccompanyButton.hidden = YES;
             weakSelf.openOnlineServiceButton.hidden = YES;
@@ -351,6 +323,9 @@
             [self inputToast:msg];
             if (code.intValue == 0) {
                 [self getInfoDesc];
+                [self userFeedBackAction:self.userFeedBackBUtton];
+                
+
             }
         }
     }];
@@ -389,30 +364,7 @@
     }];
 }
 
-///转上午专家号
-- (IBAction)changeAMExpertOrder:(UIButton *)sender {
-    [self changeOrder:[NSNumber numberWithInt:1]];
-}
-///转下午专家号
-- (IBAction)changePMExpertOrderAction:(UIButton *)sender {
-    [self changeOrder:[NSNumber numberWithInt:2]];
-}
-///转下午普通号
-- (IBAction)changeAMNormalOrderAction:(UIButton *)sender {
-    [self changeOrder:[NSNumber numberWithInt:3]];
-}
-///今日号满
-- (IBAction)fullOrderAction:(UIButton *)sender {
-    [self changeOrder:[NSNumber numberWithInt:4]];
-}
-///转预约
-- (IBAction)changeYuYueAction:(UIButton *)sender {
-    [self changeOrder:[NSNumber numberWithInt:5]];
-}
-//转挂号
-- (IBAction)changeGuaHaoAction:(UIButton *)sender {
-    [self changeOrder:[NSNumber numberWithInt:6]];
-}
+
 
 -(void)changeOrder:(NSNumber *)type{
     
@@ -505,7 +457,7 @@
         CreateQRPayView*  qrView = [[CreateQRPayView alloc]initWithFrame:frame];
         qrView.orderID = _orderVO.id;
         qrView.isNormal = _isNormal;
-         [qrView getPayInfoWithType:@"wx_pub_qr"];
+        [qrView getPayInfoWithType:@"wx_pub_qr"];
         [qrView createTimer];
 
         qrView.frame = [UIScreen mainScreen].bounds;
@@ -526,5 +478,23 @@
         
     }
 }
+
+
+- (IBAction)userFeedBackAction:(UIButton *)sender {
+    FeedbackViewController *feedBackVC = [GHViewControllerLoader FeedbackViewController];
+    feedBackVC.orderID = _orderVO.id.stringValue;
+    [feedBackVC feedBackSuccess:^(BOOL successful) {
+        if (successful) {
+            self.userFeedBackBUtton.hidden = YES;
+        }
+    }];
+    [self.navigationController pushViewController:feedBackVC animated:YES];
+    
+}
+
+
+
+
+
 
 @end

@@ -53,5 +53,11 @@
 @property(strong) NSNumber * payRemainingTime;//支付剩余时间
 @property(strong) NSNumber * regRemainingTime;//挂号剩余时间
 @property(strong) NSNumber * qrPaidStatus;///0无需出现扫码支付显示  1.待扫码支付    2.扫码支付成功 当值为0时，界面不显示扫码支付提示，不进行轮询 当值为1时，界面显示待扫码支付提示，进行轮询（5秒一次，保持进度条存在） 当值为2时，界面显示扫码支付成功提示，不进行轮询
+@property (nonatomic, assign) BOOL isGetSSC;///是否上门取社保卡
+@property(strong) NSNumber * cardFee;///工本费
+@property(strong) NSNumber * pzFee;///陪诊费
+@property(strong) NSNumber * payType;///支付类型1在线  2到院
+@property(strong) NSNumber * regFee;////挂号费
+@property (nonatomic, assign) BOOL hasFeedback;
 -(OrderListVO *)getOrderListVO;
 @end

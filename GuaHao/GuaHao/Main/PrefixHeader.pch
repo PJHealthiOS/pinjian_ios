@@ -50,6 +50,7 @@
 #define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
 #define IS_String(X)   (X) ? X : @""
 #define NSNumberChangeToNSString(X)   [NSString stringWithFormat:@"%@", X];
+#define IsValue(X)   (X) ? X : @"0"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)

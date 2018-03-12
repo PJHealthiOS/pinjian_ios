@@ -1010,6 +1010,7 @@
 		CBB078FC1DB0B76700B969D1 /* share_qq.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB078F91DB0B76700B969D1 /* share_qq.png */; };
 		CBB078FD1DB0B76700B969D1 /* share_wechat.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB078FA1DB0B76700B969D1 /* share_wechat.png */; };
 		CBB079001DB0BA7900B969D1 /* GHShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB078FF1DB0BA7900B969D1 /* GHShareViewController.m */; };
+		CBBB7DA1204E5DCF00C619BB /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBB7DA0204E5DCF00C619BB /* FeedbackViewController.m */; };
 		CBD616B91D76A73F003B8FBB /* GHAcceptOrderInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD616B81D76A73F003B8FBB /* GHAcceptOrderInfoCell.m */; };
 		CBD616BC1D76B672003B8FBB /* GHAcceptPatientRemarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD616BB1D76B672003B8FBB /* GHAcceptPatientRemarkCell.m */; };
 		CBD616C51D77C81E003B8FBB /* CreateOrderExpertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD616C31D77C81E003B8FBB /* CreateOrderExpertCell.m */; };
@@ -2593,6 +2594,8 @@
 		CBB078FE1DB0BA7900B969D1 /* GHShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHShareViewController.h; sourceTree = "<group>"; };
 		CBB078FF1DB0BA7900B969D1 /* GHShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHShareViewController.m; sourceTree = "<group>"; };
 		CBB8FAC51E4815DD00E8B61E /* music2.aac */ = {isa = PBXFileReference; lastKnownFileType = file; name = music2.aac; path = GuaHao/Resources/music/music2.aac; sourceTree = "<group>"; };
+		CBBB7D9F204E5DCF00C619BB /* FeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		CBBB7DA0204E5DCF00C619BB /* FeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		CBD616B71D76A73F003B8FBB /* GHAcceptOrderInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAcceptOrderInfoCell.h; sourceTree = "<group>"; };
 		CBD616B81D76A73F003B8FBB /* GHAcceptOrderInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHAcceptOrderInfoCell.m; sourceTree = "<group>"; };
 		CBD616BA1D76B672003B8FBB /* GHAcceptPatientRemarkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAcceptPatientRemarkCell.h; sourceTree = "<group>"; };
@@ -5624,6 +5627,8 @@
 				CBF08C491FB1B06C0050C8BD /* NewNormalAcceptViewController.m */,
 				CBF08C4B1FB1B08D0050C8BD /* NewNormalCardAcceptViewController.h */,
 				CBF08C4C1FB1B08D0050C8BD /* NewNormalCardAcceptViewController.m */,
+				CBBB7D9F204E5DCF00C619BB /* FeedbackViewController.h */,
+				CBBB7DA0204E5DCF00C619BB /* FeedbackViewController.m */,
 			);
 			path = AcceptOrder;
 			sourceTree = "<group>";
@@ -6672,6 +6677,7 @@
 				CB7A09C81F20A537006D201F /* UIView+Shadow.m in Sources */,
 				CB0568361EBC46DA00F9D77A /* PacketInfoShareView.m in Sources */,
 				73D228221C6F1F69004F601A /* TakeOrderTableViewCell.m in Sources */,
+				CBBB7DA1204E5DCF00C619BB /* FeedbackViewController.m in Sources */,
 				731BBC7D1C7C4EA2008EFB06 /* TicketVO.m in Sources */,
 				7338B2DD1D35E48200FA8045 /* ShareLogVO.m in Sources */,
 				73BC01481C4E36DB0013CD3C /* GHNewFeatureCell.m in Sources */,

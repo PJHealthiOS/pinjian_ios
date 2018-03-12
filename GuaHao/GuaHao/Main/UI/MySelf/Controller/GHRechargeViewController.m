@@ -63,9 +63,9 @@
         [self inputToast:@"请输入金额！"];
         return;
     }
-//    if(_tfInput.text.floatValue < 10){
-//        return [self inputToast:@"不得低于10元!"];
-//    }
+    if(_tfInput.text.floatValue < 10){
+        return [self inputToast:@"不得低于10元!"];
+    }
     if(_tfInput.text.floatValue>50000){
         
         return [self inputToast:@"不可高于50000元!"];

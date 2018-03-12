@@ -89,6 +89,7 @@
 #import "NormalDiscountListViewController.h"///普通号优惠券页面
 #import "NewNormalAcceptViewController.h"///普通号接单详情页面
 #import "NewNormalCardAcceptViewController.h"///普通号预约接单详情页面
+#import "FeedbackViewController.h"///专家号陪诊完成评价页面
 
 
 
@@ -180,6 +181,7 @@
 +(NormalDiscountListViewController *)NormalDiscountListViewController;
 +(NewNormalAcceptViewController *)NewNormalAcceptViewController;
 +(NewNormalCardAcceptViewController *)NewNormalCardAcceptViewController;
++(FeedbackViewController *)FeedbackViewController;
 
 
 +(UIStoryboard *)mainStoryBoard;

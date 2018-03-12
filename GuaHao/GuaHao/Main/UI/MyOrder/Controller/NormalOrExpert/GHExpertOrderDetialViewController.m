@@ -85,6 +85,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *info_balance_label;
 
 @property (weak, nonatomic) IBOutlet UILabel *isAgreeChangeDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *isNeedGetScoialCardLabel;
 
 
 
@@ -195,7 +196,7 @@
     self.info_balance_label.text = [NSString stringWithFormat:@"-%@元",discountPay];
     
     self.isAgreeChangeDateLabel.text = _orderVO.canUpdateTime ? @"是":@"否";
-    
+    self.isNeedGetScoialCardLabel.text = _orderVO.isGetSSC ? @"是":@"否";
     
     
     

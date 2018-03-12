@@ -69,6 +69,8 @@
 @property(strong) NSString * serviceTypeCn;
 @property(assign) BOOL  onlineQueue;
 @property(assign) BOOL canUpdateTime;
+@property(assign) BOOL isGetSSC;
+
 @property(strong) NSString * commentImgs;
 
 

@@ -314,7 +314,7 @@
 -(void)createOrder
 {
     [self.view makeToastActivity:CSToastPositionCenter];
-    NSMutableDictionary * dic = [NSMutableDictionary new];
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     if (self.hospital.issuingFee.integerValue > 0) {
         dic[@"issuingFee"] = self.hospital.issuingFee;
     }
@@ -822,17 +822,6 @@
     [self updateTableViewWithSection:0 row:1 key:@"value" newValue:vo.name];
     [self updateTableViewWithSection:4 row:0 key:@"value" newValue:@""];
     [self updateTableViewWithSection:2 row:1 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue]];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     if (self.rightButton.isSelected) {///医保卡
