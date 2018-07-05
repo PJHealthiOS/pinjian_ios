@@ -30,5 +30,5 @@
 @property  BOOL isOpenSocialSecurityCard;//是否开放社保卡
 @property  BOOL isNeedRealnameAuth;
 @property(assign) BOOL  isOnlineQueue;
-
+@property(copy) NSString * deptName;
 @end

@@ -691,38 +691,26 @@
     }
     
 }
+
+
 -(NSAttributedString *)getAttributedStr{
     if (_department) {
-        if (_department.serviceFee.intValue > 0) {
-//            NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",_department.serviceFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:UIColorFromRGB(0x45c768)}];
-//            return nameString;
-            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:self.rightButton.isSelected ? @"(平台收取)" : @" "] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
-            
-            
-            NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",_department.serviceFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:UIColorFromRGB(0x45c768)}];
-            [attrStr appendAttributedString:nameString];
-            return attrStr;
-            
-            
-        }else{
-            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:self.rightButton.isSelected ? @"(平台收取)" : @" "] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
-            
-            
-            NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",infoVO.orderPzFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:UIColorFromRGB(0x45c768)}];
-            [attrStr appendAttributedString:nameString];
-            return attrStr;
-        }
         
+                    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:self.rightButton.isSelected ? @"(平台收取)" : @" "] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
         
+                    NSString *str = [self getLabelValueWithSection:2 row:1];
+                    NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:str attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor colorWithRed:69/255.0 green:199/255.0 blue:104/255.0 alpha:1]}];
+                    [attrStr appendAttributedString:nameString];
+                    return attrStr;
         
     }else{
+        
         NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:self.rightButton.isSelected ? @"(平台收取)" : @" "] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
         
         
         NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@元 ",infoVO.orderPzFee] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:UIColorFromRGB(0x45c768)}];
         [attrStr appendAttributedString:nameString];
         return attrStr;
-        
     }
     
     
@@ -832,6 +820,44 @@
             [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%.1f 元",vo.serviceFee.intValue + infoVO.normalPrice.intValue + _hospital.issuingFee.floatValue]];
     }
     
+    
+    if (self.rightButton.isSelected) {///医保卡
+        if (vo.serviceFee.intValue != infoVO.orderPzFee.intValue) {
+            [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue]];
+            
+            
+        }else{
+            [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"在线支付"];
+            [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",vo.serviceFee.intValue ]];
+        }
+        
+        
+        if (vo.serviceFee.intValue == 0) {
+            [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"到院支付"];
+            if (_hospital.issuingFee.floatValue > 0) {
+                [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%.1f 元", infoVO.normalPrice.intValue + _hospital.issuingFee.floatValue]];
+            }else{
+                [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",infoVO.normalPrice.intValue]];
+                
+            }
+            
+        }
+        
+    }else {///自费挂号
+        if (vo.serviceFee.intValue != infoVO.orderPzFee.intValue) {
+            [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"在线支付"];
+        }else{
+            [self updateTableViewWithSection:3 row:1 key:@"value" newValue:infoVO.defPayType.intValue == 1 ? @"在线支付":@"到院支付"];
+        }
+        
+    }
+    
+    
+    
+    
+    
+    /*
+    
     if (vo.serviceFee.intValue != infoVO.orderPzFee.intValue) {///不等的话自费的在线，挂号的在线
         
         [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"在线支付"];
@@ -842,7 +868,12 @@
 
             if (vo.serviceFee.intValue == 0) {
                 [self updateTableViewWithSection:3 row:1 key:@"value" newValue:@"到院支付"];
-                [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",0]];
+                if (_hospital.issuingFee.floatValue > 0) {
+                    [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%.1f 元", infoVO.normalPrice.intValue + _hospital.issuingFee.floatValue]];
+                }else{
+                    [self updateTableViewWithSection:3 row:0 key:@"value" newValue:[NSString stringWithFormat:@"%d 元",infoVO.normalPrice.intValue]];
+
+                }
 
         }
         
@@ -862,6 +893,12 @@
         }
         
     }
+    
+    
+    */
+    
+    
+    
     [self choseDate];
 }
 //选择时间
@@ -969,10 +1006,10 @@
         
         NSLog(@"block----%ld----%@", (long)index, title);
         if ([title isEqualToString:@"新增就诊人"]) {
-            if (patients.count>=5) {
-                [self inputToast:@"您的家庭成员数量到达上限!"];
-                return ;
-            }
+//            if (patients.count>=5) {
+//                [self inputToast:@"您的家庭成员数量到达上限!"];
+//                return ;
+//            }
             [self popRevise];
             return ;
         }

@@ -8,7 +8,6 @@
 //*
 #import "SeriousFlowViewController.h"
 #import <WebKit/WebKit.h>
-#define NAVIGATION_HEIGHT (CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]) + CGRectGetHeight(self.navigationController.navigationBar.frame))
 @interface SeriousFlowViewController ()<UIWebViewDelegate>
 @property (strong, nonatomic)  WKWebView *webView;
 @property (nonatomic, strong) UIProgressView *progressView;

@@ -419,6 +419,14 @@
 ///专家号结束陪诊评价页面
 -(void) expertEndFeedBack:(NSDictionary *) dic orderID:(NSString*) orderID andCallback: (void (^)(id  data))callback;
 
+///整形界面/plastic/list
+-(void) plasticHomeBack: (void (^)(id  data))callback;
+///医生列表/plastic/{id}/doctors
+-(void) getPlasticDoctorsWithId:(NSInteger)idStr page:(int) page  andCallback: (void (^)(id  data))callback;
+
+///医院列表/plastic/{id}/hospitals
+-(void) getPlasticHospitalsWithId:(NSInteger)idStr andCallback: (void (^)(id  data))callback;
+
 
 
 

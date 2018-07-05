@@ -59,7 +59,7 @@
     [super viewDidLoad];
     self.title = @"专家号";
     _btnUp.hidden = YES;
-    datas = [NSMutableArray new];
+    datas = [NSMutableArray array];
     searchData = [NSMutableArray new];
     _tableView.showsVerticalScrollIndicator = NO;
     [_tableView registerNib:[UINib nibWithNibName:@"DoctorSelectTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"DoctorSelectTableViewCell"];

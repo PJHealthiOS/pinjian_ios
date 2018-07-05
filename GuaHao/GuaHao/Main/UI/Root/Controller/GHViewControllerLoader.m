@@ -304,6 +304,10 @@
     return  (FeedbackViewController *)[[self OrderCenterStoryBoard]instantiateViewControllerWithIdentifier:@"FeedbackViewController"];
 }
 
++(PlasticViewController *)PlasticViewController{
+    return  (PlasticViewController *)[[self HomePageStoryBoard]instantiateViewControllerWithIdentifier:@"PlasticViewController"];
+
+}
 
 
 

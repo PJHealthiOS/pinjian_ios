@@ -90,7 +90,7 @@
 #import "NewNormalAcceptViewController.h"///普通号接单详情页面
 #import "NewNormalCardAcceptViewController.h"///普通号预约接单详情页面
 #import "FeedbackViewController.h"///专家号陪诊完成评价页面
-
+#import "PlasticViewController.h"///整形页面
 
 
 
@@ -182,6 +182,9 @@
 +(NewNormalAcceptViewController *)NewNormalAcceptViewController;
 +(NewNormalCardAcceptViewController *)NewNormalCardAcceptViewController;
 +(FeedbackViewController *)FeedbackViewController;
++(PlasticViewController *)PlasticViewController;
+
+
 
 
 +(UIStoryboard *)mainStoryBoard;

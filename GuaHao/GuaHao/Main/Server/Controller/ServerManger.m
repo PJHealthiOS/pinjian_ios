@@ -1874,8 +1874,28 @@ AFAppDotNetAPIClient *manager = [AFAppDotNetAPIClient sharedClient];
     [self postHttp:urlString parameters:nil version:@"5" andCallback:callback];
 }
 
+///整形界面/plastic/list
+-(void) plasticHomeBack: (void (^)(id  data))callback
+{
+    NSString * urlString = [NSString stringWithFormat:@"%@/plastic/list",[ServerManger getInstance].serverURL];
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self getHttp:urlString parameters:nil version:@"1" andCallback:callback];
+}
+///医生列表/plastic/{id}/doctors
+-(void) getPlasticDoctorsWithId:(NSInteger)idStr page:(int) page andCallback: (void (^)(id  data))callback
+{
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@plastic/%ld/doctors?pageSize=10&pageNo=%d",[ServerManger getInstance].serverURL,(long)idStr,page]];
+        [self getHttp:URL.absoluteString parameters:nil version:@"1" andCallback:callback];
+    
+}
 
-
+///医院列表/plastic/{id}/hospitals
+-(void) getPlasticHospitalsWithId:(NSInteger)idStr andCallback: (void (^)(id  data))callback
+{
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@plastic/%ld/hospitals",[ServerManger getInstance].serverURL,(long)idStr]];
+    [self getHttp:URL.absoluteString parameters:nil version:@"1" andCallback:callback];
+    
+}
 
 
 

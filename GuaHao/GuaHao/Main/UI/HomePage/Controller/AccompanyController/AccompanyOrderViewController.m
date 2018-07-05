@@ -426,10 +426,10 @@
         
         NSLog(@"block----%ld----%@", (long)index, title);
         if ([title isEqualToString:@"新增就诊人"]) {
-            if (patients.count>=5) {
-                [self inputToast:@"您的家庭成员数量到达上限!"];
-                return ;
-            }
+//            if (patients.count>=5) {
+//                [self inputToast:@"您的家庭成员数量到达上限!"];
+//                return ;
+//            }
             [self popRevise];
             return ;
         }

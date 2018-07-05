@@ -56,6 +56,8 @@
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
 #define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define NAVIGATION_HEIGHT (CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]) + CGRectGetHeight(self.navigationController.navigationBar.frame))
+
 ////根据屏幕宽度计算图片高度
 #define GetHeight(W,H) ([[UIScreen mainScreen] bounds].size.width * H / W)
 ////根据屏幕宽度比计算图片高度

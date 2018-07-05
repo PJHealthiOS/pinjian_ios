@@ -39,6 +39,21 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code[button setAdjustsImageWhenHighlighted:NO];
+    //为透明度设置渐变效果
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+    UIColor *colorOne = [UIColor colorWithRed:(235/255.0)  green:(235/255.0)  blue:(236/255.0)  alpha:0.5];
+    UIColor *colorTwo = [UIColor colorWithRed:(235/255.0)  green:(235/255.0)  blue:(236/255.0)  alpha:0.0];
+    NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    //设置开始和结束位置(设置渐变的方向)
+    gradient.startPoint = CGPointMake(0, 0);
+    gradient.endPoint = CGPointMake(0, 1);
+    gradient.colors = colors;
+    gradient.frame = CGRectMake(0, 0, SCREEN_WIDTH, 20);
+    [view.layer insertSublayer:gradient atIndex:0];
+    [self addSubview:view];
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hxMessage:) name:@"HXMessageEvent" object:nil];
 }
 

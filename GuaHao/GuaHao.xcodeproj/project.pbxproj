@@ -100,7 +100,6 @@
 		7325ACFF1C6F4FE9005B1F4C /* image.m in Sources */ = {isa = PBXBuildFile; fileRef = 7325ACF31C6F4FE9005B1F4C /* image.m */; };
 		7325AD001C6F4FE9005B1F4C /* video.m in Sources */ = {isa = PBXBuildFile; fileRef = 7325ACF51C6F4FE9005B1F4C /* video.m */; };
 		7325AD011C6F4FE9005B1F4C /* video.m in Sources */ = {isa = PBXBuildFile; fileRef = 7325ACF51C6F4FE9005B1F4C /* video.m */; };
-		7326D1891D470420003836A3 /* hospital_medial_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7326D1861D470420003836A3 /* hospital_medial_no@2x.png */; };
 		7326D18A1D470420003836A3 /* hospital_medial_yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7326D1871D470420003836A3 /* hospital_medial_yes@2x.png */; };
 		7326D19B1D476DDC003836A3 /* person_bag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7326D1981D476DDC003836A3 /* person_bag@2x.png */; };
 		7326D19C1D476DDC003836A3 /* person_bean@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7326D1991D476DDC003836A3 /* person_bean@2x.png */; };
@@ -760,7 +759,6 @@
 		8EEDC8D71D2E0275005B12C3 /* order_expert_down_image0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEDC8D61D2E0275005B12C3 /* order_expert_down_image0@2x.png */; };
 		8EEDC8D91D2E02C9005B12C3 /* order_expert_new_bg_images@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEDC8D81D2E02C9005B12C3 /* order_expert_new_bg_images@2x.png */; };
 		8EEDC8DB1D2E033D005B12C3 /* order_expert_up_images@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEDC8DA1D2E033D005B12C3 /* order_expert_up_images@2x.png */; };
-		8EEDC8DD1D2E0395005B12C3 /* home_mail_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEDC8DC1D2E0395005B12C3 /* home_mail_image@2x.png */; };
 		8EEDC8E51D2E0559005B12C3 /* message_expert_special_space_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEDC8E41D2E0559005B12C3 /* message_expert_special_space_image@2x.png */; };
 		8EEDC8E71D2E0591005B12C3 /* message_expert_special_white_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEDC8E61D2E0591005B12C3 /* message_expert_special_white_bg@2x.png */; };
 		8EEDC8EA1D2E0699005B12C3 /* home_edit_btn_bag_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEDC8E81D2E0699005B12C3 /* home_edit_btn_bag_2@2x.png */; };
@@ -847,6 +845,26 @@
 		CB1CC1D71DAB3D44008CB273 /* AccompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1CC1D51DAB3D44008CB273 /* AccompanyCell.xib */; };
 		CB1CC1E31DAB77AC008CB273 /* AccompanyServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1CC1E21DAB77AC008CB273 /* AccompanyServiceCell.m */; };
 		CB1CC1E61DAB9AB3008CB273 /* AccompanyFlowVO.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1CC1E51DAB9AB3008CB273 /* AccompanyFlowVO.m */; };
+		CB1FCD8420CE0A01001BB2F4 /* home_peizhen.png in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCD7C20CE09DD001BB2F4 /* home_peizhen.png */; };
+		CB1FCD8520CE0A01001BB2F4 /* home_zhuyuan.png in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCD7D20CE09E2001BB2F4 /* home_zhuyuan.png */; };
+		CB1FCD8720CE0A01001BB2F4 /* home_guanli.png in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCD7F20CE09EB001BB2F4 /* home_guanli.png */; };
+		CB1FCD8820CE0A01001BB2F4 /* home_putong.png in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCD8020CE09EF001BB2F4 /* home_putong.png */; };
+		CB1FCD8920CE0A01001BB2F4 /* home_zhengxing.png in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCD8120CE09F3001BB2F4 /* home_zhengxing.png */; };
+		CB1FCD8A20CE0A01001BB2F4 /* home_zhuanjia.png in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCD8220CE09F8001BB2F4 /* home_zhuanjia.png */; };
+		CB1FCD8B20CE0A01001BB2F4 /* home_zixun.png in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCD8320CE09FC001BB2F4 /* home_zixun.png */; };
+		CB1FCD8E20CE1A74001BB2F4 /* HomePlasticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1FCD8D20CE1A74001BB2F4 /* HomePlasticCell.m */; };
+		CB1FCD9020CE3F60001BB2F4 /* homePage_draw.png in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCD8F20CE3F60001BB2F4 /* homePage_draw.png */; };
+		CB1FCD9220CE5C43001BB2F4 /* plastic_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCD9120CE5C3E001BB2F4 /* plastic_banner.png */; };
+		CB1FCD9520CE7185001BB2F4 /* PlasticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1FCD9420CE7185001BB2F4 /* PlasticViewController.m */; };
+		CB1FCD9B20CFB201001BB2F4 /* PlasticTypeVO.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1FCD9A20CFB201001BB2F4 /* PlasticTypeVO.m */; };
+		CB1FCDA020CFC6D8001BB2F4 /* PlasticInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1FCD9F20CFC6D8001BB2F4 /* PlasticInfoView.m */; };
+		CB1FCDA220CFC6F0001BB2F4 /* PlasticInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCDA120CFC6F0001BB2F4 /* PlasticInfoView.xib */; };
+		CB1FCDA420CFC963001BB2F4 /* PlasticHospitalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCDA320CFC963001BB2F4 /* PlasticHospitalView.xib */; };
+		CB1FCDA720CFC983001BB2F4 /* PlasticHospitalView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1FCDA620CFC983001BB2F4 /* PlasticHospitalView.m */; };
+		CB1FCDAA20CFC9D5001BB2F4 /* PlasticDoctrsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1FCDA920CFC9D5001BB2F4 /* PlasticDoctrsView.m */; };
+		CB1FCDAC20CFC9DF001BB2F4 /* PlasticDoctrsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCDAB20CFC9DF001BB2F4 /* PlasticDoctrsView.xib */; };
+		CB1FCDB020D11AD3001BB2F4 /* PlasticHospitalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1FCDAE20D11AD3001BB2F4 /* PlasticHospitalCell.m */; };
+		CB1FCDB120D11AD3001BB2F4 /* PlasticHospitalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1FCDAF20D11AD3001BB2F4 /* PlasticHospitalCell.xib */; };
 		CB22D5551D83E5D200FDB5A8 /* AcceptOrderVO.m in Sources */ = {isa = PBXBuildFile; fileRef = CB22D5541D83E5D200FDB5A8 /* AcceptOrderVO.m */; };
 		CB22D5571D85589700FDB5A8 /* order_yuyue.png in Resources */ = {isa = PBXBuildFile; fileRef = CB22D5561D85589700FDB5A8 /* order_yuyue.png */; };
 		CB22D55A1D86CEA300FDB5A8 /* GHSettingPayPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB22D5591D86CEA300FDB5A8 /* GHSettingPayPasswordViewController.m */; };
@@ -866,14 +884,14 @@
 		CB3663D81DD45B67007BEFBD /* ExpertDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB3663D71DD45B67007BEFBD /* ExpertDayCell.xib */; };
 		CB3663DB1DD4624D007BEFBD /* order_accept_table_date_bg_image.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3663D91DD4624D007BEFBD /* order_accept_table_date_bg_image.png */; };
 		CB3663DC1DD4624D007BEFBD /* order_expert_add_image.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3663DA1DD4624D007BEFBD /* order_expert_add_image.png */; };
+		CB3B8CDC20EB6B8D007C5CC5 /* type_border.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3B8CDB20EB6B8C007C5CC5 /* type_border.png */; };
+		CB3B8CDE20EC7725007C5CC5 /* home_zhengxing_xiangqing.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3B8CDD20EC771F007C5CC5 /* home_zhengxing_xiangqing.png */; };
 		CB432FFB1EC01D6900682AAD /* health_basic_header.png in Resources */ = {isa = PBXBuildFile; fileRef = CB432FFA1EC01D6900682AAD /* health_basic_header.png */; };
 		CB432FFD1EC01D9000682AAD /* healthmanager_basic.png in Resources */ = {isa = PBXBuildFile; fileRef = CB432FFC1EC01D9000682AAD /* healthmanager_basic.png */; };
 		CB44C69E1E093B3B00CA0B4E /* homepage_search_background.png in Resources */ = {isa = PBXBuildFile; fileRef = CB44C69D1E093B3B00CA0B4E /* homepage_search_background.png */; };
 		CB44C6A01E093E9E00CA0B4E /* homepage_search_background_black.png in Resources */ = {isa = PBXBuildFile; fileRef = CB44C69F1E093E9E00CA0B4E /* homepage_search_background_black.png */; };
 		CB44C6A31E0A1DC600CA0B4E /* GHTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44C6A21E0A1DC600CA0B4E /* GHTabBar.m */; };
 		CB44C6A91E0A2A3400CA0B4E /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44C6A71E0A2A3400CA0B4E /* UIView+Extension.m */; };
-		CB44C6B21E0A4EF600CA0B4E /* home_expert_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB44C6AC1E0A4EF600CA0B4E /* home_expert_icon.png */; };
-		CB44C6B31E0A4EF600CA0B4E /* home_normal_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB44C6AD1E0A4EF600CA0B4E /* home_normal_icon.png */; };
 		CB44C6B51E0A4EF600CA0B4E /* home_sinin_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB44C6AF1E0A4EF600CA0B4E /* home_sinin_icon.png */; };
 		CB44DEDB1D7921D30094C26D /* MySelf.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB44DEDA1D7921D30094C26D /* MySelf.storyboard */; };
 		CB44DEDE1D794C3D0094C26D /* GHMySelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB44DEDD1D794C3D0094C26D /* GHMySelfViewController.m */; };
@@ -931,7 +949,6 @@
 		CB5FF9111EE539E000918BB3 /* NormalUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5FF9101EE539E000918BB3 /* NormalUploadViewController.m */; };
 		CB60AE041DBF05A600318A9B /* VisitTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CB60AE031DBF05A600318A9B /* VisitTypeModel.m */; };
 		CB64EC561F27485900EFAE3D /* SpecialDiscountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB64EC551F27485900EFAE3D /* SpecialDiscountListViewController.m */; };
-		CB64EC581F28465E00EFAE3D /* homePage_draw.png in Resources */ = {isa = PBXBuildFile; fileRef = CB64EC571F28465E00EFAE3D /* homePage_draw.png */; };
 		CB64EC5B1F2AEB4A00EFAE3D /* ExpertOrderDiscountAlterView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB64EC5A1F2AEB4A00EFAE3D /* ExpertOrderDiscountAlterView.m */; };
 		CB64EC5D1F2B00C500EFAE3D /* ExpertOrderDiscountAlterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB64EC5C1F2B00C500EFAE3D /* ExpertOrderDiscountAlterView.xib */; };
 		CB64EC5F1F2B088200EFAE3D /* expert_discount_alter.png in Resources */ = {isa = PBXBuildFile; fileRef = CB64EC5E1F2B088200EFAE3D /* expert_discount_alter.png */; };
@@ -1023,10 +1040,6 @@
 		CBDF5A161FAC69FF009F1E88 /* tabbar_special_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDF5A141FAC69FF009F1E88 /* tabbar_special_selected@2x.png */; };
 		CBDFEBD61DD2BA4A0089678F /* CreateOrderNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBDFEBD41DD2BA4A0089678F /* CreateOrderNormalCell.m */; };
 		CBDFEBD71DD2BA4A0089678F /* CreateOrderNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBDFEBD51DD2BA4A0089678F /* CreateOrderNormalCell.xib */; };
-		CBE92B9F1EAEE8550054651E /* homepage_new_accompany.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE92B9B1EAEE8550054651E /* homepage_new_accompany.png */; };
-		CBE92BA01EAEE8550054651E /* homepage_new_manager.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE92B9C1EAEE8550054651E /* homepage_new_manager.png */; };
-		CBE92BA11EAEE8550054651E /* homepage_new_message.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE92B9D1EAEE8550054651E /* homepage_new_message.png */; };
-		CBE92BA21EAEE8550054651E /* homepage_new_serious.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE92B9E1EAEE8550054651E /* homepage_new_serious.png */; };
 		CBE92BA61EAF14740054651E /* HealthManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE92BA51EAF14740054651E /* HealthManagerViewController.m */; };
 		CBE92BAB1EAF1A670054651E /* healthmanager_custom.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE92BA81EAF1A670054651E /* healthmanager_custom.png */; };
 		CBE92BAC1EAF1A670054651E /* healthmanager_top.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE92BA91EAF1A670054651E /* healthmanager_top.png */; };
@@ -1078,6 +1091,7 @@
 		CBF08C4A1FB1B06C0050C8BD /* NewNormalAcceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF08C491FB1B06C0050C8BD /* NewNormalAcceptViewController.m */; };
 		CBF08C4D1FB1B08D0050C8BD /* NewNormalCardAcceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF08C4C1FB1B08D0050C8BD /* NewNormalCardAcceptViewController.m */; };
 		CBF08C501FB3F9D90050C8BD /* UploadDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF08C4F1FB3F9D90050C8BD /* UploadDatePickerView.m */; };
+		CBF1201520E5CAB7001005FC /* PlasticHospitalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF1201420E5CAB7001005FC /* PlasticHospitalModel.m */; };
 		CBFD95C81DB609C400F23F98 /* ChooseDepartmentsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFD95C61DB609C400F23F98 /* ChooseDepartmentsVC.m */; };
 		CBFF607C1F8E150700337139 /* GHAcceptCompanyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFF607B1F8E150700337139 /* GHAcceptCompanyDetailViewController.m */; };
 		EE32FC1A1E7243F60065B357 /* OrderDetailPriceView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE32FC191E7243F60065B357 /* OrderDetailPriceView.m */; };
@@ -1271,7 +1285,6 @@
 		7325ACF31C6F4FE9005B1F4C /* image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = image.m; sourceTree = "<group>"; };
 		7325ACF41C6F4FE9005B1F4C /* video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = video.h; sourceTree = "<group>"; };
 		7325ACF51C6F4FE9005B1F4C /* video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = video.m; sourceTree = "<group>"; };
-		7326D1861D470420003836A3 /* hospital_medial_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hospital_medial_no@2x.png"; sourceTree = "<group>"; };
 		7326D1871D470420003836A3 /* hospital_medial_yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hospital_medial_yes@2x.png"; sourceTree = "<group>"; };
 		7326D1981D476DDC003836A3 /* person_bag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person_bag@2x.png"; sourceTree = "<group>"; };
 		7326D1991D476DDC003836A3 /* person_bean@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person_bean@2x.png"; sourceTree = "<group>"; };
@@ -2247,7 +2260,6 @@
 		8EEDC8D61D2E0275005B12C3 /* order_expert_down_image0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "order_expert_down_image0@2x.png"; sourceTree = "<group>"; };
 		8EEDC8D81D2E02C9005B12C3 /* order_expert_new_bg_images@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "order_expert_new_bg_images@2x.png"; sourceTree = "<group>"; };
 		8EEDC8DA1D2E033D005B12C3 /* order_expert_up_images@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "order_expert_up_images@2x.png"; sourceTree = "<group>"; };
-		8EEDC8DC1D2E0395005B12C3 /* home_mail_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_mail_image@2x.png"; sourceTree = "<group>"; };
 		8EEDC8E41D2E0559005B12C3 /* message_expert_special_space_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_expert_special_space_image@2x.png"; sourceTree = "<group>"; };
 		8EEDC8E61D2E0591005B12C3 /* message_expert_special_white_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_expert_special_white_bg@2x.png"; sourceTree = "<group>"; };
 		8EEDC8E81D2E0699005B12C3 /* home_edit_btn_bag_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_edit_btn_bag_2@2x.png"; sourceTree = "<group>"; };
@@ -2354,6 +2366,33 @@
 		CB1CC1E21DAB77AC008CB273 /* AccompanyServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccompanyServiceCell.m; sourceTree = "<group>"; };
 		CB1CC1E41DAB9AB3008CB273 /* AccompanyFlowVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccompanyFlowVO.h; path = GuaHao/Main/UI/HomePage/View/Cell/AccompanyFlowVO.h; sourceTree = SOURCE_ROOT; };
 		CB1CC1E51DAB9AB3008CB273 /* AccompanyFlowVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccompanyFlowVO.m; path = GuaHao/Main/UI/HomePage/View/Cell/AccompanyFlowVO.m; sourceTree = SOURCE_ROOT; };
+		CB1FCD7C20CE09DD001BB2F4 /* home_peizhen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_peizhen.png; sourceTree = "<group>"; };
+		CB1FCD7D20CE09E2001BB2F4 /* home_zhuyuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_zhuyuan.png; sourceTree = "<group>"; };
+		CB1FCD7F20CE09EB001BB2F4 /* home_guanli.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_guanli.png; sourceTree = "<group>"; };
+		CB1FCD8020CE09EF001BB2F4 /* home_putong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_putong.png; sourceTree = "<group>"; };
+		CB1FCD8120CE09F3001BB2F4 /* home_zhengxing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_zhengxing.png; sourceTree = "<group>"; };
+		CB1FCD8220CE09F8001BB2F4 /* home_zhuanjia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_zhuanjia.png; sourceTree = "<group>"; };
+		CB1FCD8320CE09FC001BB2F4 /* home_zixun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_zixun.png; sourceTree = "<group>"; };
+		CB1FCD8C20CE1A74001BB2F4 /* HomePlasticCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePlasticCell.h; sourceTree = "<group>"; };
+		CB1FCD8D20CE1A74001BB2F4 /* HomePlasticCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePlasticCell.m; sourceTree = "<group>"; };
+		CB1FCD8F20CE3F60001BB2F4 /* homePage_draw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePage_draw.png; sourceTree = "<group>"; };
+		CB1FCD9120CE5C3E001BB2F4 /* plastic_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plastic_banner.png; sourceTree = "<group>"; };
+		CB1FCD9320CE7185001BB2F4 /* PlasticViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlasticViewController.h; sourceTree = "<group>"; };
+		CB1FCD9420CE7185001BB2F4 /* PlasticViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlasticViewController.m; sourceTree = "<group>"; };
+		CB1FCD9920CFB201001BB2F4 /* PlasticTypeVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlasticTypeVO.h; sourceTree = "<group>"; };
+		CB1FCD9A20CFB201001BB2F4 /* PlasticTypeVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlasticTypeVO.m; sourceTree = "<group>"; };
+		CB1FCD9E20CFC6D8001BB2F4 /* PlasticInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlasticInfoView.h; sourceTree = "<group>"; };
+		CB1FCD9F20CFC6D8001BB2F4 /* PlasticInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlasticInfoView.m; sourceTree = "<group>"; };
+		CB1FCDA120CFC6F0001BB2F4 /* PlasticInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlasticInfoView.xib; sourceTree = "<group>"; };
+		CB1FCDA320CFC963001BB2F4 /* PlasticHospitalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlasticHospitalView.xib; sourceTree = "<group>"; };
+		CB1FCDA520CFC983001BB2F4 /* PlasticHospitalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlasticHospitalView.h; sourceTree = "<group>"; };
+		CB1FCDA620CFC983001BB2F4 /* PlasticHospitalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlasticHospitalView.m; sourceTree = "<group>"; };
+		CB1FCDA820CFC9D5001BB2F4 /* PlasticDoctrsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlasticDoctrsView.h; sourceTree = "<group>"; };
+		CB1FCDA920CFC9D5001BB2F4 /* PlasticDoctrsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlasticDoctrsView.m; sourceTree = "<group>"; };
+		CB1FCDAB20CFC9DF001BB2F4 /* PlasticDoctrsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlasticDoctrsView.xib; sourceTree = "<group>"; };
+		CB1FCDAD20D11AD3001BB2F4 /* PlasticHospitalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlasticHospitalCell.h; sourceTree = "<group>"; };
+		CB1FCDAE20D11AD3001BB2F4 /* PlasticHospitalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlasticHospitalCell.m; sourceTree = "<group>"; };
+		CB1FCDAF20D11AD3001BB2F4 /* PlasticHospitalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlasticHospitalCell.xib; sourceTree = "<group>"; };
 		CB22D5531D83E5D200FDB5A8 /* AcceptOrderVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptOrderVO.h; sourceTree = "<group>"; };
 		CB22D5541D83E5D200FDB5A8 /* AcceptOrderVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptOrderVO.m; sourceTree = "<group>"; };
 		CB22D5561D85589700FDB5A8 /* order_yuyue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_yuyue.png; sourceTree = "<group>"; };
@@ -2381,6 +2420,8 @@
 		CB3663D71DD45B67007BEFBD /* ExpertDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpertDayCell.xib; sourceTree = "<group>"; };
 		CB3663D91DD4624D007BEFBD /* order_accept_table_date_bg_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_accept_table_date_bg_image.png; sourceTree = "<group>"; };
 		CB3663DA1DD4624D007BEFBD /* order_expert_add_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_expert_add_image.png; sourceTree = "<group>"; };
+		CB3B8CDB20EB6B8C007C5CC5 /* type_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = type_border.png; sourceTree = "<group>"; };
+		CB3B8CDD20EC771F007C5CC5 /* home_zhengxing_xiangqing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_zhengxing_xiangqing.png; sourceTree = "<group>"; };
 		CB432FFA1EC01D6900682AAD /* health_basic_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_basic_header.png; sourceTree = "<group>"; };
 		CB432FFC1EC01D9000682AAD /* healthmanager_basic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = healthmanager_basic.png; sourceTree = "<group>"; };
 		CB44C69D1E093B3B00CA0B4E /* homepage_search_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage_search_background.png; sourceTree = "<group>"; };
@@ -2389,8 +2430,6 @@
 		CB44C6A21E0A1DC600CA0B4E /* GHTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHTabBar.m; sourceTree = "<group>"; };
 		CB44C6A61E0A2A3400CA0B4E /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		CB44C6A71E0A2A3400CA0B4E /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
-		CB44C6AC1E0A4EF600CA0B4E /* home_expert_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_expert_icon.png; sourceTree = "<group>"; };
-		CB44C6AD1E0A4EF600CA0B4E /* home_normal_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_normal_icon.png; sourceTree = "<group>"; };
 		CB44C6AF1E0A4EF600CA0B4E /* home_sinin_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_sinin_icon.png; sourceTree = "<group>"; };
 		CB44DEDA1D7921D30094C26D /* MySelf.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MySelf.storyboard; sourceTree = "<group>"; };
 		CB44DEDC1D794C3D0094C26D /* GHMySelfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHMySelfViewController.h; sourceTree = "<group>"; };
@@ -2479,7 +2518,6 @@
 		CB60AE031DBF05A600318A9B /* VisitTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitTypeModel.m; sourceTree = "<group>"; };
 		CB64EC541F27485900EFAE3D /* SpecialDiscountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialDiscountListViewController.h; sourceTree = "<group>"; };
 		CB64EC551F27485900EFAE3D /* SpecialDiscountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialDiscountListViewController.m; sourceTree = "<group>"; };
-		CB64EC571F28465E00EFAE3D /* homePage_draw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePage_draw.png; sourceTree = "<group>"; };
 		CB64EC591F2AEB4A00EFAE3D /* ExpertOrderDiscountAlterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpertOrderDiscountAlterView.h; sourceTree = "<group>"; };
 		CB64EC5A1F2AEB4A00EFAE3D /* ExpertOrderDiscountAlterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertOrderDiscountAlterView.m; sourceTree = "<group>"; };
 		CB64EC5C1F2B00C500EFAE3D /* ExpertOrderDiscountAlterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpertOrderDiscountAlterView.xib; sourceTree = "<group>"; };
@@ -2615,10 +2653,6 @@
 		CBDFEBD31DD2BA4A0089678F /* CreateOrderNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateOrderNormalCell.h; sourceTree = "<group>"; };
 		CBDFEBD41DD2BA4A0089678F /* CreateOrderNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateOrderNormalCell.m; sourceTree = "<group>"; };
 		CBDFEBD51DD2BA4A0089678F /* CreateOrderNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateOrderNormalCell.xib; sourceTree = "<group>"; };
-		CBE92B9B1EAEE8550054651E /* homepage_new_accompany.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage_new_accompany.png; sourceTree = "<group>"; };
-		CBE92B9C1EAEE8550054651E /* homepage_new_manager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage_new_manager.png; sourceTree = "<group>"; };
-		CBE92B9D1EAEE8550054651E /* homepage_new_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage_new_message.png; sourceTree = "<group>"; };
-		CBE92B9E1EAEE8550054651E /* homepage_new_serious.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage_new_serious.png; sourceTree = "<group>"; };
 		CBE92BA41EAF14740054651E /* HealthManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthManagerViewController.h; sourceTree = "<group>"; };
 		CBE92BA51EAF14740054651E /* HealthManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthManagerViewController.m; sourceTree = "<group>"; };
 		CBE92BA81EAF1A670054651E /* healthmanager_custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = healthmanager_custom.png; sourceTree = "<group>"; };
@@ -2711,6 +2745,8 @@
 		CBF08C4C1FB1B08D0050C8BD /* NewNormalCardAcceptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewNormalCardAcceptViewController.m; sourceTree = "<group>"; };
 		CBF08C4E1FB3F9D90050C8BD /* UploadDatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadDatePickerView.h; sourceTree = "<group>"; };
 		CBF08C4F1FB3F9D90050C8BD /* UploadDatePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadDatePickerView.m; sourceTree = "<group>"; };
+		CBF1201320E5CAB7001005FC /* PlasticHospitalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlasticHospitalModel.h; sourceTree = "<group>"; };
+		CBF1201420E5CAB7001005FC /* PlasticHospitalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlasticHospitalModel.m; sourceTree = "<group>"; };
 		CBFD95C51DB609C400F23F98 /* ChooseDepartmentsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseDepartmentsVC.h; sourceTree = "<group>"; };
 		CBFD95C61DB609C400F23F98 /* ChooseDepartmentsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseDepartmentsVC.m; sourceTree = "<group>"; };
 		CBFF607A1F8E150700337139 /* GHAcceptCompanyDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHAcceptCompanyDetailViewController.h; sourceTree = "<group>"; };
@@ -3574,6 +3610,10 @@
 				731D5AC71DAE3BD300066EFC /* ArticeHomeVO.m */,
 				731D5AC91DB0AC1200066EFC /* CommentFloorVO.h */,
 				731D5ACA1DB0AC1200066EFC /* CommentFloorVO.m */,
+				CB1FCD9920CFB201001BB2F4 /* PlasticTypeVO.h */,
+				CB1FCD9A20CFB201001BB2F4 /* PlasticTypeVO.m */,
+				CBF1201320E5CAB7001005FC /* PlasticHospitalModel.h */,
+				CBF1201420E5CAB7001005FC /* PlasticHospitalModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4522,6 +4562,8 @@
 				CBAFE2D61F78A40600CF54B1 /* TestViewController.h */,
 				CBAFE2DC1F78A8C500CF54B1 /* ChooseHospitalVC.h */,
 				CBAFE2DD1F78A8C500CF54B1 /* ChooseHospitalVC.m */,
+				CB1FCD9320CE7185001BB2F4 /* PlasticViewController.h */,
+				CB1FCD9420CE7185001BB2F4 /* PlasticViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4627,6 +4669,11 @@
 				CB4F6C491F74A85D0037599C /* ChooseHospitalcell.h */,
 				CB4F6C4A1F74A85D0037599C /* ChooseHospitalcell.m */,
 				CB4F6C4B1F74A85D0037599C /* ChooseHospitalcell.xib */,
+				CB1FCD8C20CE1A74001BB2F4 /* HomePlasticCell.h */,
+				CB1FCD8D20CE1A74001BB2F4 /* HomePlasticCell.m */,
+				CB1FCDAD20D11AD3001BB2F4 /* PlasticHospitalCell.h */,
+				CB1FCDAE20D11AD3001BB2F4 /* PlasticHospitalCell.m */,
+				CB1FCDAF20D11AD3001BB2F4 /* PlasticHospitalCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -4666,6 +4713,15 @@
 				CB64EC591F2AEB4A00EFAE3D /* ExpertOrderDiscountAlterView.h */,
 				CB64EC5A1F2AEB4A00EFAE3D /* ExpertOrderDiscountAlterView.m */,
 				CB64EC5C1F2B00C500EFAE3D /* ExpertOrderDiscountAlterView.xib */,
+				CB1FCD9E20CFC6D8001BB2F4 /* PlasticInfoView.h */,
+				CB1FCD9F20CFC6D8001BB2F4 /* PlasticInfoView.m */,
+				CB1FCDA120CFC6F0001BB2F4 /* PlasticInfoView.xib */,
+				CB1FCDA520CFC983001BB2F4 /* PlasticHospitalView.h */,
+				CB1FCDA620CFC983001BB2F4 /* PlasticHospitalView.m */,
+				CB1FCDA320CFC963001BB2F4 /* PlasticHospitalView.xib */,
+				CB1FCDA820CFC9D5001BB2F4 /* PlasticDoctrsView.h */,
+				CB1FCDA920CFC9D5001BB2F4 /* PlasticDoctrsView.m */,
+				CB1FCDAB20CFC9DF001BB2F4 /* PlasticDoctrsView.xib */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -4967,9 +5023,7 @@
 			children = (
 				CB17F1D91D9E089F00405A81 /* home_2.0 */,
 				CB973FB31D81075200AC52E9 /* homepage_scan.png */,
-				7326D1861D470420003836A3 /* hospital_medial_no@2x.png */,
 				7326D1871D470420003836A3 /* hospital_medial_yes@2x.png */,
-				8EEDC8DC1D2E0395005B12C3 /* home_mail_image@2x.png */,
 				CB973FCF1D81542B00AC52E9 /* homeage_search_left.png */,
 				8EEDC8EC1D2E0743005B12C3 /* home_edit_white_image_4@2x.png */,
 				8EEDC8E81D2E0699005B12C3 /* home_edit_btn_bag_2@2x.png */,
@@ -5241,8 +5295,18 @@
 		CB17F1D91D9E089F00405A81 /* home_2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				CB3B8CDD20EC771F007C5CC5 /* home_zhengxing_xiangqing.png */,
+				CB3B8CDB20EB6B8C007C5CC5 /* type_border.png */,
+				CB1FCD9120CE5C3E001BB2F4 /* plastic_banner.png */,
+				CB1FCD8F20CE3F60001BB2F4 /* homePage_draw.png */,
+				CB1FCD7F20CE09EB001BB2F4 /* home_guanli.png */,
+				CB1FCD7C20CE09DD001BB2F4 /* home_peizhen.png */,
+				CB1FCD8020CE09EF001BB2F4 /* home_putong.png */,
+				CB1FCD8120CE09F3001BB2F4 /* home_zhengxing.png */,
+				CB1FCD8220CE09F8001BB2F4 /* home_zhuanjia.png */,
+				CB1FCD7D20CE09E2001BB2F4 /* home_zhuyuan.png */,
+				CB1FCD8320CE09FC001BB2F4 /* home_zixun.png */,
 				CB64EC5E1F2B088200EFAE3D /* expert_discount_alter.png */,
-				CB64EC571F28465E00EFAE3D /* homePage_draw.png */,
 				CB071F2D1EE6845900AC843F /* hospital_cell_good.png */,
 				CB071F2E1EE6845900AC843F /* hospital_cell_location.png */,
 				CB71C5E91F00A87D005CD5D1 /* success_order_icon.png */,
@@ -5258,15 +5322,9 @@
 				CBE92BB91EAF426F0054651E /* health_custom_flow.png */,
 				CBE92BA81EAF1A670054651E /* healthmanager_custom.png */,
 				CBE92BA91EAF1A670054651E /* healthmanager_top.png */,
-				CBE92B9B1EAEE8550054651E /* homepage_new_accompany.png */,
-				CBE92B9C1EAEE8550054651E /* homepage_new_manager.png */,
-				CBE92B9D1EAEE8550054651E /* homepage_new_message.png */,
-				CBE92B9E1EAEE8550054651E /* homepage_new_serious.png */,
 				EE7CE07A1E8DF9D1008EA6D7 /* accompany_new_aboutUs.png */,
 				EE7CE0781E8B540A008EA6D7 /* SpecialNotCity.png */,
 				EE7CE06A1E8A0CA0008EA6D7 /* SpecialCollectionHearder.png */,
-				CB44C6AC1E0A4EF600CA0B4E /* home_expert_icon.png */,
-				CB44C6AD1E0A4EF600CA0B4E /* home_normal_icon.png */,
 				CB44C6AF1E0A4EF600CA0B4E /* home_sinin_icon.png */,
 				CB44C69D1E093B3B00CA0B4E /* homepage_search_background.png */,
 				CB44C69F1E093E9E00CA0B4E /* homepage_search_background_black.png */,
@@ -5919,7 +5977,6 @@
 				EE900B2B1E812CC500D54192 /* evaluate_ok.png in Resources */,
 				8EEDC9551D2E3420005B12C3 /* common_type_pay_bg@2x.png in Resources */,
 				8EEDC9311D2E2B42005B12C3 /* order_data_image@2x.png in Resources */,
-				8EEDC8DD1D2E0395005B12C3 /* home_mail_image@2x.png in Resources */,
 				EE900B361E825DA300D54192 /* EvaluateAlterView.xib in Resources */,
 				8EEDC8C51D2DFD90005B12C3 /* order_expert_date_green_selectBtn@2x.png in Resources */,
 				73CCBC9A1D52011500CFEB29 /* doctor_introduce_me@2x.png in Resources */,
@@ -5981,7 +6038,6 @@
 				8EE83B221D2A61FC002326B3 /* order_cell_gray@2x.png in Resources */,
 				8EEDC8251D2CE91F005B12C3 /* me_family_addPeoper_image@2x.png in Resources */,
 				8EE83ADD1D2A61FC002326B3 /* point_mini_white@2x.png in Resources */,
-				7326D1891D470420003836A3 /* hospital_medial_no@2x.png in Resources */,
 				8EEDC8271D2CE9B1005B12C3 /* me_family_addPeople_image_002@2x.png in Resources */,
 				CBE92C491EB1CDF30054651E /* health_order_list.png in Resources */,
 				73CFF5A41C755BE400BAE8E6 /* LaunchScreen.storyboard in Resources */,
@@ -6003,12 +6059,10 @@
 				7326D1A41D484B79003836A3 /* person_back@2x.png in Resources */,
 				8EEDC9471D2E3106005B12C3 /* common_make_phone_call@2x.png in Resources */,
 				8EEDC83D1D2CF052005B12C3 /* me_family_newAddPeople_btnImage_002@2x.png in Resources */,
-				CBE92BA01EAEE8550054651E /* homepage_new_manager.png in Resources */,
 				7370E9021D7596FB002B2D52 /* PaySuccessController.xib in Resources */,
 				7326D4041D4F3452003836A3 /* wallet_left_icon@2x.png in Resources */,
 				8EEDC9271D2E27EF005B12C3 /* common_frist_order_payLine_image@2x.png in Resources */,
 				7338B3071D3642BA00FA8045 /* BankSelectViewController.xib in Resources */,
-				CBE92B9F1EAEE8550054651E /* homepage_new_accompany.png in Resources */,
 				8EE83B2A1D2A61FC002326B3 /* order_right_icon@2x.png in Resources */,
 				73CCBDC51D53484200CFEB29 /* MWPhotoBrowser.bundle in Resources */,
 				8EEDC8B31D2DFA5C005B12C3 /* order_expert_cell_green_image@2x.png in Resources */,
@@ -6017,7 +6071,6 @@
 				7338B2CA1D35E46100FA8045 /* CrashViewController.xib in Resources */,
 				8EEDC8B51D2DFAD9005B12C3 /* order_expert_btn_list_image@2x.png in Resources */,
 				8EE83A781D2A61FC002326B3 /* tabbar_acceptOrder_selected0@2x.png in Resources */,
-				CBE92BA21EAEE8550054651E /* homepage_new_serious.png in Resources */,
 				7338B2F61D35E4E800FA8045 /* share_line_btnb@2x.png in Resources */,
 				8EEDC8721D2D05E5005B12C3 /* me_TopUpMoney_bgBtnImage_ general01@2x.png in Resources */,
 				8EB836821CF4371C007DECCE /* AddBankCard.xib in Resources */,
@@ -6069,6 +6122,7 @@
 				8EE83B201D2A61FC002326B3 /* order_between_bg@2x.png in Resources */,
 				8EE83AE11D2A61FC002326B3 /* ponit_rect@2x.png in Resources */,
 				8EEDC9341D2E2CE8005B12C3 /* common_submit_order_btn@2x.png in Resources */,
+				CB3B8CDC20EB6B8D007C5CC5 /* type_border.png in Resources */,
 				EE7CE06B1E8A0CA0008EA6D7 /* SpecialCollectionHearder.png in Resources */,
 				8E59FE451D62E9A700DDEDAC /* order_detail_alter.png in Resources */,
 				7326D1A61D484EB4003836A3 /* person_red_dot@2x.png in Resources */,
@@ -6085,7 +6139,6 @@
 				CB7A09D11F20AFD4006D201F /* member_center_condition.png in Resources */,
 				734083BF1DB6016E00427E78 /* information_send@2x.png in Resources */,
 				8EEDC85E1D2CF6B6005B12C3 /* order_Details_21@2x.png in Resources */,
-				CB64EC581F28465E00EFAE3D /* homePage_draw.png in Resources */,
 				CB6B8A0E1DDAE99D00901305 /* department_Defalut_icon.png in Resources */,
 				8E1289C91C98F45000BE8C5B /* AboutOursVC.xib in Resources */,
 				8EE83AD71D2A61FC002326B3 /* point_circle_gray@2x.png in Resources */,
@@ -6097,6 +6150,7 @@
 				EE900B1E1E7FA31A00D54192 /* smile_normal.png in Resources */,
 				7338B2F01D35E4E800FA8045 /* share_code_btn@2x.png in Resources */,
 				8EEDC8461D2CF272005B12C3 /* order_Details2_03@2x.png in Resources */,
+				CB1FCD9020CE3F60001BB2F4 /* homePage_draw.png in Resources */,
 				CB93BDFA1DB61A5300E4926E /* order_choose_top.png in Resources */,
 				732915751D112DE700AB44B0 /* PonitTableViewCell.xib in Resources */,
 				8EE83ADE1D2A61FC002326B3 /* point_white@2x.png in Resources */,
@@ -6132,6 +6186,7 @@
 				CB44DEEA1D79AAD60094C26D /* PersonCommonCell.xib in Resources */,
 				EE900B1D1E7FA31A00D54192 /* evaluate_header.png in Resources */,
 				8EEDC89F1D2DF14C005B12C3 /* order_accept_cell_line_image@2x.png in Resources */,
+				CB1FCD8520CE0A01001BB2F4 /* home_zhuyuan.png in Resources */,
 				8EEDC9111D2E20CA005B12C3 /* common_block_right_Btn@2x.png in Resources */,
 				8EEDC8651D2CF9B5005B12C3 /* me_family_patient_Certification_Img@2x.png in Resources */,
 				8EE83B231D2A61FC002326B3 /* order_cell_green@2x.png in Resources */,
@@ -6151,7 +6206,9 @@
 				EE900B261E7FA90B00D54192 /* EvaluateSelectView.xib in Resources */,
 				8EEDC8A31D2DF249005B12C3 /* order_doctor_cell_icon_image@2x.png in Resources */,
 				CB587DA71EBAF8C10012957D /* discount_past_icon.png in Resources */,
+				CB1FCD8820CE0A01001BB2F4 /* home_putong.png in Resources */,
 				8EE98B681C7409CF00075B85 /* PurseCell.xib in Resources */,
+				CB1FCD8420CE0A01001BB2F4 /* home_peizhen.png in Resources */,
 				8EEDC8671D2CFA0E005B12C3 /* me_family_patient_Certification_Img2@2x.png in Resources */,
 				8E5144961D6EC8310047EA91 /* order_delete.png in Resources */,
 				8E0D1DB81C7F0B06008CC3F5 /* TestEnterAPassword.xib in Resources */,
@@ -6164,13 +6221,13 @@
 				CB93BDF91DB61A5300E4926E /* order_choose_bottom.png in Resources */,
 				8E59FE4D1D62E9A700DDEDAC /* order_detail_status_register.png in Resources */,
 				8EEDC8C31D2DFD27005B12C3 /* order_expert_date_gray_btn@2x.png in Resources */,
+				CB1FCD8B20CE0A01001BB2F4 /* home_zixun.png in Resources */,
 				8EE83B2E1D2A61FC002326B3 /* order_up_bg@2x.png in Resources */,
 				8EE83ACB1D2A61FC002326B3 /* point_bean_green@2x.png in Resources */,
 				8EEDC9031D2E0B74005B12C3 /* order_circle_gray_image@2x.png in Resources */,
 				8E4DDA481D1FB4C000D7D1AB /* SignDayesCell.xib in Resources */,
 				8EEDC8D51D2E0208005B12C3 /* order_expert_desc_site_gcreen@2x.png in Resources */,
 				CB1CC1D01DAA364F008CB273 /* accompany_price.png in Resources */,
-				CBE92BA11EAEE8550054651E /* homepage_new_message.png in Resources */,
 				CB72AB681F56630500598C5E /* new_feature_1.png in Resources */,
 				8EEDC8C91D2DFF55005B12C3 /* order_expert_dec_plus_image@2x.png in Resources */,
 				8E59FE491D62E9A700DDEDAC /* order_detail_status_accept.png in Resources */,
@@ -6196,7 +6253,6 @@
 				8E59FE441D62E9A700DDEDAC /* order_detail_ separate.png in Resources */,
 				732915901D1256CC00AB44B0 /* BeanDayCell.xib in Resources */,
 				73D972D21D37864100BB82A2 /* BankLogViewView.xib in Resources */,
-				CB44C6B31E0A4EF600CA0B4E /* home_normal_icon.png in Resources */,
 				73831F061CFED89A00458021 /* ExpertNewCell.xib in Resources */,
 				8EE83ADC1D2A61FC002326B3 /* point_mini_circle@2x.png in Resources */,
 				8EEDC8911D2D15E6005B12C3 /* order_site_image@2x.png in Resources */,
@@ -6272,6 +6328,8 @@
 				CB587DA91EBAF8EE0012957D /* discount_past_back.png in Resources */,
 				8EEDC8BB1D2DFBE1005B12C3 /* order_expert_cell_down_line1@2x.png in Resources */,
 				EEC7FFC81E5A7D8200B3ABF0 /* CreateOrderCardPriceCell.xib in Resources */,
+				CB1FCDB120D11AD3001BB2F4 /* PlasticHospitalCell.xib in Resources */,
+				CB1FCD8A20CE0A01001BB2F4 /* home_zhuanjia.png in Resources */,
 				CB1CC1C31DA8D881008CB273 /* homepage_click.png in Resources */,
 				CB44DEDB1D7921D30094C26D /* MySelf.storyboard in Resources */,
 				737982AB1D88021C00B878AD /* loading_1@2x.png in Resources */,
@@ -6287,6 +6345,7 @@
 				8EEDC9121D2E20CA005B12C3 /* common_btnImg_04345@2x.png in Resources */,
 				736FFB441D892F520045DFDF /* point_mini_white2@2x.png in Resources */,
 				731BBCB31C7EFC04008EFB06 /* HtmlAllViewController.xib in Resources */,
+				CB1FCD8920CE0A01001BB2F4 /* home_zhengxing.png in Resources */,
 				73FB35701D1BB1B20099CE5C /* zbar-back.png in Resources */,
 				8EE83B251D2A61FC002326B3 /* order_expert_icon@2x.png in Resources */,
 				CB432FFB1EC01D6900682AAD /* health_basic_header.png in Resources */,
@@ -6300,15 +6359,18 @@
 				8EEDC9101D2E20CA005B12C3 /* commo_applyShare_2Bar@2x.png in Resources */,
 				7329159F1D12A72F00AB44B0 /* HospitalTakeTableViewCell.xib in Resources */,
 				8EEDC8FB1D2E09D6005B12C3 /* order_hospital_type_image@2x.png in Resources */,
+				CB1FCD9220CE5C43001BB2F4 /* plastic_banner.png in Resources */,
 				8EEDC94F1D2E32F2005B12C3 /* common_order_pay_circlel_03@2x.png in Resources */,
 				8ED76E001C5223A900BE3273 /* ApplyForMoneyVC.xib in Resources */,
 				730065091CBF92F30071D1EB /* DoctorSelectTableViewCell.xib in Resources */,
 				8EEDC8871D2D11DE005B12C3 /* me_blankDiscoun_bg_image03@2x.png in Resources */,
 				8E01DE891D06CBA7004B028B /* SetRealNameView.xib in Resources */,
+				CB1FCDA220CFC6F0001BB2F4 /* PlasticInfoView.xib in Resources */,
 				73CCBC941D50A41700CFEB29 /* doctor_button_green@2x.png in Resources */,
 				73FB35731D1BB1B20099CE5C /* zbar-samples.png in Resources */,
 				8EE83B2C1D2A61FC002326B3 /* order_sure_btn@2x.png in Resources */,
 				8EEDC8A51D2DF292005B12C3 /* order_doctor_cell_num_image@2x.png in Resources */,
+				CB1FCDAC20CFC9DF001BB2F4 /* PlasticDoctrsView.xib in Resources */,
 				CB4715D61DE3145B00D5E2FE /* common_order_alipay@2x.png in Resources */,
 				730688F01CF7F3B9007C9493 /* CompleteOrderTableViewCell.xib in Resources */,
 				8EEDC9411D2E2F14005B12C3 /* order_biid_none@2x.png in Resources */,
@@ -6321,7 +6383,6 @@
 				8EEDC82D1D2CEB32005B12C3 /* me_family_Patient_circle_3_image@2x.png in Resources */,
 				7329154C1D11298C00AB44B0 /* PonitViewController.xib in Resources */,
 				CB099D081DB8B993005258D1 /* expert_addimage.png in Resources */,
-				CB44C6B21E0A4EF600CA0B4E /* home_expert_icon.png in Resources */,
 				8E59FE471D62E9A700DDEDAC /* order_detail_down.png in Resources */,
 				734083C01DB6016E00427E78 /* information_share@2x.png in Resources */,
 				8EEDC86D1D2D0354005B12C3 /* me_topUpMoney_bgImage_002@2x.png in Resources */,
@@ -6331,6 +6392,7 @@
 				8EEDC8831D2D10E0005B12C3 /* me_DiscountCouponVC_bgImage_07@2x.png in Resources */,
 				8EE83AD11D2A61FC002326B3 /* point_bg_white1_02@2x.png in Resources */,
 				8EE83AD01D2A61FC002326B3 /* point_bg_solidBlue@2x.png in Resources */,
+				CB1FCD8720CE0A01001BB2F4 /* home_guanli.png in Resources */,
 				CB4D7BB91FEBAD8A00E4E4E2 /* pinjian.cer in Resources */,
 				730CD7B01D8194EE00E67812 /* order_choose_appointment@2x.png in Resources */,
 				7338B2F11D35E4E800FA8045 /* share_defalt_icon@2x.png in Resources */,
@@ -6356,7 +6418,9 @@
 				EE900B1F1E7FA31A00D54192 /* smile_select.png in Resources */,
 				8EEDC8931D2D1675005B12C3 /* common_pay_btn_green_image@2x.png in Resources */,
 				8EEDC91B1D2E2375005B12C3 /* common_downpull_btn_image@2x.png in Resources */,
+				CB3B8CDE20EC7725007C5CC5 /* home_zhengxing_xiangqing.png in Resources */,
 				8EEDC8771D2D0907005B12C3 /* me_feedbook_select_btnImage@2x.png in Resources */,
+				CB1FCDA420CFC963001BB2F4 /* PlasticHospitalView.xib in Resources */,
 				737982B31D88021C00B878AD /* loading_9@2x.png in Resources */,
 				731D5A5E1DAC942C00066EFC /* message_exaple@2x.png in Resources */,
 				8EEDC9511D2E334F005B12C3 /* common_selfCodeView_line_gcreen@2x.png in Resources */,
@@ -6488,6 +6552,7 @@
 				EE4F31801E4D953B0029EAFF /* ZoomImageView.m in Sources */,
 				73CCBDBD1D53484200CFEB29 /* PSTCollectionViewFlowLayout.m in Sources */,
 				73C901751C59E4B900642DA4 /* ForgetViewController.m in Sources */,
+				CBF1201520E5CAB7001005FC /* PlasticHospitalModel.m in Sources */,
 				EEB4F4A91E84EA82002367E1 /* SortTableViewCell.m in Sources */,
 				EE6D3C1C1E67E23B00D7F408 /* SeriousOrderDetailModel.m in Sources */,
 				736755ED1D85634A00381F3E /* ExpertSweepViewController.m in Sources */,
@@ -6532,6 +6597,7 @@
 				73A190EC1C71D02700B8B5F1 /* WGS84TOGCJ02.m in Sources */,
 				8E0D1DB71C7F0B06008CC3F5 /* TestEnterAPassword.m in Sources */,
 				73CCBDCB1D53484200CFEB29 /* NSDateFormatter+Category.m in Sources */,
+				CB1FCD9B20CFB201001BB2F4 /* PlasticTypeVO.m in Sources */,
 				73CCBDE31D53484200CFEB29 /* EaseBubbleView+Gif.m in Sources */,
 				73831EF31CFEC3F400458021 /* FixPhoneView.m in Sources */,
 				735DA52F1D6D9041008C7706 /* UIButton+XHEnlarged.m in Sources */,
@@ -6654,6 +6720,7 @@
 				73BC012D1C4E20BC0013CD3C /* MessageViewController.m in Sources */,
 				736755E81D8556D400381F3E /* WXBindPhoneView.m in Sources */,
 				73D972D11D37864100BB82A2 /* BankLogViewView.m in Sources */,
+				CB1FCDB020D11AD3001BB2F4 /* PlasticHospitalCell.m in Sources */,
 				735DA5321D6D9041008C7706 /* XHImageCache.m in Sources */,
 				CB44DEE91D79AAD60094C26D /* PersonCommonCell.m in Sources */,
 				73831EDB1CFAE19400458021 /* FCUUID.m in Sources */,
@@ -6797,6 +6864,7 @@
 				CBE92C371EB1C4220054651E /* GHAcceptWJDetailViewController.m in Sources */,
 				73CCBDDA1D53484200CFEB29 /* EaseRefreshTableViewController.m in Sources */,
 				7370E9011D7596FB002B2D52 /* PaySuccessController.m in Sources */,
+				CB1FCDA020CFC6D8001BB2F4 /* PlasticInfoView.m in Sources */,
 				73CCBD9B1D53484200CFEB29 /* wav.mm in Sources */,
 				8E01DE881D06CBA7004B028B /* SetRealNameView.m in Sources */,
 				EEA6964B1E6E974F00D8FE69 /* AccompanyMenuViewController.m in Sources */,
@@ -6820,6 +6888,7 @@
 				CB3663B41DD2F789007BEFBD /* CreateOrderSubmitCell.m in Sources */,
 				734083D81DBB3AAC00427E78 /* ChildBannerController.m in Sources */,
 				8EA681D41D5C1C4000F755E0 /* GHViewControllerLoader.m in Sources */,
+				CB1FCDA720CFC983001BB2F4 /* PlasticHospitalView.m in Sources */,
 				8E59FE351D62A9BB00DDEDAC /* OrderAcceptCell.m in Sources */,
 				CB1CC1BA1DA8C788008CB273 /* GHCreateOrderTwoCell.m in Sources */,
 				73CCBDB41D53484200CFEB29 /* UIImage+EMWebP.m in Sources */,
@@ -6892,6 +6961,7 @@
 				73BC01151C4E1E980013CD3C /* RootManager.m in Sources */,
 				CBD9ACC81D755E9E0053E635 /* GHAcceptOrderStatusCell.m in Sources */,
 				731BBCB11C7EFC04008EFB06 /* HtmlAllViewController.m in Sources */,
+				CB1FCD9520CE7185001BB2F4 /* PlasticViewController.m in Sources */,
 				73AD01E31CC9BE7E0069DC6E /* PayPageVO.m in Sources */,
 				73CCBDD11D53484200CFEB29 /* EaseMessageReadManager.m in Sources */,
 				EEC7FFC41E5A7D4400B3ABF0 /* CreateOrderCardPriceCell.m in Sources */,
@@ -6976,6 +7046,8 @@
 				CB5ADA601F99D178002B714E /* UIViewController+Guide.m in Sources */,
 				8E4DDA841D22830C00D7D1AB /* CertificationInfoVO.m in Sources */,
 				730688C31CF30C67007C9493 /* CreateOrderVO.m in Sources */,
+				CB1FCD8E20CE1A74001BB2F4 /* HomePlasticCell.m in Sources */,
+				CB1FCDAA20CFC9D5001BB2F4 /* PlasticDoctrsView.m in Sources */,
 				CBE92C6F1EB31A190054651E /* HealthManagerOrderDetailModel.m in Sources */,
 				8E83D9051CBB872200DD32B0 /* CancelReasonDetailsCell.m in Sources */,
 			);

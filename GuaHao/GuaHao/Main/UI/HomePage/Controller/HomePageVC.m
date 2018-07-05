@@ -11,6 +11,7 @@
 #import "SweepVIewController.h"
 #import "GHCreateOrderOneCell.h"
 #import "GHCreateOrderTwoCell.h"
+#import "HomePlasticCell.h"
 #import "GHScrollViewCell.h"
 #import "GHInformationCell.h"
 #import "NewsView.h"
@@ -36,7 +37,6 @@
 #import "SpecialDepViewController.h"
 #import "SpecialListViewController.h"
 #import "PonitViewController.h"
-
 @interface HomePageVC ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,LoginViewDelegate,EMChatManagerDelegate>{
     GHAdvertView *adView;
     NSMutableArray * bannerImages;
@@ -55,6 +55,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @property (weak, nonatomic) IBOutlet UIButton *sweepButton;
 @property (strong, nonatomic)UIImageView *dragimage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topVIewHeight;
 
 @end
 
@@ -84,12 +85,15 @@
     articles = [NSMutableArray array];
     specialDepArr = [NSMutableArray array];
    
+    
+    self.topVIewHeight.constant = 44 + [[UIApplication sharedApplication]statusBarFrame].size.height;
 //    //声明tableView的位置 添加下面代码
-//    if (@available(iOS 11.0, *)) {
-//        _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
-//        _tableView.scrollIndicatorInsets = _tableView.contentInset;
-//    }
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    
     
     if([DataManager getInstance].cityName.length < 1){
      [_locationButton setTitle:@"上海市" forState:UIControlStateNormal];
@@ -178,7 +182,7 @@
 
 -(void)addDragImage{
     self.dragimage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"homePage_draw.png"]];
-    self.dragimage.frame = CGRectMake(SCREEN_WIDTH-80, 200, 60, 60);
+    self.dragimage.frame = CGRectMake(SCREEN_WIDTH-80, 200, 80, 80);
     self.dragimage.userInteractionEnabled = YES;
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(move:)];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(click)];
@@ -203,10 +207,10 @@
 
     HtmlAllViewController *controller = [[HtmlAllViewController alloc] init];
     controller.isTest = YES;
-    controller.mUrl = @"https://www.pjhealth.com.cn/wx/LotteryTurntable/app/index.html";
-    controller.mTitle = @"抽奖";
-    controller.titleStr = @"【品简挂号】邀你来拼手气！";
-    controller.descStr = @"我正在参加拼手气赢现金活动，邀你一起来围观，就在【品简挂号】>>";
+    controller.mUrl = @"http://www.pjhealth.com.cn/wx/banner/RecruitmentActivities/index.html";
+    controller.mTitle = @"代理招募";
+    controller.titleStr = @"高薪招募医疗代理！无成本加入，每年轻松稳赚20万！";
+    controller.descStr = @"高薪招募医疗代理！无成本加入，每年轻松稳赚20万>>";
     [self.navigationController pushViewController:controller animated:YES];
 
 
@@ -324,7 +328,7 @@
 
 #pragma mark - addSearchBar
 -(void)addSearchBar{
-    GHSearchBar *searchBar = [[GHSearchBar alloc]initWithFrame:CGRectMake(60, 20, SCREEN_WIDTH - 120, 30) isHome:YES];
+    GHSearchBar *searchBar = [[GHSearchBar alloc]initWithFrame:CGRectMake(60, self.topVIewHeight.constant - 38, SCREEN_WIDTH - 120, 30) isHome:YES];
     searchBar.isHome = YES;
     [searchBar setCancelButtonTitle:@"搜索医生" setPlaceholder:@"搜索医院、科室、医生"];
     [self.topView addSubview:searchBar];
@@ -381,7 +385,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
-        return homeVO.featuredDepts.count > 0 ?6:5;
+        return homeVO.featuredDepts.count > 0 ?7:5;
     }else{
         return articles.count;
     }
@@ -407,15 +411,18 @@
                 height = 44;
             }break;
             case 2:{
-                height = 150;
+                height = 160;
             }break;
             case 3:{
-                height = 168;
-            }break;
+                height = 140;
+            }
             case 4:{
-                height = (SCREEN_WIDTH - 20.0)/2.0/(352.0/200.0) + 84;
+                height = 100;
             }break;
             case 5:{
+                height = (SCREEN_WIDTH - 20.0)/2.0/(352.0/200.0) + 84;
+            }break;
+            case 6:{
                 height = (SCREEN_WIDTH - 20.0)/2.0/(352.0/200.0) + 84 ;
             }break;
             default:
@@ -511,10 +518,13 @@
         }else if (indexPath.row == 2){///普通、专家号
             GHCreateOrderTwoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"GHCreateOrderTwoCell"];
             return cell;
+        }else if (indexPath.row == 4){///整形
+            HomePlasticCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"HomePlasticCell"];
+            return cell;
         }else {//特色科室
             GHScrollViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"GHScrollViewCell"];
 //            __weak typeof(self) weakSelf = self;
-            if (indexPath.row == 4 && homeVO.featuredDepts.count > 0){
+            if (indexPath.row == 5 && homeVO.featuredDepts.count > 0){
                 [cell layoutSubviews:specialDepArr title:@"特色科室"  type:1];
                 [cell clickCellReturn:^(NSInteger index) {
                     SpecialDepViewController *vc = [GHViewControllerLoader SpecialDepViewController];
@@ -563,11 +573,16 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1) {
-        ArticleListVO *vo = [articles objectAtIndex:indexPath.row];
+        if (indexPath.row == 4) {
+            
+        }else{
+            ArticleListVO *vo = [articles objectAtIndex:indexPath.row];
             InformationDetailViewController * view = [[InformationDetailViewController alloc] init];
             view.articleID = vo.id;
             [self.navigationController pushViewController:view animated:YES];
-        
+            
+        }
+       
     }
 }
 //普通号
@@ -669,25 +684,7 @@
 }
 ///挂号、咨询、关注、陪诊点击
 -(void)buttonClickAction:(NSInteger)tag{
-//    switch (tag) {
-//        case 11001:{
-//            [self normalOrder];
-//        }break;
-//        case 11002:{
-//            [self expertOrder];
-//        }break;
-//        case 11003:{
-//            [self askTheDoctor];
-//        }break;
-//        case 11004:{
-//            [self myAttention];
-//        }break;
-//        case 11005:{
-//            [self accompany];
-//        }break;
-//        default:
-//            break;
-//    }
+
 }
 //更多
 -(void)moreInformation:(NSInteger)type{
@@ -698,8 +695,7 @@
     }else if (type == 4){///特色科室
         NSLog(@"特色科室");
          self.tabBarController.selectedIndex = 2;
-//        SpecialListViewController *vc = [GHViewControllerLoader SpecialListViewController];
-//        [self.navigationController pushViewController:vc animated:YES];
+
     }else{//健康资讯更多
         self.tabBarController.selectedIndex = 3;
     }
